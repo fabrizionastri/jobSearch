@@ -1,0 +1,151 @@
+--- Target Folder Structure ---
+package.json
+[vueApp]
+    ├── App.vue
+    ├── main.js
+    └── [components]
+        └── HelloWorld.vue
+    index.html 
+[src]
+    ├── (other back-end related files)
+vite.config.js
+vitest.config.js
+
+--- File Contents ---
+
+--- File: index.html ---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job search</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- this is the starting point for Vue to render the app. It uses the "app" id to connect to an make changes to the DOM -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
+
+--- File: package.json ---
+{
+  "name": "vuejs-course",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "vue": "^3.3.2"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/test-utils": "^2.3.2",
+    "eslint": "^8.39.0",
+    "eslint-plugin-vue": "^9.11.0",
+    "jsdom": "^22.0.0",
+    "prettier": "^2.8.8",
+    "vite": "^4.3.5",
+    "vitest": "^0.31.0"
+  }
+}
+
+
+--- File: src\App.vue ---
+<script setup>
+import HelloWorld from './components/HelloWorld.vue'
+</script>
+
+<template>
+  <div class="wrapper">
+    <HelloWorld msg="Nice job!" />
+    <HelloWorld msg="You did it  (HelloWorld component)!" />
+    <HelloWorld msg="Hello1" />
+    <HelloWorld msg="Hello2"> </HelloWorld>
+  </div>
+
+  <main></main>
+</template>
+
+
+--- File: src\components\HelloWorld.vue ---
+<script setup>
+defineProps({
+  msg: {
+    type: String,
+    required: true
+  }
+})
+</script>
+
+<template>
+  <div>
+    <h1>{{ msg }}</h1>
+    <h3>
+      Fabrizio \HelloWorld \ h3 : You’ve successfully created a project with
+      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
+      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
+    </h3>
+  </div>
+</template>
+
+
+--- File: src\main.js ---
+
+import { createApp } from 'vue' // import the function that creates the Vue application
+import App from '@/App.vue' // import the top level component of the Vue application
+
+createApp(App) // create the Vue app, using the createApp function with the App component as an argument
+  .mount('#app') // mount the Vue app to the element with the id "app" in the DOM
+
+
+--- File: vite.config.js ---
+import { fileURLToPath, URL } from 'node:url'
+
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)) // this creates an absolute path pointing to the src directory regardless of where vite.config.js is located
+    }
+  }
+})
+
+
+--- File: vitest.config.js ---
+import { fileURLToPath } from 'node:url'
+import { mergeConfig } from 'vite'
+import { configDefaults, defineConfig } from 'vitest/config'
+import viteConfig from './vite.config'
+
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    test: {
+      environment: 'jsdom',
+      exclude: [...configDefaults.exclude, 'e2e/*'],
+      root: fileURLToPath(new URL('./', import.meta.url)),
+      transformMode: {
+        web: [/\.[jt]sx$/],
+      },
+    }
+  })
+)
+
+
