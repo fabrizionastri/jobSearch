@@ -12,9 +12,6 @@ media
 package-lock.json
 
 .env
-.eslintrc.json
-.prettierrc.json
-.prettierignore
 
 nodemon.json
 
@@ -24,7 +21,4 @@ project_structure_filter.ts
 .project_structure_filter
 .project_structure_ignore
 
-
-
-.eslintrc.cjs
 README.md

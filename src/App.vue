@@ -1,5 +1,5 @@
-<script setup></script>
+<script></script>
 
 <template>
-  <h1>Hello Vue!</h1>
+  <h1 class="ms-3 text-center text-xl font-bold">Hello Fabrizio JobSearch!</h1>
 </template>

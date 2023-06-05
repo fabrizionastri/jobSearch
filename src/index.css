@@ -1,0 +1,8 @@
+/* explain what each line does */
+@import 'tailwindcss/base'; /* imports the base styles */
+@import 'tailwindcss/components'; /* imports the component styles */
+@import 'tailwindcss/utilities'; /* imports the utility styles */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}

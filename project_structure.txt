@@ -1,17 +1,51 @@
---- Target Folder Structure ---
+--- Folder Structure ---
+.eslintrc.cjs
+.prettierrc.json
+index.html
 package.json
-[vueApp]
-    ├── App.vue
-    ├── main.js
-    └── [components]
-        └── HelloWorld.vue
-    index.html 
+postcss.config.js
 [src]
-    ├── (other back-end related files)
+    ├── App.vue
+    ├── [components]
+        └── playground.js
+    ├── index.css
+    └── main.js
+tailwind.config.js
 vite.config.js
 vitest.config.js
 
 --- File Contents ---
+
+--- File: .eslintrc.cjs ---
+/* eslint-env node */
+require('@rushstack/eslint-patch/modern-module-resolution')
+
+module.exports = {
+  root: true,
+  extends: [
+    'plugin:vue/vue3-recommended',
+    'eslint:recommended',
+    '@vue/eslint-config-prettier/skip-formatting',
+    'plugin:prettier/recommended'
+  ],
+  parserOptions: {
+    ecmaVersion: 'latest'
+  }
+}
+
+
+--- File: .prettierrc.json ---
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "semi": false,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "printWidth": 100,
+  "trailingComma": "none",
+  "plugins": [
+    "tailwindcss"
+  ]
+}
 
 --- File: index.html ---
 <!DOCTYPE html>
@@ -21,6 +55,10 @@ vitest.config.js
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- get this front google fonts -->
   <title>Job search</title>
 </head>
 
@@ -53,62 +91,92 @@ vitest.config.js
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/test-utils": "^2.3.2",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.11.0",
     "jsdom": "^22.0.0",
+    "postcss": "^8.4.24",
     "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "tailwindcss": "^3.3.2",
     "vite": "^4.3.5",
     "vitest": "^0.31.0"
   }
 }
 
 
---- File: src\App.vue ---
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
-<template>
-  <div class="wrapper">
-    <HelloWorld msg="Nice job!" />
-    <HelloWorld msg="You did it  (HelloWorld component)!" />
-    <HelloWorld msg="Hello1" />
-    <HelloWorld msg="Hello2"> </HelloWorld>
-  </div>
-
-  <main></main>
-</template>
-
-
---- File: src\components\HelloWorld.vue ---
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
+--- File: postcss.config.js ---
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {}
   }
-})
-</script>
+}
+
+
+--- File: src\App.vue ---
+<script></script>
 
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
-    <h3>
-      Fabrizio \HelloWorld \ h3 : You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
-  </div>
+  <h1 class="text-xl font-bold text-center ms-3">Hello Fabrizio JobSearch!</h1>
 </template>
+
+
+--- File: src\components\playground.js ---
+const fruits = ['apple', 'banana', 'orange']
+const vegetables = ['potato', 'tomato']
+
+export const food = [...fruits, ...vegetables]
+
+
+--- File: src\index.css ---
+/* explain what each line does */
+@import 'tailwindcss/base'; /* imports the base styles */
+@import 'tailwindcss/components'; /* imports the component styles */
+@import 'tailwindcss/utilities'; /* imports the utility styles */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
 
 
 --- File: src\main.js ---
-
 import { createApp } from 'vue' // import the function that creates the Vue application
+import '@/index.css' // import the CSS styles from the index.css file
 import App from '@/App.vue' // import the top level component of the Vue application
 
 createApp(App) // create the Vue app, using the createApp function with the App component as an argument
   .mount('#app') // mount the Vue app to the element with the id "app" in the DOM
+
+
+--- File: tailwind.config.js ---
+/** @type {import('tailwindcss').Config} */
+
+import defaultTheme from 'tailwindcss/defaultTheme' // import the default theme from the tailwind library
+// checkout the list found here: .\node_modules\tailwindcss\stubs\config.full.js
+// or here: https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js#L301
+
+export default {
+  content: [
+    // this tells where our Tailwind styles are stored
+    './index.html',
+    './src/**/*.{vue, js, ts}'
+  ], // this tells where our components are stored
+  theme: {
+    // this is where we can override tailwind's default styles
+    extend: {
+      // this is where we can add new styles to tailwind, buy extending rather then overriding the default styles
+      fontFamily: {
+        // we don't want to only offer Open Sans, but add it to the default fonts as the first option
+        // if the font is not available, the browser will use the next font in the list
+        sans: ['Open Sans', ...defaultTheme.fontFamily.sans] // this is how we can add a new font to our project
+      }
+    },
+    plugins: []
+  }
+}
 
 
 --- File: vite.config.js ---
@@ -142,10 +210,9 @@ export default mergeConfig(
       exclude: [...configDefaults.exclude, 'e2e/*'],
       root: fileURLToPath(new URL('./', import.meta.url)),
       transformMode: {
-        web: [/\.[jt]sx$/],
-      },
+        web: [/\.[jt]sx$/]
+      }
     }
   })
 )
-
 
