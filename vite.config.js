@@ -10,5 +10,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)) // this creates an absolute path pointing to the src directory regardless of where vite.config.js is located
     }
+  },
+  test: {
+    globals: true
   }
 })

@@ -1,4 +1,5 @@
 /* eslint-env node */
+// .eslintrc.cjs
 require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
@@ -7,11 +8,15 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'eslint:recommended',
     '@vue/eslint-config-prettier/skip-formatting',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:vitest-gloabls/recommended'
     /*  'plugin:tailwindcss/recommended' */
   ],
   parserOptions: {
     ecmaVersion: 'latest'
   },
-  plugins: ['tailwindcss']
+  plugins: ['tailwindcss'],
+  env: {
+    "vitest-globals/env": true
+  }
 }
