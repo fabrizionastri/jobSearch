@@ -7,8 +7,8 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'eslint:recommended',
     '@vue/eslint-config-prettier/skip-formatting',
-    'plugin:prettier/recommended',
-    'plugin:tailwindcss/recommended'
+    'plugin:prettier/recommended'
+    /*  'plugin:tailwindcss/recommended' */
   ],
   parserOptions: {
     ecmaVersion: 'latest'

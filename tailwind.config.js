@@ -18,8 +18,14 @@ export default {
         // we don't want to only offer Open Sans, but add it to the default fonts as the first option
         // if the font is not available, the browser will use the next font in the list
         sans: ['Open Sans', ...defaultTheme.fontFamily.sans] // this is how we can add a new font to our project
-      }
-    },
-    plugins: []
+      },
+      colors: {
+        // this is how we can add a new color to our project
+        'brand-gray-1': '#dadce0', // were using "" because the color name has a dash in it, and JavaScript doesn't support dashes in property names
+        'brand-blue-1': '#1967d2',
+        'brand-green-1': '##137333'
+      },
+      plugins: []
+    }
   }
 }
