@@ -19,18 +19,21 @@
         </div>
       </div>
     </div>
+    <sub-nav />
   </header>
 </template>
 
 <script>
 import ActionButton from '@/components/ActionButton.vue' // we can use any case we want, but PascalCase is recommended in the script
 import ProfileImage from '@/components/ProfileImage.vue'
+import SubNav from '@/components/SubNav.vue'
 
 export default {
   name: 'MainNav',
   components: {
     ActionButton, // we can use any case we want, but PascalCase is recommended in the script
-    ProfileImage
+    ProfileImage,
+    SubNav
   },
   data() {
     return {
