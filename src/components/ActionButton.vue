@@ -1,6 +1,6 @@
 <!-- src/components/ActionButton.vue -->
 <template>
-  <button :class="type">
+  <button :class="buttonType">
     {{ text }}
   </button>
 </template>
@@ -8,7 +8,20 @@
 <script>
 export default {
   name: 'ActionButton',
-  props: ['text', 'type']
+  props: {
+    text: {
+      type: String,
+      required: true
+    },
+    buttonType: {
+      type: String,
+      required: false,
+      default: 'primary',
+      validator(value) {
+        return ['primary', 'secondary'].includes(value)
+      }
+    }
+  }
 }
 </script>
 

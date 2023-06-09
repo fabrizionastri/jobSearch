@@ -18,8 +18,8 @@
   </header>
   <div class="flex items-center h-full mt-5 ml-auto">
     <profile-image v-if="isLoggedIn" @click="logOut" />
-    <action-button text="Sign In" type="primary" @click="logIn" />
-    <action-button text="Big Mama" type="secondary" />
+    <action-button text="Sign In" button-type="primary" @click="logIn" />
+    <action-button text="Big Mama" button-type="secondary" />
     <!-- we can use any case we want, but kebab-case is recommended in the template -->
   </div>
 </template>
