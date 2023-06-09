@@ -4,8 +4,6 @@
     <div class="top-0 left-0 w-full h-16 bg-white">
       <div class="flex h-full px-8 mx-auto border-b border-solid border-red flex-nowrap">
         <a class="flex items-center h-full text-xl" :href="url">{{ company }}</a>
-        <!-- v-bind is
-        used to bind the value of an attribute to an expression -->
         <nav class="h-full ml-12">
           <ul class="flex h-full list-none">
             <li v-for="menuItem in menuItems" :key="menuItem" class="h-full ml-9 first:ml-0">
@@ -13,15 +11,15 @@
             </li>
           </ul>
         </nav>
+        <div class="flex items-center h-full ml-auto">
+          <profile-image v-if="isLoggedIn" @click="logOut" />
+          <action-button text="Sign In" button-type="primary" @click="logIn" />
+          <action-button text="Big Mama" button-type="secondary" />
+          <!-- we can use any case we want, but kebab-case is recommended in the template -->
+        </div>
       </div>
     </div>
   </header>
-  <div class="flex items-center h-full mt-5 ml-auto">
-    <profile-image v-if="isLoggedIn" @click="logOut" />
-    <action-button text="Sign In" button-type="primary" @click="logIn" />
-    <action-button text="Big Mama" button-type="secondary" />
-    <!-- we can use any case we want, but kebab-case is recommended in the template -->
-  </div>
 </template>
 
 <script>
