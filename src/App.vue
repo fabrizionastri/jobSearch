@@ -1,6 +1,6 @@
 <!-- src/App.vue -->
 <template>
-  <h1 class="ms-3 text-center text-xl font-bold">Hello Fabrizio JobSearch!</h1>
+  <h1 class="text-xl font-bold text-center ms-3">Hello Fabrizio JobSearch!</h1>
   <MainNav />
 </template>
 

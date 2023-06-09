@@ -1,3 +1,4 @@
+// vite.config.js
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
@@ -12,6 +13,7 @@ export default defineConfig({
     }
   },
   test: {
-    globals: true
+    globals: true,
+    setupFiles: ['./test/setup.js'] // this is used to set up the testing environment before each test
   }
 })

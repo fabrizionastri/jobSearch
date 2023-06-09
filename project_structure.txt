@@ -1,23 +1,21 @@
 --- Folder Structure ---
 .eslintrc.cjs
+.prettierignore
 .prettierrc.json
+[.vscode]
+    ├── extensions.json
+    └── settings.json
 index.html
 package.json
 postcss.config.js
-[src]
-    ├── App.vue
-    ├── [components]
-        └── playground.js
-    ├── index.css
-    └── main.js
 tailwind.config.js
 vite.config.js
-vitest.config.js
 
 --- File Contents ---
 
 --- File: .eslintrc.cjs ---
 /* eslint-env node */
+// .eslintrc.cjs
 require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
@@ -26,12 +24,26 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'eslint:recommended',
     '@vue/eslint-config-prettier/skip-formatting',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:vitest-globals/recommended',
+    'plugin:tailwindcss/recommended'
   ],
   parserOptions: {
     ecmaVersion: 'latest'
+  },
+  plugins: ['tailwindcss'],
+  env: {
+    'vitest-globals/env': true
   }
 }
+
+
+--- File: .prettierignore ---
+.*
+.nuxt
+*.html
+build
+coverage
 
 
 --- File: .prettierrc.json ---
@@ -46,6 +58,42 @@ module.exports = {
     "tailwindcss"
   ]
 }
+
+--- File: .vscode\extensions.json ---
+{
+  "recommendations": ["Vue.volar", "Vue.vscode-typescript-vue-plugin"]
+}
+
+
+--- File: .vscode\settings.json ---
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "vue",  
+    "json"
+  ],
+   "eslint.workingDirectories": [
+    { "mode": "auto" }
+  ],
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "keyword.other.dotenv",
+        "settings": {
+          "foreground": "#FF000000"
+        }
+      }
+    ],
+    "comments": ""
+  }
+}
+
 
 --- File: index.html ---
 <!DOCTYPE html>
@@ -79,22 +127,29 @@ module.exports = {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test:unit": "vitest",
+    "test": "vitest --environment jsdom --coverage",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.3.2"
+    "vue": "^3.3.4"
   },
+  "type": "module",
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/user-event": "^14.4.3",
+    "@testing-library/vue": "^7.0.0",
     "@vitejs/plugin-vue": "^4.2.3",
+    "@vitest/coverage-c8": "^0.31.4",
     "@vue/eslint-config-prettier": "^7.1.0",
-    "@vue/test-utils": "^2.3.2",
+    "@vue/test-utils": "2.4.0-alpha.2",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-tailwindcss": "^3.12.1",
+    "eslint-plugin-vitest-globals": "^1.3.1",
     "eslint-plugin-vue": "^9.11.0",
     "jsdom": "^22.0.0",
     "postcss": "^8.4.24",
@@ -103,6 +158,9 @@ module.exports = {
     "tailwindcss": "^3.3.2",
     "vite": "^4.3.5",
     "vitest": "^0.31.0"
+  },
+  "volta": {
+    "node": "20.2.0"
   }
 }
 
@@ -116,44 +174,10 @@ export default {
 }
 
 
---- File: src\App.vue ---
-<script></script>
-
-<template>
-  <h1 class="text-xl font-bold text-center ms-3">Hello Fabrizio JobSearch!</h1>
-</template>
-
-
---- File: src\components\playground.js ---
-const fruits = ['apple', 'banana', 'orange']
-const vegetables = ['potato', 'tomato']
-
-export const food = [...fruits, ...vegetables]
-
-
---- File: src\index.css ---
-/* explain what each line does */
-@import 'tailwindcss/base'; /* imports the base styles */
-@import 'tailwindcss/components'; /* imports the component styles */
-@import 'tailwindcss/utilities'; /* imports the utility styles */
-
-body {
-  font-family: 'Open Sans', sans-serif;
-}
-
-
---- File: src\main.js ---
-import { createApp } from 'vue' // import the function that creates the Vue application
-import '@/index.css' // import the CSS styles from the index.css file
-import App from '@/App.vue' // import the top level component of the Vue application
-
-createApp(App) // create the Vue app, using the createApp function with the App component as an argument
-  .mount('#app') // mount the Vue app to the element with the id "app" in the DOM
-
-
 --- File: tailwind.config.js ---
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 
+/** @type {import('tailwindcss').Config} */
 import defaultTheme from 'tailwindcss/defaultTheme' // import the default theme from the tailwind library
 // checkout the list found here: .\node_modules\tailwindcss\stubs\config.full.js
 // or here: https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js#L301
@@ -172,6 +196,16 @@ export default {
         // we don't want to only offer Open Sans, but add it to the default fonts as the first option
         // if the font is not available, the browser will use the next font in the list
         sans: ['Open Sans', ...defaultTheme.fontFamily.sans] // this is how we can add a new font to our project
+      },
+      colors: {
+        // this is how we can add a new color to our project
+        'brand-gray-1': '#dadce0', // were using "" because the color name has a dash in it, and JavaScript doesn't support dashes in property names
+        'brand-blue-1': '#1967d2',
+        'brand-blue-2': '#4285f4',
+        'brand-green-1': '##137333'
+      },
+      boxShadow: {
+        blue: '0 0 3px 3px #4285f4' // use this with shadow-blue
       }
     },
     plugins: []
@@ -180,6 +214,7 @@ export default {
 
 
 --- File: vite.config.js ---
+// vite.config.js
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
@@ -192,27 +227,10 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)) // this creates an absolute path pointing to the src directory regardless of where vite.config.js is located
     }
+  },
+  test: {
+    globals: true,
+    setupFiles: ['./test/setup.js'] // this is used to set up the testing environment before each test
   }
 })
-
-
---- File: vitest.config.js ---
-import { fileURLToPath } from 'node:url'
-import { mergeConfig } from 'vite'
-import { configDefaults, defineConfig } from 'vitest/config'
-import viteConfig from './vite.config'
-
-export default mergeConfig(
-  viteConfig,
-  defineConfig({
-    test: {
-      environment: 'jsdom',
-      exclude: [...configDefaults.exclude, 'e2e/*'],
-      root: fileURLToPath(new URL('./', import.meta.url)),
-      transformMode: {
-        web: [/\.[jt]sx$/]
-      }
-    }
-  })
-)
 

@@ -1,0 +1,5 @@
+.*
+.nuxt
+*.html
+build
+coverage

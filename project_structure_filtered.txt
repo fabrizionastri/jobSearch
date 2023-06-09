@@ -1,3 +1,29 @@
+--- Folder Structure ---
+.eslintrc.cjs
+.prettierignore
+.prettierrc.json
+[.vscode]
+    ├── extensions.json
+    └── settings.json
+index.html
+package.json
+postcss.config.js
+tailwind.config.js
+vite.config.js
+--- File Contents ---
+--- File: .prettierrc.json ---
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "semi": false,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "printWidth": 100,
+  "trailingComma": "none",
+  "plugins": [
+    "tailwindcss"
+  ]
+}
+--- File: package.json ---
 {
   "name": "vuejs-course",
   "version": "0.0.0",
@@ -42,3 +68,21 @@
     "node": "20.2.0"
   }
 }
+--- File: vite.config.js ---
+// vite.config.js
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)) // this creates an absolute path pointing to the src directory regardless of where vite.config.js is located
+    }
+  },
+  test: {
+    globals: true,
+    setupFiles: ['./test/setup.js'] // this is used to set up the testing environment before each test
+  }
+})

@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 
+/** @type {import('tailwindcss').Config} */
 import defaultTheme from 'tailwindcss/defaultTheme' // import the default theme from the tailwind library
 // checkout the list found here: .\node_modules\tailwindcss\stubs\config.full.js
 // or here: https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js#L301
@@ -23,9 +24,13 @@ export default {
         // this is how we can add a new color to our project
         'brand-gray-1': '#dadce0', // were using "" because the color name has a dash in it, and JavaScript doesn't support dashes in property names
         'brand-blue-1': '#1967d2',
+        'brand-blue-2': '#4285f4',
         'brand-green-1': '##137333'
       },
-      plugins: []
-    }
+      boxShadow: {
+        blue: '0 0 3px 3px #4285f4' // use this with shadow-blue
+      }
+    },
+    plugins: []
   }
 }

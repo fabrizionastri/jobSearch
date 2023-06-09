@@ -1,1 +1,4 @@
-generic
+.prettierrc.json
+vite.config.js
+vitest.config.js
+package.json

@@ -13,7 +13,7 @@ if (filterPatterns[filterPatterns.length - 1] === '') {
 console.log('filterPatterns:', filterPatterns)
 
 // checks if the file path contains any of the filter patterns
-function containsFilter(filePath: string): boolean {
+function containsFilter(filePath) {
   return filterPatterns.some((filter) => filePath.includes(filter))
 }
 
@@ -23,7 +23,8 @@ let keepThisSection = true
 
 input.on('data', (chunk) => {
   const lines = chunk.toString().split('\n')
-  // console.log('lines:', lines)
+  // remove the last line if it's empty
+
 
   const filteredLines = lines.filter((line) => {
     if (line.startsWith('--- File: ')) {
