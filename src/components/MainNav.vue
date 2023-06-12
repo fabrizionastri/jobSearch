@@ -1,6 +1,6 @@
 <!-- src/components/MainNav.vue -->
 <template>
-  <header class="w-full text-sm">
+  <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="top-0 left-0 w-full h-16 bg-white">
       <div class="flex h-full px-8 mx-auto border-b border-solid border-red flex-nowrap">
         <a class="flex items-center h-full text-xl font-bold" :href="url">{{ company }}</a>
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <sub-nav />
+    <sub-nav v-if="isLoggedIn" />
   </header>
 </template>
 
@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      company: 'Bobo carrers',
+      company: 'Bobo careers',
       url: 'https://careers.google.com',
       menuItems: ['Teams', 'Locations', 'Life at Google', 'How we hire', 'Students', 'Jobs'],
       isLoggedIn: false,
@@ -49,6 +49,11 @@ export default {
         'https://careers.google.com/students/',
         'https://careers.google.com/jobs/'
       ]
+    }
+  },
+  computed: {
+    headerHeightClass() {
+      return this.isLoggedIn ? 'h-32' : 'h-16'
     }
   },
   methods: {
