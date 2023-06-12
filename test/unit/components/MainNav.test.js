@@ -10,7 +10,13 @@ import { describe } from 'vitest'
 
 describe('MainNav', () => {
   it('displays the company name', () => {
-    render(MainNav) // this renders the component in the virtual DOM
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      }
+    }) // this renders the component in the virtual DOM
     // screen.debug() // this is used to print the DOM to the console
     const companyName = screen.getByText('Bobo carrers') // this is used to get the text from the DOM
     expect(companyName).toBeInTheDocument // this is rendant with the getByText, because that will already fail if there is not exactly 1 element with that text
@@ -18,6 +24,11 @@ describe('MainNav', () => {
 
   it('displays the SuperCorp company name', () => {
     render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      },
       data() {
         return {
           company: 'SuperCorp'
@@ -29,7 +40,13 @@ describe('MainNav', () => {
   })
 
   it('displays menu items for navigation', () => {
-    render(MainNav)
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      }
+    })
     const navigationMenuItems = screen.getAllByRole('listitem') // this is used to get all the elements with the role listitem
     const navigationMenuItemsText = navigationMenuItems.map((item) => item.textContent) // this is used to get the text from the elements
     expect(navigationMenuItemsText).toEqual([
@@ -44,7 +61,13 @@ describe('MainNav', () => {
 
   describe('when the user logs in', () => {
     it('shoud not display the user profile picture when not Logged In', async () => {
-      render(MainNav)
+      render(MainNav, {
+        global: {
+          stubs: {
+            FontAwesomeIcon: true
+          }
+        }
+      })
       // queryByRole is the same as getByRole but it doesn't throw an error if the element is not found
       // use queryByRole instead of getByRole to return null if not found
       let profileImage = screen.queryByRole('img', {
@@ -65,7 +88,13 @@ describe('MainNav', () => {
 
   describe('when the user is not logged in', () => {
     it('displays the login button', () => {
-      render(MainNav)
+      render(MainNav, {
+        global: {
+          stubs: {
+            FontAwesomeIcon: true
+          }
+        }
+      })
       screen.queryByRole('button', { name: 'ActionButton' })
     })
   })
