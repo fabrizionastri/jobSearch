@@ -51,11 +51,10 @@ export default {
   methods: {
     changeTitle() {
       this.interval = setInterval(() => {
-        const actions = ['Build', 'Code', 'Create', 'Design']
+        const actions = ['Build', 'Create', 'Design', 'Code']
         this.action = nextElementInList(actions, this.action)
         // console.log('TheHeadline.vue changeTitle() with data: ', this.action)
       }, 5000)
-      this.action = 'Build'
     }
   }
 }

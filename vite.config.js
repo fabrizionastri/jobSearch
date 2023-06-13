@@ -13,7 +13,7 @@ export default defineConfig({
     }
   },
   test: {
-    globals: true,
+    globals: true, // this makes the following globals available in tests: vi, screen, render, nextTick, and expect
     setupFiles: ['./test/setup.js'] // this is used to set up the testing environment before each test
   }
 })
