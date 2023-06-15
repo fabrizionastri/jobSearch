@@ -1,4 +1,4 @@
-<!-- src/components/ActionButton.vue -->
+<!-- src/components/Shared/ActionButton.vue -->
 <template>
   <button :class="buttonClass">
     {{ text }}

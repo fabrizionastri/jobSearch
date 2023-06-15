@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import ActionButton from '@/components/ActionButton.vue' // we can use any case we want, but PascalCase is recommended in the script
+import ActionButton from '@/components/Shared/ActionButton.vue' // we can use any case we want, but PascalCase is recommended in the script
 import ProfileImage from '@/components/Navigation/ProfileImage.vue'
 import SubNav from '@/components/Navigation/SubNav.vue'
 

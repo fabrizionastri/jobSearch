@@ -1,4 +1,4 @@
-<!-- src/components/ActionButton.vue -->
+<!-- src/components/Shared/ActionButton.vue -->
 <template>
   <button @click="handleClick">h {{ height }} * w {{ width }} = area {{ area }}</button>
 </template>

@@ -42,7 +42,7 @@ export default {
   },
   created() {
     this.changeTitle()
-    console.log('TheHeadline.vue created with data: ', this.action)
+    // console.log('TheHeadline.vue created with data: ', this.action)
   },
   beforeUnmount() {
     // we need to stop the setInterval() function when the component is unmounted
