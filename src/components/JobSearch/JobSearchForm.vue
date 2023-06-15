@@ -10,16 +10,16 @@
     />
     <div class="flex flex-1 h-full text-base font-light flex-nowrap">
       <div class="relative flex items-center flex-1 h-full pr-3">
-        <label for="role" class="absolute left-0 -top-8">Role</label>
-        <text-input placeholder="Software engineer" @handle-input="updateRole" />
+        <label class="absolute left-0 -top-8">Role</label>
+        <text-input v-model="role" placeholder="Software engineer" />
       </div>
       <span
-        class="flex items-center flex-1 h-full pl-4 border-l border-r border-solid border-brand-gray-3 bg-brand-gray-2"
+        class="flex items-center h-full p-3 border-l border-r border-solid border-brand-gray-3 bg-brand-gray-2"
         >in</span
       >
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label for="role" class="absolute left-2 -top-8">Where ?</label>
-        <text-input placeholder="Paris" @handle-input="updateLocation" />
+        <text-input v-model="location" placeholder="Paris" />
       </div>
       <action-button text="Search" type="secondary" class="rounded-r-3xl" />
     </div>
@@ -40,16 +40,6 @@ export default {
     return {
       role: '',
       location: ''
-    }
-  },
-  methods: {
-    updateRole(payload) {
-      console.log('updateRole payload', payload)
-      this.role = payload
-    },
-    updateLocation(payload) {
-      console.log('updateLocation payload', payload)
-      this.location = payload
     }
   }
 }
