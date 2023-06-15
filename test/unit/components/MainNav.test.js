@@ -22,7 +22,7 @@ describe('MainNav', () => {
   it('displays the company name', () => {
     renderMainNav()
     // screen.debug() // this is used to print the DOM to the console
-    const companyName = screen.getByText(/Bobo careers/i) // this is used to get the text from the DOM
+    const companyName = screen.getByText(/FlexUp careers/i) // this is used to get the text from the DOM
     expect(companyName).toBeInTheDocument // this is rendant with the getByText, because that will already fail if there is not exactly 1 element with that text
   })
 

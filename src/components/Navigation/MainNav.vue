@@ -3,6 +3,11 @@
   <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="top-0 left-0 w-full h-16 bg-white">
       <div class="flex h-full px-8 mx-auto border-b border-solid border-red flex-nowrap">
+        <img
+          class="h-full p-2 place-self-center"
+          src="https://i.imgur.com/2qJtpPg.png"
+          alt="VueJs"
+        />
         <a class="flex items-center h-full text-xl font-bold" :href="url">{{ company }}</a>
         <nav class="h-full ml-12">
           <ul class="flex h-full list-none">
@@ -37,7 +42,7 @@ export default {
   },
   data() {
     return {
-      company: 'Bobo careers',
+      company: 'FlexUp careers',
       url: 'https://careers.google.com',
       menuItems: ['Teams', 'Locations', 'Life at Google', 'How we hire', 'Students', 'Jobs'],
       isLoggedIn: false,
