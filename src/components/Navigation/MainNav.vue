@@ -1,4 +1,4 @@
-<!-- src/components/MainNav.vue -->
+<!-- src/components/Navigation/MainNav.vue -->
 <template>
   <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="top-0 left-0 w-full h-16 bg-white">
@@ -13,8 +13,8 @@
         </nav>
         <div class="flex items-center h-full ml-auto">
           <profile-image v-if="isLoggedIn" @click="logOut" />
-          <action-button v-else text="Sign In" button-type="primary" @click="logIn" />
-          <action-button text="Big Mama" button-type="secondary" />
+          <action-button v-else text="Sign In" type="primary" @click="logIn" />
+          <action-button text="Big Mama" type="secondary" />
           <!-- we can use any case we want, but kebab-case is recommended in the template -->
         </div>
       </div>
@@ -25,8 +25,8 @@
 
 <script>
 import ActionButton from '@/components/ActionButton.vue' // we can use any case we want, but PascalCase is recommended in the script
-import ProfileImage from '@/components/ProfileImage.vue'
-import SubNav from '@/components/SubNav.vue'
+import ProfileImage from '@/components/Navigation/ProfileImage.vue'
+import SubNav from '@/components/Navigation/SubNav.vue'
 
 export default {
   name: 'MainNav',

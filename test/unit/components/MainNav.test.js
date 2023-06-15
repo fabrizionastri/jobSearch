@@ -5,7 +5,7 @@ import {
 
 import userEvent from '@testing-library/user-event' // this is used to simulate user events
 
-import MainNav from '@/components/MainNav.vue' // don't use {} because its the default export
+import MainNav from '@/components/Navigation/MainNav.vue' // don't use {} because its the default export
 import { describe, it } from 'vitest'
 
 describe('MainNav', () => {
