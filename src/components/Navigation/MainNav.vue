@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <sub-nav v-if="isLoggedIn" />
+    <sub-nav />
   </header>
 </template>
 

@@ -1,7 +1,8 @@
 <template>
-  <h1 class="text-6xl font-bold">Job Results page</h1>
-  <button @click="goToHome">Go to Home Page</button>
+  <h1 class="mt-20 ml-5 text-6xl font-bold">Job Results page</h1>
+  <button class="mt-20 ml-5" @click="goToHome">Go to Home Page</button>
 </template>
+"
 
 <script>
 export default {

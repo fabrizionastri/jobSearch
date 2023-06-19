@@ -6,15 +6,16 @@ import { describe } from 'vitest';
 describe('SubNav', () => {
   describe('when user in on jobs page', () => {
     it('displays job count', () => {
+      const $route = { // this is a hand made object to mock the real $route object from Vitest
+        name: 'JobResults'
+      }
       render(SubNav, {
         global: {
+          mocks: { // this allows us to mock the $route object on the this.$route
+            $route
+          },
           stubs: {
             FontAwesomeIcon: true
-          }
-        },
-        data() {
-          return {
-            onJobResultsPage: true
           }
         }
       })
@@ -24,17 +25,17 @@ describe('SubNav', () => {
   })
 
   describe('when user in NOT on jobs page', () => {
-    it('does not display job count', () => {
+    it('does NOT display job count', () => {
+      const $route = { // this is a hand made object to mock the real $route object from Vitest
+        name: 'Home'
+      }
       render(SubNav, {
         global: {
+          mocks: { // this allows us to mock the $route object on the this.$route
+            $route
+          },
           stubs: {
             FontAwesomeIcon: true
-          }
-        },
-        data() {
-          return {
-
-            onJobResultsPage: false
           }
         }
       })
