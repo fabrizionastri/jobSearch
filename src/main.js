@@ -4,11 +4,13 @@ import { library } from '@fortawesome/fontawesome-svg-core' // import the librar
 import { faSearch } from '@fortawesome/free-solid-svg-icons' // import the faSearch icon from the free-solid-svg-icons library
 
 import '@/index.css' // import the CSS styles from the index.css file
+import router from '@/router' // import the router from the router.js file
 import App from '@/App.vue' // import the top level component of the Vue application
 
 library.add(faSearch) // add the faSearch icon to the library of FontAwesome icons
 
 createApp(App) // create the Vue app, using the createApp function with the App component as an argument
+  .use(router) // use the router
   .component(
     'font-awesome-icon', // this is the name of the component that we will use in the HTML
     FontAwesomeIcon // this is the component that we are registering

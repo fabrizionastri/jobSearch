@@ -1,5 +1,5 @@
 import { describe } from 'vitest'
-import nextElementInList from '../../../../../src/utils/nextElementInList'
+import nextElementInList from '@/utils/nextElementInList'
 
 describe('nextElementInList', () => {
   it('should return the next element in the list', () => {
