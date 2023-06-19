@@ -4,8 +4,6 @@
       <font-awesome-icon :icon="['fas', 'search']" class="mr-3" />
       <span><span class="font-bold text-brand-green-1">1653</span> jobs matched</span>
     </div>
-    'this.$route.name:' {{ $route.name }} 'this.$route.name === JobResults:'
-    {{ $route.name == 'JobResults' }}
   </div>
 </template>
 

@@ -9,9 +9,9 @@ import MainNav from '@/components/Navigation/MainNav.vue' // don't use {} becaus
 import { describe, it } from 'vitest'
 
 describe('MainNav', () => {
-  const renderMainNav = () => {
+  const renderMainNav = (routeName) => {
     const $route = { // this is a hand made object to mock the real $route object from Vitest
-      name: 'Home'
+      name: routeName
     }
     render(MainNav, {
       // this renders the component in the virtual DOM
@@ -30,14 +30,14 @@ describe('MainNav', () => {
   }
 
   it('displays the company name', () => {
-    renderMainNav()
+    renderMainNav('Home')
     // screen.debug() // this is used to print the DOM to the console
     const companyName = screen.getByText(/FlexUp careers/i) // this is used to get the text from the DOM
     expect(companyName).toBeInTheDocument // this is rendant with the getByText, because that will already fail if there is not exactly 1 element with that text
   })
 
   it('displays menu items for navigation', () => {
-    renderMainNav()
+    renderMainNav('Home')
     const navigationMenuItems = screen.getAllByRole('listitem') // this is used to get all the elements with the role listitem
     const navigationMenuItemsText = navigationMenuItems.map((item) => item.textContent) // this is used to get the text from the elements
     expect(navigationMenuItemsText).toEqual([
