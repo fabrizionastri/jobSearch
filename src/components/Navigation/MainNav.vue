@@ -3,16 +3,18 @@
   <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="top-0 left-0 w-full h-16 bg-white">
       <div class="flex h-full px-8 mx-auto border-b border-solid border-red flex-nowrap">
-        <img
-          class="h-full p-2 place-self-center"
-          src="https://i.imgur.com/2qJtpPg.png"
-          alt="VueJs"
-        />
-        <a class="flex items-center h-full text-xl font-bold" :href="url">{{ company }}</a>
+        <router-link :to="{ name: 'Home' }" class="flex items-center h-full text-xl font-bold">
+          <img
+            class="h-full p-2 place-self-center"
+            src="https://i.imgur.com/2qJtpPg.png"
+            alt="VueJs"
+          />
+          FlexUp Careers
+        </router-link>
         <nav class="h-full ml-12">
           <ul class="flex h-full list-none">
             <li v-for="menuItem in menuItems" :key="menuItem" class="h-full ml-9 first:ml-0">
-              <a :href="links" class="flex h-full items-center py-2.5">{{ menuItem }}</a>
+              {{ menuItem }}
             </li>
           </ul>
         </nav>
@@ -42,18 +44,8 @@ export default {
   },
   data() {
     return {
-      company: 'FlexUp careers',
-      url: 'https://careers.google.com',
       menuItems: ['Teams', 'Locations', 'Life at Google', 'How we hire', 'Students', 'Jobs'],
-      isLoggedIn: false,
-      links: [
-        'https://careers.google.com/teams/',
-        'https://careers.google.com/locations/',
-        'https://careers.google.com/lifeatgoogle/',
-        'https://careers.google.com/how-we-hire/',
-        'https://careers.google.com/students/',
-        'https://careers.google.com/jobs/'
-      ]
+      isLoggedIn: false
     }
   },
   computed: {

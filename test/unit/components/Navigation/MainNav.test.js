@@ -4,16 +4,20 @@ import {
 } from '@testing-library/vue'
 
 import userEvent from '@testing-library/user-event' // this is used to simulate user events
-
+import { RouterLinkStub } from '@vue/test-utils' // this is used to stub the router-link component
 import MainNav from '@/components/Navigation/MainNav.vue' // don't use {} because its the default export
 import { describe, it } from 'vitest'
 
 describe('MainNav', () => {
   const renderMainNav = () => {
-    render(MainNav, {  // this renders the component in the virtual DOM
+    render(MainNav, {
+      // this renders the component in the virtual DOM
       global: {
         stubs: {
-          FontAwesomeIcon: true
+          // this is used to stub the components that are used inside the component that is being tested
+          // stubs are used to replace the component with a fake component
+          FontAwesomeIcon: true,
+          RouterLink: RouterLinkStub, // this is used to stub the router-link component, and replace it with RouterLinkStub, which is specifically made for testing
         }
       }
     })
