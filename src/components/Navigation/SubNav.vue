@@ -14,8 +14,6 @@ export default {
   name: 'SubNav',
   computed: {
     onJobResultsPage() {
-      console.log('this.$route.name:', this.$route.name)
-      console.log('this.$route.name === JobResults:', this.$route.name == 'JobResults')
       return this.$route.name == 'JobResults'
     }
   }

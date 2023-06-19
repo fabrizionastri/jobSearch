@@ -10,9 +10,15 @@ import { describe, it } from 'vitest'
 
 describe('MainNav', () => {
   const renderMainNav = () => {
+    const $route = { // this is a hand made object to mock the real $route object from Vitest
+      name: 'Home'
+    }
     render(MainNav, {
       // this renders the component in the virtual DOM
       global: {
+        mocks: { // this allows us to mock the $route object on the this.$route
+          $route
+        },
         stubs: {
           // this is used to stub the components that are used inside the component that is being tested
           // stubs are used to replace the component with a fake component
