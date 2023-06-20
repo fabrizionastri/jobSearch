@@ -1,17 +1,21 @@
 <template>
   <li class="mb-7">
     <router-link
-      to="/jobs/results/1"
+      :to="jobPageLink"
       class="block mx-auto bg-white border border-solid rounded border-brand-gray-2 hover:shadow-gray"
     >
       <div class="pt-5 pb-2 mx-8 border-b border-solid border-brand-gray-2">
-        <h2 class="mb-2 text-2xl">Technical Program Manager, Perception, Augmented Reality</h2>
+        <h2 class="mb-2 text-2xl">{{ job.title }}</h2>
         <div class="flex flex-row align-middle">
           <div class="mr-5">
-            <span>Bobo</span>
+            <span>{{ job.organization }}</span>
           </div>
           <div>
-            <span>Milano, Italy</span>
+            <ol>
+              <li v-for="location in job.locations" :key="location" class="inline-block mr-5">
+                {{ location }}
+              </li>
+            </ol>
           </div>
         </div>
       </div>
@@ -20,20 +24,14 @@
           <h3 class="mt-1 mb-2">Qualifications:</h3>
           <div>
             <ul class="pl-8 list-disc">
-              <li class="mb-2">
-                <span>5 years experience in managing software development projects</span>
-              </li>
-              <li class="mb-2">
-                <span>Batchelor's degree or equivalent</span>
-              </li>
-              <li class="mb-2">
-                <span>Experience in SQL databases</span>
+              <li v-for="minQual in job.minimumQualifications" class="mb-2">
+                <span>{{ minQual }}</span>
               </li>
             </ul>
           </div>
         </div>
         <div class="mt-2 text-center">
-          <router-link to="/jobs/results/1" class="text-brand-blue-1"> Expand </router-link>
+          <router-link :to="jobPageLink" class="text-brand-blue-1"> Expand </router-link>
         </div>
       </div>
     </router-link>
@@ -42,6 +40,17 @@
 
 <script>
 export default {
-  name: 'JobListing'
+  name: 'JobListing',
+  props: {
+    job: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    jobPageLink() {
+      return `/jobs/results/${this.job.id}`
+    }
+  }
 }
 </script>
