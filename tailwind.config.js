@@ -30,7 +30,8 @@ export default {
         'brand-green-1': '#137333'
       },
       boxShadow: {
-        blue: '0 0 3px 3px #4285f4' // use this with shadow-blue
+        blue: '0 0 3px 3px #4285f4', // use this with shadow-blue
+        gray: '0 1px 3px 0 rgba(60, 64, 67, 0.3)' // use this with shadow-gray
       }
     },
     plugins: []

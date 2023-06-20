@@ -1,11 +1,11 @@
 <!-- src/components/Navigation/MainNav.vue -->
 <template>
   <header :class="['w-full', 'text-sm', headerHeightClass]">
-    <div class="top-0 left-0 w-full h-16 bg-white">
+    <div class="fixed top-0 left-0 w-full h-16 bg-white">
       <div class="flex h-full px-8 mx-auto border-b border-solid border-red flex-nowrap">
         <router-link :to="{ name: 'Home' }" class="flex items-center h-full text-xl font-bold">
           <img
-            class="h-full p-2 place-self-center"
+            class="flex items-center text-xl h-14"
             src="https://i.imgur.com/2qJtpPg.png"
             alt="VueJs"
           />
@@ -22,13 +22,12 @@
         </nav>
         <div class="flex items-center h-full ml-auto">
           <profile-image v-if="isLoggedIn" @click="logOut" />
-          <action-button v-else text="Sign In" type="primary" @click="logIn" />
-          <action-button text="Big Mama" type="secondary" />
+          <action-button v-else text="Sign In" @click="logIn" />
           <!-- we can use any case we want, but kebab-case is recommended in the template -->
         </div>
       </div>
+      <sub-nav v-if="isLoggedIn" />
     </div>
-    <sub-nav />
   </header>
 </template>
 

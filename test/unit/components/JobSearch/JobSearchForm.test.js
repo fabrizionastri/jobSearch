@@ -6,10 +6,11 @@ import { RouterLinkStub } from '@vue/test-utils'
 describe('JobSearchForm', () => {
   describe('when the form is submitted', () => {
     it("directs user to JobResults page with user's search parameters", async () => {
+      const push = vi.fn()
       render(JobSearchForm, {
         global: {
           mocks: {
-            $router: { push: vi.fn() }
+            $router: { push }
           },
           stubs: {
             FontAwesomeIcon: true,
@@ -23,6 +24,10 @@ describe('JobSearchForm', () => {
       await userEvent.type(locationInput, 'london') // type in the location input
       const submitButton = screen.getByRole('button', { name: /search/i }) // get the submit button
       await userEvent.click(submitButton) // click the submit button
+      expect(push).toHaveBeenCalledWith({
+        name: 'JobResults',
+        query: { role: 'developer', location: 'london' }
+      })
     })
   })
 })
