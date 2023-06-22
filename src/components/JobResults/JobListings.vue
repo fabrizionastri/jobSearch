@@ -47,12 +47,12 @@ export default {
     previousPage() {
       const previousPage = this.currentPage - 1
       const firstPage = this.firstPage
-      return previousPage >= firstPage ? previousPage : undefined
+      return previousPage >= firstPage ? previousPage : null
     },
     nextPage() {
       const nextPage = this.currentPage + 1
       const lastPage = this.lastPage
-      return nextPage <= lastPage ? nextPage : undefined
+      return nextPage <= lastPage ? nextPage : null
     },
     displayedJobs() {
       const pageNr = this.currentPage

@@ -34,11 +34,11 @@ export default {
       required: true
     },
     previousPage: {
-      type: Number,
+      type: [Number, null],
       required: true
     },
     nextPage: {
-      type: Number,
+      type: [Number, null],
       required: true
     }
   }
