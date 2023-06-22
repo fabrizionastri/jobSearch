@@ -1,58 +1,33 @@
 <template>
   <main class="flex-auto p-8 bg-brand-gray-2">
+    <pagination-bar
+      :current-page="currentPage"
+      :last-page="lastPage"
+      :previous-page="previousPage"
+      :next-page="nextPage"
+    ></pagination-bar>
     <ol>
       <job-listing v-for="job in displayedJobs" :key="job.id" :job="job" />
     </ol>
-    <div class="mx-auto mt-8">
-      <div class="flex flex-row flex-nowrap">
-        <p class="flex-grow text-sm">Page {{ currentPage }} of {{ lastPage }}</p>
-
-        <div class="flex items-center justify-center">
-          <router-link
-            v-if="previousPage"
-            :to="{ name: 'JobResults', query: { page: previousPage } }"
-            class="mx-3 text-sm font-semibold text-brand-blue-1"
-            >Previous
-          </router-link>
-          <router-link
-            v-if="nextPage"
-            :to="{ name: 'JobResults', query: { page: nextPage } }"
-            class="mx-3 text-sm font-semibold text-brand-blue-1"
-            >Next
-          </router-link>
-        </div>
-        <!--      this is another way of doing it, but router-link is better
-     <div class="flex items-center justify-center">
-          <span
-            v-if="previousPage"
-            type="primary"
-            class="mx-3 text-sm font-semibold text-brand-blue-1"
-            @click="toPreviousPage"
-            >Previous</span
-          >
-          <span
-            v-if="nextPage"
-            type="secondary"
-            class="mx-3 text-sm font-semibold text-brand-blue-1"
-            @click="toNextPage"
-            >Next</span
-          >
-        </div> -->
-      </div>
-    </div>
+    <pagination-bar
+      :current-page="currentPage"
+      :last-page="lastPage"
+      :previous-page="previousPage"
+      :next-page="nextPage"
+    ></pagination-bar>
   </main>
 </template>
 
 <script>
 import JobListing from './JobListing.vue'
-import { RouterLink } from 'vue-router'
+import PaginationBar from './PaginationBar.vue'
 import axios from 'axios'
 
 export default {
   name: 'JobListings',
   components: {
     JobListing,
-    RouterLink
+    PaginationBar
   },
   data() {
     return {
@@ -90,13 +65,5 @@ export default {
     const response = await axios.get('http://localhost:3000/jobs')
     this.jobs = response.data
   }
-  // methods: {
-  //   async toPreviousPage() {
-  //     await this.$router.push({ query: { page: this.previousPage } })
-  //   },
-  //   async toNextPage() {
-  //     await this.$router.push({ query: { page: this.nextPage } })
-  //   }
-  // }
 }
 </script>

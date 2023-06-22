@@ -24,8 +24,17 @@ const routes = [
 
 const router = createRouter({
   // this is used to create the single object router
-  history: createWebHashHistory(), // this is used to create hash history
-  routes
+  history: createWebHashHistory(),
+  // this is used to create hash history
+  routes,
+  scrollBehavior() {
+    // this is used to scroll to the top of the page when navigating to a new page
+    return {
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    }
+  }
 })
 
 export default router
