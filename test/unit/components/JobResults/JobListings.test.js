@@ -53,4 +53,52 @@ describe('JobListings.vue', async () => {
       expect(pageNumber.length).toBe(2)
     })
   })
+
+  describe('when params include page number', () => {
+    it('displays page number', async () => {
+      axios.get.mockResolvedValue({ data: [] })
+      const queryParams = { page: '3' }
+      const $route = createRoute(queryParams)
+      renderJobListings($route)
+
+      const pageNumber = await screen.getAllByText(/Page 3/i) // getAllByText returns an array of complex elements
+      expect(pageNumber.length).toBe(2)
+    })
+  })
+
+  describe('when user is on page 1', () => {
+    it('does not show linke to previous page', async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) })
+      // creates a mock response with 15 empty objects when the component calls axios.get
+      const queryParams = { page: '1' } // We want to be on page 1, to test that we only get 10 jobs
+      const $route = createRoute(queryParams) // create a route with the query params
+      renderJobListings($route) // render the component with the route
+
+      await screen.findAllByRole('listitem') // we wait for all the list items to render, or to throw an error if they don't
+      const previousLink = screen.queryByRole('link', { name: /Previous/i }) // queryByRole returns null if it doesn't find the element instead of throwing an error
+
+      expect(previousLink).not.toBeInTheDocument() // we expect the previous link to not be in the document
+    })
+    it('shows link to next page (v1)', async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) })
+      const queryParams = { page: '1' }
+      const $route = createRoute(queryParams)
+      renderJobListings($route)
+
+      await screen.findAllByRole('listitem')
+      const nextLink = screen.getAllByText("Next")
+      expect(nextLink.length).toBe(2)
+    })
+    it.only('shows link to next page (v2)', async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) })
+      const queryParams = { page: '1' }
+      const $route = createRoute(queryParams)
+      renderJobListings($route)
+
+      await screen.findAllByRole('listitem')
+      // screen.debug() // this will print the html of the component to the console
+      const nextLink = screen.getAllByRole('link', { name: /Next/i })
+      expect(nextLink.length).toBe(2)
+    })
+  })
 })
