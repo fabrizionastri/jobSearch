@@ -1,4 +1,5 @@
 import { createApp } from 'vue' // import the function that creates the Vue application
+import { createPinia } from 'pinia' // import the function that creates the Pinia store
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome' // import the FontAwesomeIcon component
 import { library } from '@fortawesome/fontawesome-svg-core' // import the library of FontAwesome icons
 import { faSearch } from '@fortawesome/free-solid-svg-icons' // import the faSearch icon from the free-solid-svg-icons library
@@ -9,7 +10,10 @@ import App from '@/App.vue' // import the top level component of the Vue applica
 
 library.add(faSearch) // add the faSearch icon to the library of FontAwesome icons
 
+const pinia = createPinia() // create the Pinia store
+
 createApp(App) // create the Vue app, using the createApp function with the App component as an argument
+  .use(pinia) // use the Pinia store
   .use(router) // use the router
   .component(
     'font-awesome-icon', // this is the name of the component that we will use in the HTML
