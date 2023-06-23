@@ -6,16 +6,23 @@ import {
 import userEvent from '@testing-library/user-event' // this is used to simulate user events
 import { RouterLinkStub } from '@vue/test-utils' // this is used to stub the router-link component
 import MainNav from '@/components/Navigation/MainNav.vue' // don't use {} because its the default export
-import { describe, it } from 'vitest'
+
+import { createTestingPinia } from '@pinia/testing' // this is used to create a test version of a new Pinia store for each test
 
 describe('MainNav', () => {
+
   const renderMainNav = (routeName) => {
+    // this is used to create a test version of a new Pinia store for each test
+    const pinia = createTestingPinia({
+      stubActions: false // this is used to disable the stubbing of actions, we are using the real actions
+    })
     const $route = { // this is a hand made object to mock the real $route object from Vitest
       name: routeName
     }
     render(MainNav, {
       // this renders the component in the virtual DOM
       global: {
+        plugins: [pinia], // this is used to add the test version of the Pinia store to the global object
         mocks: { // this allows us to mock the $route object on the this.$route
           $route
         },

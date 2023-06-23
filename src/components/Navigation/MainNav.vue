@@ -21,17 +21,20 @@
           </ul>
         </nav>
         <div class="flex items-center h-full ml-auto">
-          <profile-image v-if="isLoggedIn" @click="logOut" />
-          <action-button v-else text="Sign In" @click="logIn" />
+          <profile-image v-if="userStore.isLoggedIn" @click="userStore.logoutUser" />
+          <action-button v-else text="Sign In" @click="userStore.loginUser" />
           <!-- we can use any case we want, but kebab-case is recommended in the template -->
         </div>
       </div>
-      <sub-nav v-if="isLoggedIn" />
+      <sub-nav v-if="userStore.isLoggedIn" />
     </div>
   </header>
 </template>
 
 <script>
+import { mapStores } from 'pinia' // helper function to get access to the store
+import { useUserStore } from '@/stores/user' // import the user store
+
 import ActionButton from '@/components/Shared/ActionButton.vue' // we can use any case we want, but PascalCase is recommended in the script
 import ProfileImage from '@/components/Navigation/ProfileImage.vue'
 import SubNav from '@/components/Navigation/SubNav.vue'
@@ -52,21 +55,14 @@ export default {
         { text: 'How we hire', url: '/' },
         { text: 'Students', url: '/' },
         { text: 'Jobs', url: '/jobs/results' }
-      ],
-      isLoggedIn: false
+      ]
     }
   },
   computed: {
+    // we spread the result of mapStores to get access to each store, where the key is the name of the store + Store ("user -> userStore") and the value is the store itself
+    ...mapStores(useUserStore),
     headerHeightClass() {
-      return this.isLoggedIn ? 'h-32' : 'h-16'
-    }
-  },
-  methods: {
-    logIn() {
-      this.isLoggedIn = true
-    },
-    logOut() {
-      this.isLoggedIn = false
+      return this.userStore.isLoggedIn ? 'h-32' : 'h-16'
     }
   }
 }

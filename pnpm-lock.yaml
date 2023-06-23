@@ -14,6 +14,9 @@ dependencies:
   '@fortawesome/vue-fontawesome':
     specifier: ^3.0.3
     version: 3.0.3(@fortawesome/fontawesome-svg-core@6.4.0)(vue@3.3.4)
+  '@pinia/testing':
+    specifier: ^0.1.2
+    version: 0.1.2(pinia@2.1.4)(vue@3.3.4)
   axios:
     specifier: ^1.4.0
     version: 1.4.0
@@ -564,6 +567,18 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
+
+  /@pinia/testing@0.1.2(pinia@2.1.4)(vue@3.3.4):
+    resolution: {integrity: sha512-8EyBaVFtv682tBiF810u81vAJ1ykwnaldkVDU52oqtVbh5FUj5dSCSM9+MtRM/tZkq0AulwMK4BnBktqwsnEnw==}
+    peerDependencies:
+      pinia: '>=2.1.2'
+    dependencies:
+      pinia: 2.1.4(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /@rushstack/eslint-patch@1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
