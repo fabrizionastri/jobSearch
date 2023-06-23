@@ -67,7 +67,7 @@ describe('JobListings.vue', async () => {
   })
 
   describe('when user is on page 1', () => {
-    it('does not show linke to previous page', async () => {
+    it('does not show link to previous page', async () => {
       axios.get.mockResolvedValue({ data: Array(15).fill({}) })
       // creates a mock response with 15 empty objects when the component calls axios.get
       const queryParams = { page: '1' } // We want to be on page 1, to test that we only get 10 jobs
@@ -89,7 +89,7 @@ describe('JobListings.vue', async () => {
       const nextLink = screen.getAllByText("Next")
       expect(nextLink.length).toBe(2)
     })
-    it.only('shows link to next page (v2)', async () => {
+    it('shows link to next page (v2)', async () => {
       axios.get.mockResolvedValue({ data: Array(15).fill({}) })
       const queryParams = { page: '1' }
       const $route = createRoute(queryParams)
@@ -99,6 +99,30 @@ describe('JobListings.vue', async () => {
       // screen.debug() // this will print the html of the component to the console
       const nextLink = screen.getAllByRole('link', { name: /Next/i })
       expect(nextLink.length).toBe(2)
+    })
+  })
+
+  describe('when user is on page 2', () => {
+    it('does not show link to next page', async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) })
+
+      const queryParams = { page: '2' }
+      const $route = createRoute(queryParams)
+      renderJobListings($route)
+      await screen.findAllByRole('listitem')
+      const nextLink = screen.queryByRole('link', { name: /Next/i })
+
+      expect(nextLink).not.toBeInTheDocument()
+    })
+    it('shows link to previous page', async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) })
+      const queryParams = { page: '2' }
+      const $route = createRoute(queryParams)
+      renderJobListings($route)
+
+      await screen.findAllByRole('listitem')
+      const previousLink = screen.getAllByRole('link', { name: /Previous/i })
+      expect(previousLink.length).toBe(2)
     })
   })
 })
