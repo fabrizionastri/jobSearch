@@ -21,18 +21,18 @@
           </ul>
         </nav>
         <div class="flex items-center h-full ml-auto">
-          <profile-image v-if="userStore.isLoggedIn" @click="userStore.logoutUser" />
-          <action-button v-else text="Sign In" @click="userStore.loginUser" />
+          <profile-image v-if="isLoggedIn" @click="logoutUser" />
+          <action-button v-else text="Sign In" @click="loginUser" />
           <!-- we can use any case we want, but kebab-case is recommended in the template -->
         </div>
       </div>
-      <sub-nav v-if="userStore.isLoggedIn" />
+      <sub-nav v-if="isLoggedIn" />
     </div>
   </header>
 </template>
 
 <script>
-import { mapStores } from 'pinia' // helper function to get access to the store
+import { mapState, mapAction } from 'pinia' // helper function to get access to the store
 import { useUserStore } from '@/stores/user' // import the user store
 
 import ActionButton from '@/components/Shared/ActionButton.vue' // we can use any case we want, but PascalCase is recommended in the script
@@ -60,10 +60,13 @@ export default {
   },
   computed: {
     // we spread the result of mapStores to get access to each store, where the key is the name of the store + Store ("user -> userStore") and the value is the store itself
-    ...mapStores(useUserStore),
+    ...mapState(useUserStore, ['isLoggedIn']),
     headerHeightClass() {
       return this.userStore.isLoggedIn ? 'h-32' : 'h-16'
     }
+  },
+  methods: {
+    ...mapAction(useUserStore, ['loginUser', 'logoutUser'])
   }
 }
 </script>
