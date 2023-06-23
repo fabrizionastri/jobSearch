@@ -9,12 +9,14 @@ import MainNav from '@/components/Navigation/MainNav.vue' // don't use {} becaus
 
 import { createTestingPinia } from '@pinia/testing' // this is used to create a test version of a new Pinia store for each test
 
+import { useUserStore } from '@/stores/user' // this is used to get the user store
+
 describe('MainNav', () => {
 
   const renderMainNav = (routeName) => {
     // this is used to create a test version of a new Pinia store for each test
     const pinia = createTestingPinia({
-      stubActions: false // this is used to disable the stubbing of actions, we are using the real actions
+      stubActions: true // we can remove this, because stubbing out actions is the default option for createTestingPinia
     })
     const $route = { // this is a hand made object to mock the real $route object from Vitest
       name: routeName
@@ -58,19 +60,23 @@ describe('MainNav', () => {
   })
 
   describe('when the user logs in', () => {
-    it('shoud not display the user profile picture when not Logged In', async () => {
+    it('does not display the profile picture before login', async () => {
       renderMainNav()
       // queryByRole is the same as getByRole but it doesn't throw an error if the element is not found
       // use queryByRole instead of getByRole to return null if not found
+      const userStore = useUserStore() // this is used to get the user store
       let profileImage = screen.queryByRole('img', {
         // this second argument is the configuration object
         name: /User profile image/i // for an image, the name is the alt attribute
         // the `/.../i` is a regular expression, the i is for case insensitive
       })
       expect(profileImage).not.toBeInTheDocument // this is used to check if the element is not in the DOM
+      // })
+      // it('displays the profile picture after login', async () => {
       const loginButton = screen.getByRole('button', {
         name: /Sign in/i // for a button, the name is the text inside the button
       })
+      userStore.isLoggedIn = true // this is used to manually set the user as logged in, simulating the component behaviour
       await userEvent.click(loginButton) // this is used to simulate a click on the button
 
       profileImage = screen.getByRole('img', { name: /User profile image/i }) // will thrown an error if not found, more strict that queryByRole, because at this stage the component should be found
