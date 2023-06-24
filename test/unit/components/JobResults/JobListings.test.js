@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/vue'
 import JobListings from '@/components/JobResults/JobListings.vue'
 import { RouterLinkStub } from '@vue/test-utils'
-import { createTestingPinia } from "@pinia/testing";
-
-import { useJobsStore } from "@/stores/jobs";
+import { createTestingPinia } from '@pinia/testing'
+import { useJobsStore } from '@/stores/jobs'
 
 describe('JobListings.vue', async () => {
   const createRoute = (queryParams) => ({
@@ -36,6 +35,7 @@ describe('JobListings.vue', async () => {
     const $route = createRoute(queryParams)
     renderJobListings($route)
     const jobsStore = useJobsStore();
+    // accessing the store directly is not recommended in production, but we can do it in testing to mock the store behaviour 
     jobsStore.jobs = Array(15).fill({});
     const jobListings = await screen.findAllByRole('listitem') // find is async, so we need to await it
     expect(jobListings).toHaveLength(10)
