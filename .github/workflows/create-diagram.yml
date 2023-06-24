@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout
       
       - name: Generate and commit diagram
-        uses: githubocto/repo-visualizer@v1.0.0
+        uses: githubocto/repo-visualizer
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
