@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapState, mapAction } from 'pinia' // helper function to get access to the store
+import { mapState, mapActions } from 'pinia' // helper function to get access to the store
 import { useUserStore } from '@/stores/user' // import the user store
 
 import ActionButton from '@/components/Shared/ActionButton.vue' // we can use any case we want, but PascalCase is recommended in the script
@@ -62,11 +62,11 @@ export default {
     // we spread the result of mapStores to get access to each store, where the key is the name of the store + Store ("user -> userStore") and the value is the store itself
     ...mapState(useUserStore, ['isLoggedIn']),
     headerHeightClass() {
-      return this.userStore.isLoggedIn ? 'h-32' : 'h-16'
+      return this.isLoggedIn ? 'h-32' : 'h-16'
     }
   },
   methods: {
-    ...mapAction(useUserStore, ['loginUser', 'logoutUser'])
+    ...mapActions(useUserStore, ['loginUser', 'logoutUser'])
   }
 }
 </script>
