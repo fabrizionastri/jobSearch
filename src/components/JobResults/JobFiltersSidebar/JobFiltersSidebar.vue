@@ -7,7 +7,31 @@
           <action-button text="Clear filters" type="secondary" />
         </div>
       </div>
-      <collapsible-accordion />
+      <collapsible-accordion header="Organisation">
+        <div class="mt-5">
+          <fieldset>
+            <ul class="flex flex-row flex-wrap">
+              <li class="w-1/2 py-1">
+                <input id="VueTube" type="checkbox" class="mr-3" />
+                <label for="VueTube">VueTube</label>
+              </li>
+              <li class="w-1/2 py-1">
+                <input id="Between Vue" type="checkbox" class="mr-3" />
+                <label for="Between Vue" class="pb-1">Between Vue</label>
+              </li>
+              <li class="w-1/2 py-1">
+                <input id="Et Vue Brute" type="checkbox" class="mr-3" />
+                <label for="Et Vue Brute">Et Vue Brute</label>
+              </li>
+              <li class="w-1/2 py-1 leading-tight">
+                <input id="Vue and a Half Men" type="checkbox" class="mr-3" />
+                <label for="Vue and a Half Men">Vue and a Half Men</label>
+              </li>
+            </ul>
+          </fieldset>
+        </div>
+      </collapsible-accordion>
+      <collapsible-accordion header="Job types"> Baby boom </collapsible-accordion>
     </section>
   </div>
 </template>
