@@ -1,4 +1,4 @@
-name: Generate Codebase Diagram (v2)
+name: Generate Codebase Diagram (v6)
 on:
   push:
 jobs:
@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout
+        uses: actions/checkout@v3.5.3
       
       - name: Generate and commit diagram
-        uses: githubocto/repo-visualizer
+        uses: githubocto/repo-visualizer@0.9.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
