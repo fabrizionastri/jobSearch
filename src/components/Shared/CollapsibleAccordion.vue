@@ -1,6 +1,10 @@
 <template>
   <div class="py-5 border-b border-solid border-brand-gray-2">
-    <div class="flex flex-wrap items-center justify-between cursor-pointer" @click="open">
+    <div
+      role="button"
+      class="flex flex-wrap items-center justify-between cursor-pointer"
+      @click="open"
+    >
       <h3 class="text-base font-semibold">{{ header }}</h3>
       <font-awesome-icon :icon="caretIcon" />
     </div>
