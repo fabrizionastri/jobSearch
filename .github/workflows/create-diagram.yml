@@ -1,14 +1,16 @@
-name: Generate Codebase Diagram (v6)
+name: Create diagram (v7)
 on:
+  workflow_dispatch: {}
   push:
+    branches:
+      - main
 jobs:
-  build:
+  get_data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.5.3
-      
-      - name: Generate and commit diagram
-        uses: githubocto/repo-visualizer@0.9.1
+        uses: actions/checkout@master
+      - name: Update diagram
+        uses: githubocto/repo-visualizer@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          excluded_paths: "ignore,.github"
