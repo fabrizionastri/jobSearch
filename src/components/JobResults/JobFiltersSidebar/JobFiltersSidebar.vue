@@ -11,19 +11,19 @@
         <div class="mt-5">
           <fieldset>
             <ul class="flex flex-row flex-wrap">
-              <li class="w-1/2 py-1">
+              <li>
                 <input id="VueTube" type="checkbox" class="mr-3" />
                 <label for="VueTube">VueTube</label>
               </li>
-              <li class="w-1/2 py-1">
+              <li>
                 <input id="Between Vue" type="checkbox" class="mr-3" />
                 <label for="Between Vue" class="pb-1">Between Vue</label>
               </li>
-              <li class="w-1/2 py-1">
+              <li>
                 <input id="Et Vue Brute" type="checkbox" class="mr-3" />
                 <label for="Et Vue Brute">Et Vue Brute</label>
               </li>
-              <li class="w-1/2 py-1 leading-tight">
+              <li>
                 <input id="Vue and a Half Men" type="checkbox" class="mr-3" />
                 <label for="Vue and a Half Men">Vue and a Half Men</label>
               </li>
@@ -32,6 +32,7 @@
         </div>
       </collapsible-accordion>
       <collapsible-accordion header="Job types"> Baby boom </collapsible-accordion>
+      <collapsible-accordion header="Degree" />
     </section>
   </div>
 </template>
@@ -52,3 +53,9 @@ export default {
   methods: {}
 }
 </script>
+
+<style scoped>
+li {
+  @apply w-1/2 py-1 leading-tight;
+}
+</style>
