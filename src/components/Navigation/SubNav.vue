@@ -25,7 +25,7 @@ export default {
       return processEnv1
     },
     importEnv() {
-      const importEnv1 = import.meta.env.VITE_APP_API_URL
+      const importEnv1 = import.meta.env.VITE_API_URL
       return importEnv1
     }
   }
