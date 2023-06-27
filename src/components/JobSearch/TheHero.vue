@@ -15,20 +15,16 @@
       </div>
     </section>
     <SpotLight class="flex flex-row justify-center pb-16">
-      <!-- slotProps is an object than contains all the props that are passed from the child to the parent -->
-      <template #default="slotProps">
+      <!-- we are destructuring an object that contains all the props that are passed from the child to the parent -->
+      <template #default="{ spotlight }">
         <router-link
           to="/jobs/results"
           class="flex flex-col mx-5 border rounded-lg h-96 w-72 bg-brand-gray-2"
         >
-          <img class="object-contain" :src="slotProps.spotlight.img" />
+          <img class="object-contain" :src="spotlight.img" />
           <div class="h-48 px-6 py-4 mt-3">
-            <h3 class="text-lg font-medium">
-              {{ slotProps.spotlight.title }}
-            </h3>
-            <p class="mt-3 text-sm">
-              {{ slotProps.spotlight.description }}
-            </p>
+            <h3 class="text-lg font-medium">{{ spotlight.title }}</h3>
+            <p class="mt-3 text-sm">{{ spotlight.description }}</p>
           </div>
           <router-link to="/jobs/results" class="px-6 pb-4 text-sm text-center text-brand-blue-1"
             >See jobs</router-link

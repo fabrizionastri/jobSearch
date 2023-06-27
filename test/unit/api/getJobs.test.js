@@ -1,7 +1,5 @@
 import axios from 'axios'
-
 import getJobs from '@/api/getJobs'
-import { beforeEach } from 'vitest'
 
 vi.mock('axios')
 

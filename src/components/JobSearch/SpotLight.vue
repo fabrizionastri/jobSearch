@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="spotlight in spotlights" :key="spotlight.id">
-      <!-- :splotlight is the name of a prop that we are sending from the child to the-->
+      <!-- :splotlight is the name of a prop that we are sending from the child to the parent -->
       <slot :spotlight="spotlight"></slot>
     </li>
   </ul>
