@@ -30,7 +30,7 @@ describe('Jobs Store', () => {
   })
   describe('getters', () => {
     describe('UNIQUE_ORGANIZATIONS', () => {
-      it.only('finds unique organisations from list of jobs', () => {
+      it('finds unique organisations from list of jobs', () => {
         const store = useJobsStore()
         // normally, we cannot set the state directly, but we can in tests
         store.jobs = [{ organization: 'org2' }, { organization: 'org1' }, { organization: 'org2' }]
