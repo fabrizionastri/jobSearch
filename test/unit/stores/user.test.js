@@ -14,6 +14,12 @@ describe('User Store', () => {
     expect(userStore.isLoggedIn).toBe(false)
   })
 
+  it('stores organizations that the user wants to filter jobs by', () => {
+    const userStore = useUserStore()
+    expect(userStore.selectedOrganizations).toEqual([])
+  })
+
+
   describe('actions', () => {
     it('should set isLoggedIn to true when loginUser is called', () => {
       const userStore = useUserStore()
@@ -25,6 +31,13 @@ describe('User Store', () => {
       userStore.logoutUser()
       expect(userStore.isLoggedIn).toBe(false)
     })
-  })
 
+    describe('ADD_SELECTED_ORGANIZATION', () => {
+      it('adds organization when user clicks on a empty checkbox', () => {
+        const userStore = useUserStore()
+        userStore.ADD_SELECTED_ORGANIZATIONS(['Org1', 'Org2'])
+        expect(userStore.selectedOrganizations).toEqual(['Org1', 'Org2'])
+      })
+    })
+  })
 })

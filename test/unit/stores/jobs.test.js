@@ -1,4 +1,5 @@
 import { useJobsStore } from '@/stores/jobs'
+import { useUserStore } from '@/stores/user'
 import axios from 'axios'
 
 import { createPinia, setActivePinia } from 'pinia'
@@ -30,11 +31,41 @@ describe('Jobs Store', () => {
   })
   describe('getters', () => {
     describe('UNIQUE_ORGANIZATIONS', () => {
-      it('finds unique organisations from list of jobs', () => {
+      it('finds unique organizations from list of jobs', () => {
         const store = useJobsStore()
         // normally, we cannot set the state directly, but we can in tests
         store.jobs = [{ organization: 'org2' }, { organization: 'org1' }, { organization: 'org2' }]
         expect(store.UNIQUE_ORGANIZATIONS).toEqual(['org1', 'org2'])
+      })
+    })
+    describe('FILTERED_JOBS_BY_ORGANIZATION', () => {
+      it.only('returns a list of jobs filtered by organization', () => {
+        const jobsStore = useJobsStore()
+        jobsStore.jobs = [
+          { organization: 'org1' },
+          { organization: 'org2' },
+          { organization: 'org3' }
+        ]
+        const userStore = useUserStore()
+        userStore.selectedOrganizations = ['org1', 'org3']
+
+        const filteredJobs = jobsStore.FILTERED_JOBS_BY_ORGANIZATION
+        expect(filteredJobs).toEqual([{ organization: 'org1' }, { organization: 'org3' }])
+      })
+
+      describe('when no organizations are selected', () => {
+        it.only('returns all jobs', () => {
+          const jobsStore = useJobsStore()
+          jobsStore.jobs = [
+            { organization: 'org1' },
+            { organization: 'org2' },
+            { organization: 'org3' }
+          ]
+          const userStore = useUserStore()
+          userStore.selectedOrganizations = []
+          const filteredJobs = jobsStore.FILTERED_JOBS_BY_ORGANIZATION
+          expect(filteredJobs).toEqual(jobsStore.jobs)
+        })
       })
     })
   })
