@@ -21,6 +21,7 @@ describe('JobFiltersSidebarOrganizations', () => {
         }
       }
     })
+    return { $router }
   }
   it('renders unique list of organizations from jobs', async () => {
     setUpTest()
@@ -51,5 +52,15 @@ describe('JobFiltersSidebarOrganizations', () => {
     const Org1Checkbox = screen.getByRole('checkbox', { name: /Org1/i })
     await userEvent.click(Org1Checkbox)
     expect(userStore.ADD_SELECTED_ORGANIZATIONS).toHaveBeenCalledWith(['Org1'])
+  })
+  it('navigates to jobs/results page when user clicks on a checkbox', async () => {
+    const { $router } = await setUpTest()
+    const accordionButton = screen.getByRole('button', { name: /organization/i })
+    await userEvent.click(accordionButton)
+
+    const Org1Checkbox = screen.getByRole('checkbox', { name: /Org1/i })
+    await userEvent.click(Org1Checkbox)
+
+    expect($router.push).toHaveBeenCalledWith({ name: 'JobResults' })
   })
 })
