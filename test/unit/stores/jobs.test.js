@@ -39,7 +39,7 @@ describe('Jobs Store', () => {
       })
     })
     describe('FILTERED_JOBS_BY_ORGANIZATION', () => {
-      it.only('returns a list of jobs filtered by organization', () => {
+      it('returns a list of jobs filtered by organization', () => {
         const jobsStore = useJobsStore()
         jobsStore.jobs = [
           { organization: 'org1' },
@@ -54,7 +54,7 @@ describe('Jobs Store', () => {
       })
 
       describe('when no organizations are selected', () => {
-        it.only('returns all jobs', () => {
+        it('returns all jobs', () => {
           const jobsStore = useJobsStore()
           jobsStore.jobs = [
             { organization: 'org1' },
