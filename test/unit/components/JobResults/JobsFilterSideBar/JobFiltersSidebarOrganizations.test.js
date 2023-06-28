@@ -9,6 +9,7 @@ describe('JobFiltersSidebarOrganizations', () => {
   const setUpTest = async () => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
+
     jobsStore.UNIQUE_ORGANIZATIONS = ['Org1', 'Org2', 'Org3']
     render(JobFiltersSidebarOrganizations, {
       global: {
@@ -20,11 +21,9 @@ describe('JobFiltersSidebarOrganizations', () => {
     })
   }
   it('renders unique list of organizations from jobs', async () => {
-    // mock the getter. In the real app, this would be a getter, but in testing we can just set it directly
     setUpTest()
     const accordionButton = screen.getByRole('button', { name: /organization/i })
     await userEvent.click(accordionButton)
-    // find the accordion button and click it
 
     // check that the list of organizations is rendered
     expect(screen.getByText(/Org1/i)).toBeInTheDocument()
