@@ -7,7 +7,10 @@ import getJobs from '@/api/getJobs'
 // this approach is used to avoid typos
 export const FETCH_JOBS = 'FETCH_JOBS'
 export const UNIQUE_ORGANIZATIONS = 'UNIQUE_ORGANIZATIONS'
+export const UNIQUE_JOB_TYPES = 'UNIQUE_JOB_TYPES'
+export const FILTERED_JOBS = 'FILTERED_JOBS'
 export const FILTERED_JOBS_BY_ORGANIZATION = 'FILTERED_JOBS_BY_ORGANIZATION'
+export const FILTERED_JOBS_BY_JOB_TYPE = 'FILTERED_JOBS_BY_JOB_TYPE'
 
 // Pinia will name this store 'jobsStore'
 export const useJobsStore = defineStore('jobs', {
@@ -31,12 +34,32 @@ export const useJobsStore = defineStore('jobs', {
 
       return [...uniqueOrganizations].sort()
     },
+    [UNIQUE_JOB_TYPES](state) {
+      const uniqueJobTypes = new Set()
+      state.jobs.forEach((job) => {
+        uniqueJobTypes.add(job.jobType)
+      })
+
+      return [...uniqueJobTypes].sort()
+    },
     [FILTERED_JOBS_BY_ORGANIZATION](state) {
       // return a list of jobs filtered by the users.selectedOrganizations list, or return all jobs if the list is empty
       const userStore = useUserStore()
       const selectedOrganizations = userStore.selectedOrganizations
       if (selectedOrganizations.length === 0) return state.jobs
       return state.jobs.filter((job) => selectedOrganizations.includes(job.organization))
+    },
+    [FILTERED_JOBS](state) {
+      // return a list of jobs filtered by the users.selectedOrganizations list, or return all jobs if the list is empty
+      const userStore = useUserStore()
+      const selectedOrganizations = userStore.selectedOrganizations
+      if (selectedOrganizations.length === 0) return state.jobs
+      const filteredJobsByOrganization = state.jobs.filter((job) =>
+        selectedOrganizations.includes(job.organization))
+
+      const selectedJobTypes = userStore.selectedJobTypes
+      if (selectedJobTypes.length === 0) return filteredJobsByOrganization
+      return filteredJobsByOrganization.filter((job) => selectedJobTypes.includes(job.jobType))
     }
   }
 })

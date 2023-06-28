@@ -4,8 +4,7 @@
       <div v-if="onJobResultsPage">
         <font-awesome-icon :icon="['fas', 'search']" class="mr-3" />
         <span
-          ><span class="text-brand-green-1">{{ FILTERED_JOBS_BY_ORGANIZATION.length }}</span> jobs
-          matched</span
+          ><span class="text-brand-green-1">{{ FILTERED_JOBS.length }}</span> jobs matched</span
         >
       </div>
       <div class="flex-1 ml-8 text-right">
@@ -18,7 +17,7 @@
 
 <script>
 import { mapState } from 'pinia'
-import { useJobsStore, FILTERED_JOBS_BY_ORGANIZATION } from '@/stores/jobs'
+import { useJobsStore, FILTERED_JOBS } from '@/stores/jobs'
 
 export default {
   name: 'SubNav',
@@ -36,7 +35,7 @@ export default {
     },
     ...mapState(
       useJobsStore,
-      [FILTERED_JOBS_BY_ORGANIZATION]
+      [FILTERED_JOBS]
       // using a object rather than an array to map the state allows us to refer to this.jobs in the displayedJobs computed property, but only if we move that functions to the computed property section as well
     )
   }

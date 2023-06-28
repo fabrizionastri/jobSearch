@@ -51,7 +51,7 @@ describe('SubNav', () => {
         userStore.isLoggedIn = true
         const jobsStore = useJobsStore()
         const numberOfJobs = 16
-        jobsStore.FILTERED_JOBS_BY_ORGANIZATION = Array(numberOfJobs).fill({}) // create an array of 15 empty objects
+        jobsStore.FILTERED_JOBS = Array(numberOfJobs).fill({}) // create an array of 15 empty objects
         renderSubNav('JobResults')
         const jobCount = screen.queryByText('0') // remember to use queryByText instead of getByText to avoid throwing an error
         expect(jobCount).toBeInTheDocument()
