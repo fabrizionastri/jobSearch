@@ -9,10 +9,12 @@ describe('JobFiltersSidebarJobTypes', () => {
   const setUpTest = async () => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
+    const $router = { push: vi.fn() }
 
     jobsStore.UNIQUE_JOB_TYPES = ['JobType1', 'JobType2', 'JobType3']
     render(JobFiltersSidebarJobTypes, {
       global: {
+        mocks: { $router },
         plugins: [pinia], // provide the pinia plugin
         stubs: {
           FontAwesomeIcon: true // stub out the font awesome icon
@@ -42,7 +44,7 @@ describe('JobFiltersSidebarJobTypes', () => {
   })
   it('communicates that user has selected an jobType', async () => {
     setUpTest()
-    const accordionButton = screen.getByRole('button', { name: /job Type/i })
+    const accordionButton = screen.getByRole('button', { name: /job type/i })
     await userEvent.click(accordionButton)
 
     const userStore = useUserStore()

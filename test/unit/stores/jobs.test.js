@@ -68,5 +68,39 @@ describe('Jobs Store', () => {
         })
       })
     })
+
+    describe('UNIQUE_JOB_TYPES', () => {
+      it('finds unique job types from list of jobs', () => {
+        const store = useJobsStore()
+        // normally, we cannot set the state directly, but we can in tests
+        store.jobs = [{ jobType: 'jobType2' }, { jobType: 'jobType1' }, { jobType: 'jobType2' }]
+        expect(store.UNIQUE_JOB_TYPES).toEqual(['jobType1', 'jobType2'])
+      })
+    })
+    describe('FILTERED_JOBS_BY_JOB_TYPE', () => {
+      it('returns a list of jobs filtered by job type', () => {
+        const jobsStore = useJobsStore()
+        jobsStore.jobs = [{ jobType: 'jobType1' }, { jobType: 'jobType2' }, { jobType: 'jobType3' }]
+        const userStore = useUserStore()
+        userStore.selectedJobTypes = ['jobType1', 'jobType3']
+        const filteredJobs = jobsStore.FILTERED_JOBS_BY_JOB_TYPE
+        expect(filteredJobs).toEqual([{ jobType: 'jobType1' }, { jobType: 'jobType3' }])
+      })
+
+      describe('when no job types are selected', () => {
+        it('returns all jobs', () => {
+          const jobsStore = useJobsStore()
+          jobsStore.jobs = [
+            { jobType: 'jobType1' },
+            { jobType: 'jobType2' },
+            { jobType: 'jobType3' }
+          ]
+          const userStore = useUserStore()
+          userStore.selectedJobTypes = []
+          const filteredJobs = jobsStore.FILTERED_JOBS_BY_JOB_TYPE
+          expect(filteredJobs).toEqual(jobsStore.jobs)
+        })
+      })
+    })
   })
 })

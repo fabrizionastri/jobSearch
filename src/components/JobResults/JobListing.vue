@@ -8,7 +8,9 @@
         <h2 class="mb-2 text-2xl">{{ job.title }}</h2>
         <div class="flex flex-row align-middle">
           <div class="mr-5">
-            <span>{{ job.organization }}</span>
+            <span>{{ job.organization }}</span
+            >,
+            <span>{{ job.jobType }}</span>
           </div>
           <div>
             <ol>

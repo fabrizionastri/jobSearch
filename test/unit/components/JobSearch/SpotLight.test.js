@@ -33,7 +33,6 @@ describe('SpotLight', () => {
         </template>`
       }
     })
-    screen.debug()
   })
   it('should call the axios.get function', () => {
     const baseURL = import.meta.env.VITE_API_URL
