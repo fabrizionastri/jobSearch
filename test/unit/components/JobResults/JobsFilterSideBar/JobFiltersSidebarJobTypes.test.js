@@ -5,16 +5,18 @@ import JobFiltersSidebarJobTypes from '@/components/JobResults/JobFiltersSidebar
 import { useJobsStore } from '@/stores/jobs'
 import { useUserStore } from '@/stores/user'
 
+import { useRouter } from 'vue-router'
+vi.mock('vue-router') // mock the useRouter
+const push = vi.fn()
+useRouter.mockReturnValue({ push })
+
 describe('JobFiltersSidebarJobTypes', () => {
   const setUpTest = async () => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
-    const $router = { push: vi.fn() }
-
     jobsStore.UNIQUE_JOB_TYPES = ['JobType1', 'JobType2', 'JobType3']
     render(JobFiltersSidebarJobTypes, {
       global: {
-        mocks: { $router },
         plugins: [pinia], // provide the pinia plugin
         stubs: {
           FontAwesomeIcon: true // stub out the font awesome icon

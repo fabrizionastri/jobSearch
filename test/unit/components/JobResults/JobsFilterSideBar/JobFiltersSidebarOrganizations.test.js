@@ -5,23 +5,24 @@ import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSi
 import { useJobsStore } from '@/stores/jobs'
 import { useUserStore } from '@/stores/user'
 
+import { useRouter } from 'vue-router'
+vi.mock('vue-router') // mock the useRouter
+const push = vi.fn()
+useRouter.mockReturnValue({ push })
+
 describe('JobFiltersSidebarOrganizations', () => {
   const setUpTest = async () => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
-    const $router = { push: vi.fn() }
-
     jobsStore.UNIQUE_ORGANIZATIONS = ['Org1', 'Org2', 'Org3']
     render(JobFiltersSidebarOrganizations, {
       global: {
-        mocks: { $router },
         plugins: [pinia], // provide the pinia plugin
         stubs: {
           FontAwesomeIcon: true // stub out the font awesome icon
         }
       }
     })
-    return { $router }
   }
   it('renders unique list of organizations from jobs', async () => {
     setUpTest()
@@ -54,13 +55,13 @@ describe('JobFiltersSidebarOrganizations', () => {
     expect(userStore.ADD_SELECTED_ORGANIZATIONS).toHaveBeenCalledWith(['Org1'])
   })
   it('navigates to jobs/results page when user clicks on a checkbox', async () => {
-    const { $router } = await setUpTest()
+    await setUpTest()
     const accordionButton = screen.getByRole('button', { name: /organization/i })
     await userEvent.click(accordionButton)
 
     const Org1Checkbox = screen.getByRole('checkbox', { name: /Org1/i })
     await userEvent.click(Org1Checkbox)
 
-    expect($router.push).toHaveBeenCalledWith({ name: 'JobResults' })
+    expect(push).toHaveBeenCalledWith({ name: 'JobResults' })
   })
 })
