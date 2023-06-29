@@ -11,23 +11,25 @@ import { createTestingPinia } from '@pinia/testing' // this is used to create a 
 
 import { useUserStore } from '@/stores/user' // this is used to get the user store
 
+import { useRoute } from 'vue-router'
+vi.mock('vue-router') // mock out the whole vue-router module
 
 describe('MainNav', () => {
-  const renderMainNav = (routeName) => {
+  const renderMainNav = (/* routeName */) => {
     // this is used to create a test version of a new Pinia store for each test
     const pinia = createTestingPinia({
       stubActions: true // we can remove this, because stubbing out actions is the default option for createTestingPinia
     })
-    const $route = { // this is a hand made object to mock the real $route object from Vitest
-      name: routeName
-    }
+    // const $route = { // this is a hand made object to mock the real $route object from Vitest
+    //   name: routeName
+    // }
     render(MainNav, {
       // this renders the component in the virtual DOM
       global: {
         plugins: [pinia], // this is used to add the test version of the Pinia store to the global object
-        mocks: { // this allows us to mock the $route object on the this.$route
-          $route
-        },
+        // mocks: { // this allows us to mock the $route object on the this.$route
+        //   $route
+        // },
         stubs: {
           // this is used to stub the components that are used inside the component that is being tested
           // stubs are used to replace the component with a fake component
@@ -39,14 +41,16 @@ describe('MainNav', () => {
   }
 
   it('displays the company name', () => {
-    renderMainNav('Home')
+    useRoute.mockReturnValue({ name: 'Home' })
+    renderMainNav(/* 'Home' */)
     // screen.debug() // this is used to print the DOM to the console
     const companyName = screen.getByText(/FlexUp careers/i) // this is used to get the text from the DOM
     expect(companyName).toBeInTheDocument // this is rendant with the getByText, because that will already fail if there is not exactly 1 element with that text
   })
 
   it('displays menu items for navigation', () => {
-    renderMainNav('Home')
+    useRoute.mockReturnValue({ name: 'Home' })
+    renderMainNav(/* 'Home' */)
     const navigationMenuItems = screen.getAllByRole('listitem') // this is used to get all the elements with the role listitem
     const navigationMenuItemsText = navigationMenuItems.map((item) => item.textContent) // this is used to get the text from the elements
     expect(navigationMenuItemsText).toEqual([
