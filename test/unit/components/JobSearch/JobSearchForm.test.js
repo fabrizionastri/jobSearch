@@ -1,22 +1,17 @@
 import { render, screen } from '@testing-library/vue'
 import JobSearchForm from '@/components/JobSearch/JobSearchForm.vue'
 import userEvent from '@testing-library/user-event'
-import { RouterLinkStub } from '@vue/test-utils'
+import { useRouter } from 'vue-router'
+
+vi.mock('vue-router')
 
 describe('JobSearchForm', () => {
   describe('when the form is submitted', () => {
     it("directs user to JobResults page with user's search parameters", async () => {
       const push = vi.fn()
+      useRouter.mockReturnValue({ push })
       render(JobSearchForm, {
-        global: {
-          mocks: {
-            $router: { push }
-          },
-          stubs: {
-            FontAwesomeIcon: true,
-            RouterLink: RouterLinkStub
-          }
-        }
+        global: { stubs: { FontAwesomeIcon: true } }
       })
       const roleInput = screen.getByRole('textbox', { name: /role/i }) // get the role input
       await userEvent.type(roleInput, 'developer') // type in the role input
