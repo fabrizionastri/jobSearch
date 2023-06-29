@@ -11,7 +11,7 @@ const renderCollapsibleAccordion = (config = {}) => {
       header: 'My category'
     },
     slots: {
-      default: '<h3>My nested child</h3>',
+      default: '<h3>My nested child</h3>'
     },
     ...config
   })

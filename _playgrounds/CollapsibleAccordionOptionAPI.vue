@@ -20,8 +20,7 @@ export default {
   props: {
     header: {
       type: String,
-      required: true,
-      default: 'Default header'
+      required: true
     }
   },
   data() {

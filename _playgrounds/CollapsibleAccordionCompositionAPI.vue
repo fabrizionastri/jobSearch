@@ -1,9 +1,9 @@
 <template>
   <div class="py-5 border-b border-solid border-brand-gray-2">
     <div
-      role="button"
       class="flex flex-wrap items-center justify-between cursor-pointer"
-      @click="open"
+      role="button"
+      @click="toggle"
     >
       <h3 class="text-base font-semibold">{{ header }}</h3>
       <font-awesome-icon :icon="caretIcon" />
@@ -15,29 +15,23 @@
 </template>
 
 <script>
+import { ref, computed } from 'vue'
+
 export default {
   name: 'CollapsibleAccordion',
   props: {
     header: {
       type: String,
-      required: true,
-      default: 'Default header'
+      required: true
     }
   },
-  data() {
-    return {
-      isOpen: false
+  setup() {
+    const isOpen = ref(false)
+    const caretIcon = computed(() => (isOpen.value ? 'angle-up' : 'angle-down'))
+    const toggle = () => {
+      isOpen.value = !isOpen.value
     }
-  },
-  computed: {
-    caretIcon() {
-      return this.isOpen ? 'angle-up' : 'angle-down'
-    }
-  },
-  methods: {
-    open() {
-      this.isOpen = !this.isOpen
-    }
+    return { isOpen, caretIcon, toggle }
   }
 }
 </script>

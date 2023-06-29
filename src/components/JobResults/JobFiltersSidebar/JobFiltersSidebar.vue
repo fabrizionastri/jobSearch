@@ -9,6 +9,8 @@
       </div>
       <JobFiltersSidebarOrganizations />
       <JobFiltersSidebarJobTypes />
+      <CollapsibleAccordion />
+      <CollapsibleAccordion header="Coco pops"> Test content from </CollapsibleAccordion>
     </section>
   </div>
 </template>
@@ -17,13 +19,15 @@
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
 import JobFiltersSidebarJobTypes from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue'
+import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 
 export default {
   name: 'JobFiltersSidebar',
   components: {
     ActionButton,
     JobFiltersSidebarOrganizations,
-    JobFiltersSidebarJobTypes
+    JobFiltersSidebarJobTypes,
+    CollapsibleAccordion
   },
   data() {
     return {}
