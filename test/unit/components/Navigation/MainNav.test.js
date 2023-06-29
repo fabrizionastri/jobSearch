@@ -20,6 +20,7 @@ describe('MainNav', () => {
     const pinia = createTestingPinia({
       stubActions: true // we can remove this, because stubbing out actions is the default option for createTestingPinia
     })
+    useRoute.mockReturnValue({ name: 'Home' })
     // const $route = { // this is a hand made object to mock the real $route object from Vitest
     //   name: routeName
     // }
@@ -41,7 +42,6 @@ describe('MainNav', () => {
   }
 
   it('displays the company name', () => {
-    useRoute.mockReturnValue({ name: 'Home' })
     renderMainNav(/* 'Home' */)
     // screen.debug() // this is used to print the DOM to the console
     const companyName = screen.getByText(/FlexUp careers/i) // this is used to get the text from the DOM
@@ -49,7 +49,6 @@ describe('MainNav', () => {
   })
 
   it('displays menu items for navigation', () => {
-    useRoute.mockReturnValue({ name: 'Home' })
     renderMainNav(/* 'Home' */)
     const navigationMenuItems = screen.getAllByRole('listitem') // this is used to get all the elements with the role listitem
     const navigationMenuItemsText = navigationMenuItems.map((item) => item.textContent) // this is used to get the text from the elements
