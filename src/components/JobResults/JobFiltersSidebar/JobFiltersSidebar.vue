@@ -10,7 +10,7 @@
       <JobFiltersSidebarOrganizations />
       <JobFiltersSidebarJobTypes />
       <CollapsibleAccordion />
-      <CollapsibleAccordion header="Coco pops"> Test content from </CollapsibleAccordion>
+      <CollapsibleAccordion header="Coco pop"> Test content from </CollapsibleAccordion>
     </section>
   </div>
 </template>
