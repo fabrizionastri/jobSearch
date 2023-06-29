@@ -7,33 +7,49 @@
           <ActionButton text="Clear filters" type="secondary" />
         </div>
       </div>
-      <JobFiltersSidebarOrganizations />
-      <JobFiltersSidebarJobTypes />
-      <CollapsibleAccordion />
-      <CollapsibleAccordion header="Coco pop"> Test content from </CollapsibleAccordion>
+      <!--       <JobFiltersSidebarOrganizations />
+      <JobFiltersSidebarJobTypes /> -->
+      <!--       <JobFiltersSidebarCheckboxGroup
+        header="Fruits"
+        :unique-values="['Apple', 'Banana', 'Orange', 'Pear', 'Pineapple', 'Strawberry']"
+        :action="myaction"
+      /> -->
+      <JobFiltersSidebarCheckboxGroup
+        header="Organizations"
+        :unique-values="UNIQUE_ORGANIZATIONS"
+        :action="userStore.ADD_SELECTED_ORGANIZATIONS"
+      />
+      <JobFiltersSidebarCheckboxGroup
+        header="JobTypes"
+        :unique-values="UNIQUE_JOB_TYPES"
+        :action="userStore.ADD_SELECTED_JOB_TYPES"
+      />
+      <!--  <CollapsibleAccordion />
+      <CollapsibleAccordion header="Coco pop"> Test content from </CollapsibleAccordion> -->
     </section>
   </div>
 </template>
 
-<script>
+<script setup>
 import ActionButton from '@/components/Shared/ActionButton.vue'
-import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
-import JobFiltersSidebarJobTypes from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue'
-import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
+/* import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
+import JobFiltersSidebarJobTypes from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue' */
+// import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
+import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue'
 
-export default {
-  name: 'JobFiltersSidebar',
-  components: {
-    ActionButton,
-    JobFiltersSidebarOrganizations,
-    JobFiltersSidebarJobTypes,
-    CollapsibleAccordion
-  },
-  data() {
-    return {}
-  },
-  methods: {}
-}
+import { computed } from 'vue'
+import { useJobsStore } from '@/stores/jobs'
+
+const jobsStore = useJobsStore()
+const UNIQUE_ORGANIZATIONS = computed(() => jobsStore.UNIQUE_ORGANIZATIONS)
+const UNIQUE_JOB_TYPES = computed(() => jobsStore.UNIQUE_JOB_TYPES)
+
+import { useUserStore } from '@/stores/user'
+const userStore = useUserStore()
+
+/* const myaction = () => {
+  console.log('myaction')
+} */
 </script>
 
 <style scoped>
