@@ -15,29 +15,24 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'pinia'
-import { useJobsStore, FILTERED_JOBS } from '@/stores/jobs'
+<script setup>
+import { useJobsStore } from '@/stores/jobs'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 
-export default {
-  name: 'SubNav',
-  computed: {
-    onJobResultsPage() {
-      return this.$route.name == 'JobResults'
-    },
-    processEnv() {
-      const processEnv1 = process.env.NODE_ENV
-      return processEnv1
-    },
-    importEnv() {
-      const importEnv1 = import.meta.env.VITE_API_URL
-      return importEnv1
-    },
-    ...mapState(
-      useJobsStore,
-      [FILTERED_JOBS]
-      // using a object rather than an array to map the state allows us to refer to this.jobs in the displayedJobs computed property, but only if we move that functions to the computed property section as well
-    )
-  }
-}
+const route = useRoute() // creates a reactive reference to the current route
+const jobsStore = useJobsStore()
+
+const onJobResultsPage = computed(() => {
+  return route.name == 'JobResults'
+})
+
+const processEnv = computed(() => {
+  return process.env.NODE_ENV
+})
+const importEnv = computed(() => {
+  return import.meta.env.VITE_API_URL
+})
+
+const FILTERED_JOBS = computed(() => jobsStore.FILTERED_JOBS)
 </script>

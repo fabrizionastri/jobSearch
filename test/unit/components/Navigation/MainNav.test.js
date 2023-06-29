@@ -11,6 +11,7 @@ import { createTestingPinia } from '@pinia/testing' // this is used to create a 
 
 import { useUserStore } from '@/stores/user' // this is used to get the user store
 
+
 describe('MainNav', () => {
   const renderMainNav = (routeName) => {
     // this is used to create a test version of a new Pinia store for each test
