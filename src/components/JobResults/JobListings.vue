@@ -18,55 +18,36 @@
   </main>
 </template>
 
-<script>
-import { mapActions, mapState } from 'pinia'
+<script setup>
+import { computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import JobListing from './JobListing.vue'
 import PaginationBar from './PaginationBar.vue'
-import { useJobsStore, FETCH_JOBS, FILTERED_JOBS } from '@/stores/jobs'
+import { useJobsStore } from '@/stores/jobs'
 
-export default {
-  name: 'JobListings',
-  components: {
-    JobListing,
-    PaginationBar
-  },
-  computed: {
-    currentPage() {
-      return Number.parseInt(this.$route.query.page || '1')
-    },
-    previousPage() {
-      const previousPage = this.currentPage - 1
-      const firstPage = this.firstPage
-      return previousPage >= firstPage ? previousPage : null
-    },
-    ...mapState(useJobsStore, {
-      // using a object rather than an array to map the state allows us to refer to this.jobs in the displayedJobs computed property, but only if we move that functions to the computed property section as well
-      FILTERED_JOBS,
-      nextPage() {
-        const nextPage = this.currentPage + 1
-        const lastPage = this.lastPage
-        return nextPage <= lastPage ? nextPage : null
-      },
-      displayedJobs() {
-        const pageNr = this.currentPage
-        const firstJobIndex = (pageNr - 1) * 10
-        const lastJobIndex = pageNr * 10
-        return this.FILTERED_JOBS.slice(firstJobIndex, lastJobIndex)
-      },
-      firstPage() {
-        return 1
-      },
-      lastPage() {
-        return Math.ceil(this.FILTERED_JOBS.length / 10)
-      }
-    })
-  },
-  async mounted() {
-    // mounted life cycle hook is called after the component is mounted to the DOM
-    this.FETCH_JOBS()
-  },
-  methods: {
-    ...mapActions(useJobsStore, [FETCH_JOBS])
-  }
-}
+const route = useRoute()
+const jobsStore = useJobsStore()
+
+const currentPage = computed(() => Number.parseInt(route.query.page || '1'))
+const FILTERED_JOBS = computed(() => jobsStore.FILTERED_JOBS)
+const previousPage = computed(() => {
+  const previousPage = currentPage.value - 1
+  const firstPage = 1
+  return previousPage >= firstPage ? previousPage : null
+})
+const nextPage = computed(() => {
+  const nextPage = currentPage.value + 1
+  const lastPage = Math.ceil(FILTERED_JOBS.value.length / 10)
+  return nextPage <= lastPage ? nextPage : null
+})
+const displayedJobs = computed(() => {
+  const pageNr = currentPage.value
+  const firstJobIndex = (pageNr - 1) * 10
+  const lastJobIndex = pageNr * 10
+  return FILTERED_JOBS.value.slice(firstJobIndex, lastJobIndex)
+})
+
+const lastPage = computed(() => Math.ceil(FILTERED_JOBS.value.length / 10))
+
+onMounted(jobsStore.FETCH_JOBS)
 </script>

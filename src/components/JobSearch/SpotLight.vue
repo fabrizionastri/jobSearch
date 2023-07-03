@@ -20,4 +20,3 @@ const spotlights = ref([])
 
 onMounted(getSpotlights)
 </script>
-ù
