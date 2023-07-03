@@ -26,7 +26,7 @@
           <h3 class="mt-1 mb-2">Qualifications:</h3>
           <div>
             <ul class="pl-8 list-disc">
-              <li v-for="minQual in job.minimumQualifications" class="mb-2">
+              <li v-for="minQual in job.minimumQualifications" :key="minQual" class="mb-2">
                 <span>{{ minQual }}</span>
               </li>
             </ul>
