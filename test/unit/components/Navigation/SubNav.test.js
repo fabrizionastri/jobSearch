@@ -9,7 +9,7 @@ vi.mock('vue-router') // mock out the whole vue-router module
 describe('SubNav', () => {
   const renderSubNav = () => {
     const pinia = createTestingPinia()
-    const jobsStore = useJobsStore();
+    const jobsStore = useJobsStore()
     render(SubNav, {
       global: {
         plugins: [pinia],
@@ -28,7 +28,6 @@ describe('SubNav', () => {
   })
 
   describe('when user is on jobs page', () => {
-
     it('displays "jobs matched"', async () => {
       useRoute.mockReturnValue({ name: 'JobResults' })
       renderSubNav()

@@ -62,8 +62,8 @@ devDependencies:
     specifier: ^11.0.3
     version: 11.0.3(eslint-plugin-vue@9.11.0)(eslint@8.39.0)(typescript@5.1.6)
   '@vue/test-utils':
-    specifier: 2.4.0-alpha.2
-    version: 2.4.0-alpha.2(@vue/compiler-dom@3.3.4)(@vue/server-renderer@3.3.4)(vue@3.3.4)
+    specifier: 2.4.0
+    version: 2.4.0(vue@3.3.4)
   '@vue/tsconfig':
     specifier: ^0.4.0
     version: 0.4.0
@@ -651,8 +651,11 @@ packages:
       '@babel/runtime': 7.22.3
       '@testing-library/dom': 9.3.0
       '@vue/compiler-sfc': 3.3.4
-      '@vue/test-utils': 2.3.2(vue@3.3.4)
+      '@vue/test-utils': 2.4.0(vue@3.3.4)
       vue: 3.3.4
+    transitivePeerDependencies:
+      - '@vue/compiler-dom'
+      - '@vue/server-renderer'
     dev: true
 
   /@tootallnate/once@2.0.0:
@@ -1048,20 +1051,8 @@ packages:
   /@vue/shared@3.3.4:
     resolution: {integrity: sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==}
 
-  /@vue/test-utils@2.3.2(vue@3.3.4):
-    resolution: {integrity: sha512-hJnVaYhbrIm0yBS0+e1Y0Sj85cMyAi+PAbK4JHqMRUZ6S622Goa+G7QzkRSyvCteG8wop7tipuEbHoZo26wsSA==}
-    peerDependencies:
-      vue: ^3.0.1
-    dependencies:
-      js-beautify: 1.14.6
-      vue: 3.3.4
-    optionalDependencies:
-      '@vue/compiler-dom': 3.3.4
-      '@vue/server-renderer': 3.3.4(vue@3.3.4)
-    dev: true
-
-  /@vue/test-utils@2.4.0-alpha.2(@vue/compiler-dom@3.3.4)(@vue/server-renderer@3.3.4)(vue@3.3.4):
-    resolution: {integrity: sha512-P1XgbB8sEIZvzG+9hJGL25fhjO+P4TXTZC9ApM7NAUqqzLEP1tIa7hMtp6XFfi+M6Taw5xa2/Fwt3OG2gk80Xg==}
+  /@vue/test-utils@2.4.0(vue@3.3.4):
+    resolution: {integrity: sha512-BKB9aj1yky63/I3IwSr1FjUeHYsKXI7D6S9F378AHt7a5vC0dLkOBtSsFXoRGC/7BfHmiB9HRhT+i9xrUHoAKw==}
     peerDependencies:
       '@vue/compiler-dom': ^3.0.1
       '@vue/server-renderer': ^3.0.1
@@ -1072,8 +1063,6 @@ packages:
       '@vue/server-renderer':
         optional: true
     dependencies:
-      '@vue/compiler-dom': 3.3.4
-      '@vue/server-renderer': 3.3.4(vue@3.3.4)
       js-beautify: 1.14.6
       vue: 3.3.4
       vue-component-type-helpers: 1.6.5

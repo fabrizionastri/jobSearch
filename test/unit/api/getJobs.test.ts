@@ -2,7 +2,7 @@ import type { Mock } from 'vitest'
 
 import axios from 'axios'
 import getJobs from '@/api/getJobs'
-;('')
+
 vi.mock('axios')
 const axiosGetMock = axios.get as Mock
 

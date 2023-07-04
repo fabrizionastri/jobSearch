@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/vue'
 import { RouterLinkStub } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useRoute } from 'vue-router'
+
 vi.mock('vue-router')
 
 import JobListings from '@/components/JobResults/JobListings.vue'
@@ -15,7 +16,7 @@ describe('JobListings', () => {
     render(JobListings, {
       global: {
         plugins: [pinia],
-        stubs: { RouterLink: RouterLinkStub },
+        stubs: { RouterLink: RouterLinkStub }
       }
     })
     return { jobsStore }

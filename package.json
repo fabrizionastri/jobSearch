@@ -1,5 +1,5 @@
 {
-  "name": "vuejs-course",
+  "name": "job-search",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -24,6 +24,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "@pinia/testing": "^0.1.2",
     "@rushstack/eslint-patch": "^1.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^14.4.3",
@@ -34,7 +35,7 @@
     "@vitest/coverage-c8": "^0.31.4",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
-    "@vue/test-utils": "2.4.0-alpha.2",
+    "@vue/test-utils": "2.4.0",
     "@vue/tsconfig": "^0.4.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.39.0",
