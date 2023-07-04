@@ -6,14 +6,9 @@
   />
 </template>
 
-<script>
-export default {
-  name: 'ProfileImage',
-  data() {
-    return {
-      imageUrl:
-        'https://media.licdn.com/dms/image/C4D03AQFiX7uwoHiWMA/profile-displayphoto-shrink_100_100/0/1552933857847?e=1691625600&v=beta&t=mRK0gQawA69Qvvd_xAHPfURqnchqUGlRymO9twiio9I'
-    }
-  }
-}
+<script lang="ts" setup>
+import { ref } from 'vue'
+const imageUrl = ref(
+  'https://media.licdn.com/dms/image/C4D03AQFiX7uwoHiWMA/profile-displayphoto-shrink_100_100/0/1552933857847?e=1691625600&v=beta&t=mRK0gQawA69Qvvd_xAHPfURqnchqUGlRymO9twiio9I'
+)
 </script>

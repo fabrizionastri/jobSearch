@@ -2,7 +2,7 @@ import {
   render, // render component in virtual DOM
   screen // get elements from the virtual DOM
 } from '@testing-library/vue'
-
+import { Mock } from 'vitest'
 import userEvent from '@testing-library/user-event' // this is used to simulate user events
 import { RouterLinkStub } from '@vue/test-utils' // this is used to stub the router-link component
 import MainNav from '@/components/Navigation/MainNav.vue' // don't use {} because its the default export
@@ -13,6 +13,7 @@ import { useUserStore } from '@/stores/user' // this is used to get the user sto
 
 import { useRoute } from 'vue-router'
 vi.mock('vue-router') // mock out the whole vue-router module
+const useRoutMock = useRoute as Mock
 
 describe('MainNav', () => {
   const renderMainNav = (/* routeName */) => {
@@ -20,7 +21,7 @@ describe('MainNav', () => {
     const pinia = createTestingPinia({
       stubActions: true // we can remove this, because stubbing out actions is the default option for createTestingPinia
     })
-    useRoute.mockReturnValue({ name: 'Home' })
+    useRoutMock.mockReturnValue({ name: 'Home' })
     // const $route = { // this is a hand made object to mock the real $route object from Vitest
     //   name: routeName
     // }

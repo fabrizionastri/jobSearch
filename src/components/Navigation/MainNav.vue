@@ -1,4 +1,3 @@
-<!-- src/components/Navigation/MainNav.vue -->
 <template>
   <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
@@ -21,52 +20,35 @@
           </ul>
         </nav>
         <div class="flex items-center h-full ml-auto">
-          <profile-image v-if="isLoggedIn" @click="logoutUser" />
-          <action-button v-else text="Sign In" @click="loginUser" />
-          <!-- we can use any case we want, but kebab-case is recommended in the template -->
+          <profile-image v-if="userStore.isLoggedIn" @click="userStore.logoutUser" />
+          <action-button v-else text="Sign In" @click="userStore.loginUser" />
         </div>
       </div>
-      <sub-nav v-if="isLoggedIn" />
+      <sub-nav v-if="userStore.isLoggedIn" />
     </div>
   </header>
 </template>
 
-<script>
-import { mapState, mapActions } from 'pinia' // helper function to get access to the store
+<script lang="ts" setup>
+import { computed, ref } from 'vue'
 import { useUserStore } from '@/stores/user' // import the user store
 
 import ActionButton from '@/components/Shared/ActionButton.vue' // we can use any case we want, but PascalCase is recommended in the script
 import ProfileImage from '@/components/Navigation/ProfileImage.vue'
 import SubNav from '@/components/Navigation/SubNav.vue'
 
-export default {
-  name: 'MainNav',
-  components: {
-    ActionButton, // we can use any case we want, but PascalCase is recommended in the script
-    ProfileImage,
-    SubNav
-  },
-  data() {
-    return {
-      menuItems: [
-        { text: 'Teams', url: '/teams' },
-        { text: 'Locations', url: '/' },
-        { text: 'Life at Google', url: '/' },
-        { text: 'How we hire', url: '/' },
-        { text: 'Students', url: '/' },
-        { text: 'Jobs', url: '/jobs/results' }
-      ]
-    }
-  },
-  computed: {
-    // we spread the result of mapStores to get access to each store, where the key is the name of the store + Store ("user -> userStore") and the value is the store itself
-    ...mapState(useUserStore, ['isLoggedIn']),
-    headerHeightClass() {
-      return this.isLoggedIn ? 'h-32' : 'h-16'
-    }
-  },
-  methods: {
-    ...mapActions(useUserStore, ['loginUser', 'logoutUser'])
-  }
-}
+const menuItems = ref([
+  { text: 'Teams', url: '/teams' },
+  { text: 'Locations', url: '/' },
+  { text: 'Life at Google', url: '/' },
+  { text: 'How we hire', url: '/' },
+  { text: 'Students', url: '/' },
+  { text: 'Jobs', url: '/jobs/results' }
+])
+
+const userStore = useUserStore()
+
+const headerHeightClass = computed(() => {
+  return userStore.isLoggedIn ? 'h-32' : 'h-16'
+})
 </script>

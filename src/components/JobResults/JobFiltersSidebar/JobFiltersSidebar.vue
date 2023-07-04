@@ -46,10 +46,6 @@ const UNIQUE_JOB_TYPES = computed(() => jobsStore.UNIQUE_JOB_TYPES)
 
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
-
-/* const myaction = () => {
-  console.log('myaction')
-} */
 </script>
 
 <style scoped>
