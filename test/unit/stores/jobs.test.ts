@@ -5,16 +5,24 @@ import axios from 'axios'
 
 import { createPinia, setActivePinia } from 'pinia'
 
-import type { Job } from '@/api/types'
+import type { Job } from '../../../src/api/types'
+// import type { Job } from '@/api/types'
 
 vi.mock('axios')
 
-const plop: Job = {
-  id: '1',
-  title: 'Plop',
-  organization: 'Plop'
-}
-console.log(plop)
+const createJob = (job: Partial<Job> = {}): Job => ({
+  id: 1,
+  title: 'Angular Developer',
+  organization: 'Vue and Me',
+  degree: "Master's",
+  jobType: 'Intern',
+  locations: ['Lisbon'],
+  minimumQualifications: ['Mesh granular', 'deliverables'],
+  preferredQualifications: ['Mesh wireless metrics', 'Envisioneer b2b '],
+  description: ['Away someone ', 'Author act'],
+  dateAdded: '2021-07-04',
+  ...job
+})
 
 const axiosGetMock = axios.get as Mock
 
@@ -45,11 +53,11 @@ describe('Jobs Store', () => {
       const jobsStore = useJobsStore()
       // normally, we cannot set the state directly, but we can in tests
       jobsStore.jobs = [
-        { organization: 'org2' },
-        { organization: 'org1' },
-        { organization: 'org2' },
-        { organization: 'org3' }
-      ] as Job[]
+        createJob({ organization: 'org2' }),
+        createJob({ organization: 'org1' }),
+        createJob({ organization: 'org2' }),
+        createJob({ organization: 'org3' })
+      ]
       return jobsStore
     }
     describe('UNIQUE_ORGANIZATIONS', () => {
@@ -64,7 +72,7 @@ describe('Jobs Store', () => {
         const userStore = useUserStore()
         userStore.selectedOrganizations = ['org1', 'org3']
         const filteredJobs = jobsStore.FILTERED_JOBS_BY_ORGANIZATION
-        expect(filteredJobs).toEqual([{ organization: 'org1' }, { organization: 'org3' }])
+        expect(filteredJobs).toEqual([jobsStore.jobs[1], jobsStore.jobs[3]])
       })
 
       describe('when no organizations are selected', () => {
@@ -81,20 +89,27 @@ describe('Jobs Store', () => {
     describe('UNIQUE_JOB_TYPES', () => {
       it('finds unique job types from list of jobs', () => {
         const jobsStore = setupJobsStore()
-        jobsStore.jobs = [{ jobType: 'jobType2' }, { jobType: 'jobType1' }, { jobType: 'jobType2' }]
+        jobsStore.jobs = [
+          createJob({ jobType: 'jobType2' }),
+          createJob({ jobType: 'jobType1' }),
+          createJob({ jobType: 'jobType2' })
+        ]
         expect(jobsStore.UNIQUE_JOB_TYPES).toEqual(['jobType1', 'jobType2'])
       })
     })
     describe('FILTERED_JOBS_BY_JOB_TYPE', () => {
       it('returns a list of jobs filtered by job type', () => {
         const jobsStore = setupJobsStore()
-        jobsStore.jobs = [{ jobType: 'jobType2' }, { jobType: 'jobType1' }, { jobType: 'jobType3' }]
+        jobsStore.jobs = [
+          createJob({ jobType: 'jobType2' }),
+          createJob({ jobType: 'jobType1' }),
+          createJob({ jobType: 'jobType3' })
+        ]
         const userStore = useUserStore()
         userStore.selectedJobTypes = ['jobType1', 'jobType3']
         const filteredJobs = jobsStore.FILTERED_JOBS_BY_JOB_TYPE
-        expect(filteredJobs).toEqual([{ jobType: 'jobType1' }, { jobType: 'jobType3' }])
+        expect(filteredJobs).toEqual([jobsStore.jobs[1], jobsStore.jobs[2]])
       })
-
       describe('when no job types are selected', () => {
         it('returns all jobs', () => {
           const jobsStore = setupJobsStore()

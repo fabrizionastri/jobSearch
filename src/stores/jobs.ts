@@ -1,10 +1,24 @@
+import type { Job } from '@/api/types'
+
+const createJob = (job: Partial<Job> = {}): Partial<Job> => ({
+  id: '1',
+  title: 'Angular Developer',
+  organization: 'Vue and Me',
+  ...job
+})
+console.log(createJob())
+
+// jobType: 'Intern',
+// locations: ['Lisbon'],
+// minimumQualifications: ['Mesh granular', 'deliverables'],
+// preferredQualifications: ['Mesh wireless metrics', 'Envisioneer b2b '],
+// description: ['Away someone ', 'Author act'],
+// dateAdded: '2021-07-04',
 import { defineStore } from 'pinia'
 
 import { useUserStore } from '@/stores/user'
 
 import getJobs from '@/api/getJobs'
-import type { Job } from '@/api/types'
-
 // this approach is used to avoid typos
 export const FETCH_JOBS = 'FETCH_JOBS'
 export const UNIQUE_ORGANIZATIONS = 'UNIQUE_ORGANIZATIONS'
