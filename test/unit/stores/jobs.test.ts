@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest'
-import { useJobsStore } from '@/stores/jobs'
-import { useUserStore } from '@/stores/user'
+import { useJobsStore } from '../../../src/stores/jobs'
+import { useUserStore } from '../../../src/stores/user'
 import axios from 'axios'
 
 import { createPinia, setActivePinia } from 'pinia'

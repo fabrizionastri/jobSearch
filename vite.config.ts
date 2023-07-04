@@ -1,5 +1,3 @@
-// vite.config.ts
-
 // this is used to make the test globals available in the vite.config.ts file
 /// <reference types="vitest" />
 import { fileURLToPath, URL } from 'node:url'

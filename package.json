@@ -8,7 +8,7 @@
     "preview": "vite preview --port 4173",
     "test:cov": "vitest --environment jsdom --coverage  --reporter verbose",
     "test": "vitest --reporter verbose",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "backend": "json-server --watch db.json --port 3000"
   },
