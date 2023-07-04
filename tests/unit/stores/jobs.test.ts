@@ -1,14 +1,12 @@
 import type { Mock } from 'vitest'
-import { useJobsStore } from '../../../src/stores/jobs'
+import { useJobsStore } from '@/stores/jobs'
 import { useUserStore } from '../../../src/stores/user'
 import axios from 'axios'
 
 import { createPinia, setActivePinia } from 'pinia'
+vi.mock('axios')
 
 import type { Job } from '../../../src/api/types'
-// import type { Job } from '@/api/types'
-
-vi.mock('axios')
 
 const createJob = (job: Partial<Job> = {}): Job => ({
   id: 1,
