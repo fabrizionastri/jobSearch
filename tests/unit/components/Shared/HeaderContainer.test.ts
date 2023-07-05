@@ -6,7 +6,7 @@ describe('HeaderContainer', () => {
   it('allows parent component to provide title content', () => {
     render(HeaderContainer, {
       slots: {
-        title: '<h2>Some title</h2>'
+        title: '<h2>Some title again</h2>'
       }
     })
 
