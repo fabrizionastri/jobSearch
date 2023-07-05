@@ -20,7 +20,7 @@
   </collapsible-accordion>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -33,7 +33,7 @@ const props = defineProps({
     default: 'Default Header'
   },
   uniqueValues: {
-    type: Array,
+    type: Array<string>,
     required: true
   },
   action: {
@@ -42,7 +42,7 @@ const props = defineProps({
   }
 })
 
-const selectedValues = ref([])
+const selectedValues = ref<string[]>([])
 const router = useRouter()
 
 const selectValue = () => {

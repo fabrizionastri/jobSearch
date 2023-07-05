@@ -5,7 +5,7 @@
   </button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, toRefs } from 'vue'
 
 const props = defineProps({

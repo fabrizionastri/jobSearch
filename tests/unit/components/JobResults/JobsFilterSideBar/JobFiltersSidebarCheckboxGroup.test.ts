@@ -7,16 +7,29 @@ import { useRouter } from 'vue-router'
 import { describe } from 'vitest'
 vi.mock('vue-router') // mock the useRouter
 const push = vi.fn()
-useRouter.mockReturnValue({ push })
+
+import type { Mock } from 'vitest'
+
+const useRouterMock = useRouter as Mock
+
+useRouterMock.mockReturnValue({ push })
+
+interface JobFiltersSidebarCheckboxGroupProps {
+  header: string
+  uniqueValues: string[]
+  action: Mock
+}
 
 describe('JobFiltersSidebarCheckboxGroup', () => {
-  const createProps = (props = {}) => ({
+  const createProps = (
+    props: Partial<JobFiltersSidebarCheckboxGroupProps> = {}
+  ): JobFiltersSidebarCheckboxGroupProps => ({
     header: 'MyHeader',
     uniqueValues: ['Val1', 'Val2', 'Val3'],
     action: vi.fn(),
     ...props // this allows us to override any of the props
   })
-  const setUpTest = async (props) => {
+  const setUpTest = async (props: JobFiltersSidebarCheckboxGroupProps) => {
     const pinia = createTestingPinia()
     render(JobFiltersSidebarCheckboxGroup, {
       props: {
