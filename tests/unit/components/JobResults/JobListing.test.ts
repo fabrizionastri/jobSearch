@@ -2,16 +2,11 @@ import { render, screen } from '@testing-library/vue'
 import JobListing from '@/components/JobResults/JobListing.vue'
 import { RouterLinkStub } from '@vue/test-utils'
 
-describe('JobListing.vue', () => {
-  const createJobProps = (jobProps) => ({
-    title: 'Vue Developer',
-    organization: 'Google',
-    locations: ['London', 'Paris'],
-    minimumQualifications: ['Italian', 'Calligraphy'],
-    ...jobProps
-  }) // this is a factory function that returns an object with the job props, also called an implicit return function
+import createJob from 'tests/utils/createJobs'
+import type { Job } from '@/api/types'
 
-  const renderJobListing = (jobProps) => {
+describe('JobListing.vue', () => {
+  const renderJobListing = (jobProps: Partial<Job>) => {
     render(JobListing, {
       global: {
         stubs: {
@@ -20,32 +15,26 @@ describe('JobListing.vue', () => {
         }
       },
       props: {
-        job: {
-          ...jobProps
-        }
+        job: createJob(jobProps)
       }
     })
   }
 
   it('renders job title', () => {
-    const jobProps = createJobProps({ title: 'Vue Programmer' })
-    renderJobListing(jobProps)
+    renderJobListing({ title: 'Vue Programmer' })
     expect(screen.getByText('Vue Programmer')).toBeInTheDocument()
   })
   it('renders organization', () => {
-    const jobProps = createJobProps({ organization: 'Plop' })
-    renderJobListing(jobProps)
+    renderJobListing({ organization: 'Plop' })
     expect(screen.getByText('Plop')).toBeInTheDocument()
   })
   it('renders locations', () => {
-    const jobProps = createJobProps({ locations: ['Paris', 'Milan'] })
-    renderJobListing(jobProps)
+    renderJobListing({ locations: ['Paris', 'Milan'] })
     expect(screen.getByText('Paris')).toBeInTheDocument()
     expect(screen.getByText('Milan')).toBeInTheDocument()
   })
   it('renders minimumQualifications', () => {
-    const jobProps = createJobProps({ minimumQualifications: ['UX', 'Masters'] })
-    renderJobListing(jobProps)
+    renderJobListing({ minimumQualifications: ['UX', 'Masters'] })
     expect(screen.getByText('UX')).toBeInTheDocument()
     expect(screen.getByText('Masters')).toBeInTheDocument()
   })
