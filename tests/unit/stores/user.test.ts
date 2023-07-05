@@ -19,7 +19,6 @@ describe('User Store', () => {
     expect(userStore.selectedOrganizations).toEqual([])
   })
 
-
   describe('actions', () => {
     it('should set isLoggedIn to true when loginUser is called', () => {
       const userStore = useUserStore()

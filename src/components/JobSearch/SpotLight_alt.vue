@@ -14,5 +14,3 @@
     <h1>Default description</h1>
   </slot>
 </template>
-
-<script></script>

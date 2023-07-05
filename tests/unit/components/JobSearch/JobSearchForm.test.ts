@@ -5,11 +5,15 @@ import { useRouter } from 'vue-router'
 
 vi.mock('vue-router')
 
+import type { Mock } from 'vitest'
+
+const useRouterMock = useRouter as Mock
+
 describe('JobSearchForm', () => {
   describe('when the form is submitted', () => {
     it("directs user to JobResults page with user's search parameters", async () => {
       const push = vi.fn()
-      useRouter.mockReturnValue({ push })
+      useRouterMock.mockReturnValue({ push })
       render(JobSearchForm, {
         global: { stubs: { FontAwesomeIcon: true } }
       })
