@@ -1,4 +1,3 @@
-
 import { cleanup } from '@testing-library/vue' // this is used to clean up the DOM after each test
 import matchers from '@testing-library/jest-dom/matchers' // this is used to match the DOM elements
 import { expect, afterEach } from 'vitest' // this is used to make assertions and mock fetch requests
