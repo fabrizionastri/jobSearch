@@ -4,8 +4,11 @@ import SpotLight from '@/components/JobSearch/SpotLight.vue'
 import { beforeEach } from 'vitest'
 
 vi.mock('axios')
+import type { Mock } from 'vitest'
 
-axios.get.mockResolvedValue({
+const axiosGetMock = axios.get as Mock
+
+axiosGetMock.mockResolvedValue({
   data: [
     {
       id: 1,
