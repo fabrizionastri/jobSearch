@@ -18,7 +18,7 @@
   </main>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import JobListing from './JobListing.vue'
@@ -29,7 +29,7 @@ import usePreviousAndNextPages from '@/composables/usePreviousAndNextPages'
 const route = useRoute()
 const jobsStore = useJobsStore()
 
-const currentPage = computed(() => Number.parseInt(route.query.page || '1'))
+const currentPage = computed(() => Number.parseInt((route.query.page as string) || '1'))
 const lastPage = computed(() => Math.ceil(FILTERED_JOBS.value.length / 10))
 const { previousPage, nextPage } = usePreviousAndNextPages(currentPage, lastPage)
 

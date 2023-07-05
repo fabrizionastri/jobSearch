@@ -23,26 +23,25 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'PaginationBar',
-  props: {
-    currentPage: {
-      type: Number,
-      required: true
-    },
-    lastPage: {
-      type: Number,
-      required: true
-    },
-    previousPage: {
-      type: [Number, null],
-      required: true
-    },
-    nextPage: {
-      type: [Number, null],
-      required: true
-    }
+<script setup lang="ts">
+import { type PropType } from 'vue'
+
+defineProps({
+  currentPage: {
+    type: Number,
+    required: true
+  },
+  lastPage: {
+    type: Number,
+    required: true
+  },
+  previousPage: {
+    type: [Number, null] as PropType<number | null>,
+    required: true
+  },
+  nextPage: {
+    type: [Number, null] as PropType<number | null>,
+    required: true
   }
-}
+})
 </script>
