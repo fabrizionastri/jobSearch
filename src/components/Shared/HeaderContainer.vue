@@ -7,12 +7,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HeaderContainer'
-}
-</script>
-
 <style>
 h1 {
   @apply my-4 w-full text-xl font-normal;
