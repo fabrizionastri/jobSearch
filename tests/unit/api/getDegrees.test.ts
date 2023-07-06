@@ -1,7 +1,7 @@
 import type { Mock } from 'vitest'
 
 import axios from 'axios'
-import getDegrees from '../../../src/api/getDegrees'
+import getDegrees from '@/api/getDegrees'
 
 vi.mock('axios')
 const axiosGetMock = axios.get as Mock
