@@ -7,39 +7,31 @@
           <ActionButton text="Clear filters" type="secondary" @click="userStore.clearFilters" />
         </div>
       </div>
-      <!--       <JobFiltersSidebarOrganizations />
-      <JobFiltersSidebarJobTypes /> -->
-      <!--       <JobFiltersSidebarCheckboxGroup
-        header="Fruits"
-        :unique-values="['Apple', 'Banana', 'Orange', 'Pear', 'Pineapple', 'Strawberry']"
-        :action="myaction"
-      /> -->
-      <JobFiltersSidebarCheckboxGroup
-        header="Organizations"
-        :unique-values="uniqueOrganizations"
-        :action="userStore.addSelectedOrganization"
-      />
-      <JobFiltersSidebarCheckboxGroup
-        header="JobTypes"
-        :unique-values="uniqueJobTypes"
-        :action="userStore.addSelectedJobType"
-      />
-      <JobFiltersSidebarCheckboxGroup
-        header="Degrees"
-        :unique-values="uniqueDegrees"
-        :action="userStore.addSelectedDegree"
-      />
-      <!--  <CollapsibleAccordion />
-      <CollapsibleAccordion header="Coco pop"> Test content from </CollapsibleAccordion> -->
+      <collapsible-accordion header="Organizations">
+        <JobFiltersSidebarCheckboxGroup
+          :unique-values="uniqueOrganizations"
+          :action="userStore.addSelectedOrganization"
+        />
+      </collapsible-accordion>
+      <collapsible-accordion header="JobTypes">
+        <JobFiltersSidebarCheckboxGroup
+          :unique-values="uniqueJobTypes"
+          :action="userStore.addSelectedJobType"
+        />
+      </collapsible-accordion>
+      <collapsible-accordion header="Degrees">
+        <JobFiltersSidebarCheckboxGroup
+          :unique-values="uniqueDegrees"
+          :action="userStore.addSelectedDegree"
+        />
+      </collapsible-accordion>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import ActionButton from '@/components/Shared/ActionButton.vue'
-/* import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
-import JobFiltersSidaebarJobTypes from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue' */
-// import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
+import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue'
 
 import { computed } from 'vue'

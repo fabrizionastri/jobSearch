@@ -45,8 +45,6 @@ describe('JobFiltersSidebarCheckboxGroup', () => {
   }
   it('renders unique list of values', async () => {
     setUpTest(createProps())
-    const accordionButton = screen.getByRole('button', { name: /MyHeader/i })
-    await userEvent.click(accordionButton)
 
     // check that the list of values is rendered
     expect(screen.getByText(/Val1/i)).toBeInTheDocument()
@@ -67,21 +65,14 @@ describe('JobFiltersSidebarCheckboxGroup', () => {
     it('communicates that user has selected an value', async () => {
       const props = createProps()
       setUpTest(props)
-      const accordionButton = screen.getByRole('button', { name: /MyHeader/i })
-      await userEvent.click(accordionButton)
-
       const Val1Checkbox = screen.getByRole('checkbox', { name: /Val1/i })
       await userEvent.click(Val1Checkbox)
       expect(props.action).toHaveBeenCalledWith(['Val1'])
     })
     it('navigates to jobs/results page when user clicks on a checkbox', async () => {
       await setUpTest(createProps())
-      const accordionButton = screen.getByRole('button', { name: /MyHeader/i })
-      await userEvent.click(accordionButton)
-
       const Val1Checkbox = screen.getByRole('checkbox', { name: /Val1/i })
       await userEvent.click(Val1Checkbox)
-
       expect(push).toHaveBeenCalledWith({ name: 'JobResults' })
     })
   })
