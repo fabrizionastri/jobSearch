@@ -30,16 +30,16 @@ const route = useRoute()
 const jobsStore = useJobsStore()
 
 const currentPage = computed(() => Number.parseInt((route.query.page as string) || '1'))
-const lastPage = computed(() => Math.ceil(FILTERED_JOBS.value.length / 10))
+const lastPage = computed(() => Math.ceil(filteredJobs.value.length / 10))
 const { previousPage, nextPage } = usePreviousAndNextPages(currentPage, lastPage)
 
-const FILTERED_JOBS = computed(() => jobsStore.FILTERED_JOBS)
+const filteredJobs = computed(() => jobsStore.filteredJobs)
 const displayedJobs = computed(() => {
   const pageNr = currentPage.value
   const firstJobIndex = (pageNr - 1) * 10
   const lastJobIndex = pageNr * 10
-  return FILTERED_JOBS.value.slice(firstJobIndex, lastJobIndex)
+  return filteredJobs.value.slice(firstJobIndex, lastJobIndex)
 })
 
-onMounted(jobsStore.FETCH_JOBS)
+onMounted(jobsStore.fetchJobs)
 </script>

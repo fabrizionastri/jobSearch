@@ -4,7 +4,7 @@
       <div v-if="onJobResultsPage">
         <font-awesome-icon :icon="['fas', 'search']" class="mr-3" />
         <span
-          ><span class="text-brand-green-1">{{ FILTERED_JOBS.length }}</span> jobs matched</span
+          ><span class="text-brand-green-1">{{ filteredJobs.length }}</span> jobs matched</span
         >
       </div>
       <div class="flex-1 ml-8 text-right">
@@ -34,5 +34,5 @@ const importEnv = computed(() => {
   return import.meta.env.VITE_API_URL
 })
 
-const FILTERED_JOBS = computed(() => jobsStore.FILTERED_JOBS)
+const filteredJobs = computed(() => jobsStore.filteredJobs)
 </script>

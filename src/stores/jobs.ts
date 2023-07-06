@@ -1,93 +1,58 @@
-import type { Job } from '@/api/types'
-
 import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
 
+import type { Job } from '@/api/types'
+import getJobs from '@/api/getJobs'
 import { useUserStore } from '@/stores/user'
 
-import getJobs from '@/api/getJobs'
-// this approach is used to avoid typos
-export const FETCH_JOBS = 'FETCH_JOBS'
-export const UNIQUE_ORGANIZATIONS = 'UNIQUE_ORGANIZATIONS'
-export const UNIQUE_JOB_TYPES = 'UNIQUE_JOB_TYPES'
-export const UNIQUE_DEGREES = 'UNIQUE_DEGREES'
-export const FILTERED_JOBS_BY_ORGANIZATION = 'FILTERED_JOBS_BY_ORGANIZATION'
-export const FILTERED_JOBS_BY_JOB_TYPE = 'FILTERED_JOBS_BY_JOB_TYPE'
-export const FILTERED_JOBS_BY_DEGREE = 'FILTERED_JOBS_BY_DEGREE'
-export const FILTERED_JOBS = 'FILTERED_JOBS'
+export const useJobsStore = defineStore('jobs', () => {
+  // State
+  const jobs = ref<Job[]>([])
 
-export interface JobsState {
-  jobs: Job[]
-}
-
-// Pinia will name this store 'jobsStore'
-export const useJobsStore = defineStore('jobs', {
-  state: (): JobsState => ({ jobs: [] }),
-  actions: {
-    async [FETCH_JOBS]() {
-      const results = await getJobs()
-      this.jobs = results
-    }
-  },
-  getters: {
-    [UNIQUE_ORGANIZATIONS](state) {
-      // return a set with all the organizations in the jobs, sorted alphabetically
-      // solution 1 -
-      // return [...new Set(state.jobs.map((job) => job.organization))].sort()
-      // solution 2 -
-      const uniqueOrganizations = new Set<string>()
-      state.jobs.forEach((job) => {
-        uniqueOrganizations.add(job.organization)
-      })
-      return [...uniqueOrganizations].sort()
-    },
-    [UNIQUE_JOB_TYPES](state) {
-      const uniqueJobTypes = new Set<string>()
-      state.jobs.forEach((job) => {
-        uniqueJobTypes.add(job.jobType)
-      })
-      return [...uniqueJobTypes].sort()
-    },
-    [UNIQUE_DEGREES](state) {
-      const uniqueDegrees = new Set<string>()
-      state.jobs.forEach((job) => {
-        uniqueDegrees.add(job.degree)
-      })
-      return [...uniqueDegrees].sort()
-    },
-    [FILTERED_JOBS_BY_ORGANIZATION](state) {
-      // return a list of jobs filtered by the users.selectedOrganizations list, or return all jobs if the list is empty
-      const userStore = useUserStore()
-      const selectedOrganizations = userStore.selectedOrganizations
-      if (selectedOrganizations.length === 0) return state.jobs
-      return state.jobs.filter((job) => selectedOrganizations.includes(job.organization))
-    },
-    [FILTERED_JOBS_BY_JOB_TYPE](state) {
-      // return a list of jobs filtered by the users.selectedJobTypes list, or return all jobs if the list is empty
-      const userStore = useUserStore()
-      const selectedJobTypes = userStore.selectedJobTypes
-      if (selectedJobTypes.length === 0) return state.jobs
-      return state.jobs.filter((job) => selectedJobTypes.includes(job.jobType))
-    },
-    [FILTERED_JOBS_BY_DEGREE](state) {
-      // return a list of jobs filtered by the users.selectedDegrees list, or return all jobs if the list is empty
-      const userStore = useUserStore()
-      const selectedDegrees = userStore.selectedDegrees
-      if (selectedDegrees.length === 0) return state.jobs
-      return state.jobs.filter((job) => selectedDegrees.includes(job.degree))
-    },
-    [FILTERED_JOBS](state): Job[] {
-      // return a list of jobs filtered by the users.selectedOrganizations list, or return all jobs if the list is empty
-      const userStore = useUserStore()
-      const selectedOrganizations = userStore.selectedOrganizations
-      const selectedJobTypes = userStore.selectedJobTypes
-      const selectedDegrees = userStore.selectedDegrees
-
-      return state.jobs.filter(
-        (job) =>
-          (!selectedOrganizations.length || selectedOrganizations.includes(job.organization)) &&
-          (!selectedJobTypes.length || selectedJobTypes.includes(job.jobType)) &&
-          (!selectedDegrees.length || selectedDegrees.includes(job.degree))
-      )
-    }
+  // Actions
+  const fetchJobs = async () => {
+    const results = await getJobs()
+    jobs.value = results
   }
+
+  // Getters
+  const uniqueOrganizations = computed(() => {
+    const uniqueOrganizations = new Set<string>()
+    jobs.value.forEach((job) => {
+      uniqueOrganizations.add(job.organization)
+    })
+    return [...uniqueOrganizations].sort()
+  })
+
+  const uniqueJobTypes = computed(() => {
+    const uniqueJobTypes = new Set<string>()
+    jobs.value.forEach((job) => {
+      uniqueJobTypes.add(job.jobType)
+    })
+    return [...uniqueJobTypes].sort()
+  })
+
+  const uniqueDegrees = computed(() => {
+    const uniqueDegrees = new Set<string>()
+    jobs.value.forEach((job) => {
+      uniqueDegrees.add(job.degree)
+    })
+    return [...uniqueDegrees].sort()
+  })
+
+  const filteredJobs = computed(() => {
+    const userStore = useUserStore()
+    const selectedOrganizations = userStore.selectedOrganizations
+    const selectedJobTypes = userStore.selectedJobTypes
+    const selectedDegrees = userStore.selectedDegrees
+    return jobs.value.filter(
+      (job) =>
+        (!selectedOrganizations.length || selectedOrganizations.includes(job.organization)) &&
+        (!selectedJobTypes.length || selectedJobTypes.includes(job.jobType)) &&
+        (!selectedDegrees.length || selectedDegrees.includes(job.degree))
+    )
+  })
+
+  // Return
+  return { jobs, fetchJobs, uniqueOrganizations, uniqueJobTypes, uniqueDegrees, filteredJobs }
 })

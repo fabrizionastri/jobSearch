@@ -29,24 +29,24 @@ describe('Degree Store', () => {
   })
 
   describe('actions', () => {
-    describe('FETCH_DEGREES', () => {
+    describe('fetchDegrees', () => {
       it('makes API request and stores received degrees', async () => {
         axiosGetMock.mockResolvedValue({ data: degrees })
         const degreesStore = useDegreesStore()
-        await degreesStore.FETCH_DEGREES()
+        await degreesStore.fetchDegrees()
         expect(degreesStore.degrees).toEqual(degrees)
       })
     })
   })
   describe('getters', () => {
-    describe('UNIQUE_DEGREES', () => {
+    describe('uniqueDegrees', () => {
       it('should return the list of degrees', async () => {
         const degreesStore = useDegreesStore()
         degreesStore.degrees = [
           createDegree({ degree: 'testDegree1' }),
           createDegree({ degree: 'testDegree2' })
         ]
-        const result = await degreesStore.UNIQUE_DEGREES
+        const result = await degreesStore.uniqueDegrees
         expect(result).toEqual(['testDegree1', 'testDegree2'])
       })
     })

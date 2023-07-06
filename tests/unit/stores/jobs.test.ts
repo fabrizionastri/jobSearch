@@ -25,9 +25,9 @@ describe('Jobs Store', () => {
         axiosGetMock.mockResolvedValue({
           data: ['job1', 'job2']
         })
-        const store = useJobsStore()
-        await store.FETCH_JOBS()
-        expect(store.jobs).toEqual(['job1', 'job2'])
+        const jobsStore = useJobsStore()
+        await jobsStore.fetchJobs()
+        expect(jobsStore.jobs).toEqual(['job1', 'job2'])
       })
     })
   })
@@ -43,18 +43,18 @@ describe('Jobs Store', () => {
       ]
       return jobsStore
     }
-    describe('UNIQUE_ORGANIZATIONS', () => {
+    describe('uniqueOrganizations', () => {
       it('finds unique organizations from list of jobs', () => {
         const jobsStore = setupJobsStore()
-        expect(jobsStore.UNIQUE_ORGANIZATIONS).toEqual(['org1', 'org2', 'org3'])
+        expect(jobsStore.uniqueOrganizations).toEqual(['org1', 'org2', 'org3'])
       })
     })
-    describe('FILTERED_JOBS_BY_ORGANIZATION', () => {
+    describe('filteredJobs_BY_ORGANIZATION', () => {
       it('returns a list of jobs filtered by organization', () => {
         const jobsStore = setupJobsStore()
         const userStore = useUserStore()
         userStore.selectedOrganizations = ['org1', 'org3']
-        const filteredJobs = jobsStore.FILTERED_JOBS_BY_ORGANIZATION
+        const filteredJobs = jobsStore.filteredJobs
         expect(filteredJobs).toEqual([jobsStore.jobs[1], jobsStore.jobs[3]])
       })
 
@@ -63,13 +63,13 @@ describe('Jobs Store', () => {
           const jobsStore = setupJobsStore()
           const userStore = useUserStore()
           userStore.selectedOrganizations = []
-          const filteredJobs = jobsStore.FILTERED_JOBS_BY_ORGANIZATION
+          const filteredJobs = jobsStore.filteredJobs
           expect(filteredJobs).toEqual(jobsStore.jobs)
         })
       })
     })
 
-    describe('UNIQUE_JOB_TYPES', () => {
+    describe('uniqueJobTypes', () => {
       it('finds unique job types from list of jobs', () => {
         const jobsStore = setupJobsStore()
         jobsStore.jobs = [
@@ -77,10 +77,10 @@ describe('Jobs Store', () => {
           createJob({ jobType: 'jobType1' }),
           createJob({ jobType: 'jobType2' })
         ]
-        expect(jobsStore.UNIQUE_JOB_TYPES).toEqual(['jobType1', 'jobType2'])
+        expect(jobsStore.uniqueJobTypes).toEqual(['jobType1', 'jobType2'])
       })
     })
-    describe('FILTERED_JOBS_BY_JOB_TYPE', () => {
+    describe('filteredJobs_BY_JOB_TYPE', () => {
       it('returns a list of jobs filtered by job type', () => {
         const jobsStore = setupJobsStore()
         jobsStore.jobs = [
@@ -90,7 +90,7 @@ describe('Jobs Store', () => {
         ]
         const userStore = useUserStore()
         userStore.selectedJobTypes = ['jobType1', 'jobType3']
-        const filteredJobs = jobsStore.FILTERED_JOBS_BY_JOB_TYPE
+        const filteredJobs = jobsStore.filteredJobs
         expect(filteredJobs).toEqual([jobsStore.jobs[1], jobsStore.jobs[2]])
       })
       describe('when no job types are selected', () => {
@@ -98,7 +98,7 @@ describe('Jobs Store', () => {
           const jobsStore = setupJobsStore()
           const userStore = useUserStore()
           userStore.selectedJobTypes = []
-          const filteredJobs = jobsStore.FILTERED_JOBS_BY_JOB_TYPE
+          const filteredJobs = jobsStore.filteredJobs
           expect(filteredJobs).toEqual(jobsStore.jobs)
         })
       })

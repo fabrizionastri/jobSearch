@@ -1,39 +1,41 @@
-import { defineStore } from 'pinia' // import defineStore function which is used to create the store
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
-export const ADD_SELECTED_ORGANIZATIONS = 'ADD_SELECTED_ORGANIZATIONS'
-export const ADD_SELECTED_JOB_TYPES = 'ADD_SELECTED_JOB_TYPES'
-export const ADD_SELECTED_DEGREES = 'ADD_SELECTED_DEGREES'
+export const useUserStore = defineStore('user', () => {
+  // State
 
-export interface UserState {
-  isLoggedIn: boolean
-  selectedOrganizations: string[]
-  selectedJobTypes: string[]
-  selectedDegrees: string[]
-}
+  const isLoggedIn = ref<boolean>(false)
+  const selectedOrganizations = ref<string[]>([])
+  const selectedJobTypes = ref<string[]>([])
+  const selectedDegrees = ref<string[]>([])
 
-// defineStore function takes two arguments: the name of the store and an optional function that returns the initial state of the store
-export const useUserStore = defineStore('user', {
-  state: (): UserState => ({
-    isLoggedIn: false,
-    selectedOrganizations: [],
-    selectedJobTypes: [],
-    selectedDegrees: []
-  }),
-  actions: {
-    loginUser() {
-      this.isLoggedIn = true
-    },
-    logoutUser() {
-      this.isLoggedIn = false
-    },
-    [ADD_SELECTED_ORGANIZATIONS](organizations: string[]) {
-      this.selectedOrganizations = organizations
-    },
-    [ADD_SELECTED_JOB_TYPES](jobTypes: string[]) {
-      this.selectedJobTypes = jobTypes
-    },
-    [ADD_SELECTED_DEGREES](degrees: string[]) {
-      this.selectedDegrees = degrees
-    }
+  // Actions
+  const loginUser = () => {
+    isLoggedIn.value = true
+  }
+  const logoutUser = () => {
+    isLoggedIn.value = false
+  }
+  const addSelectedOrganization = (organizations: string[]) => {
+    selectedOrganizations.value = organizations
+  }
+  const addSelectedJobType = (jobTypes: string[]) => {
+    selectedJobTypes.value = jobTypes
+  }
+  const addSelectedDegree = (degrees: string[]) => {
+    selectedDegrees.value = degrees
+  }
+
+  // Return
+  return {
+    isLoggedIn,
+    selectedOrganizations,
+    selectedJobTypes,
+    selectedDegrees,
+    loginUser,
+    logoutUser,
+    addSelectedDegree,
+    addSelectedJobType,
+    addSelectedOrganization
   }
 })

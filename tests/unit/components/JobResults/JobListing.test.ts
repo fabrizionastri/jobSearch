@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/vue'
 import JobListing from '@/components/JobResults/JobListing.vue'
 import { RouterLinkStub } from '@vue/test-utils'
 
-import createJob from 'tests/utils/createJobs'
 import type { Job } from '@/api/types'
+import { createJob } from 'tests/utils/createJob'
 
 describe('JobListing.vue', () => {
   const renderJobListing = (jobProps: Partial<Job>) => {

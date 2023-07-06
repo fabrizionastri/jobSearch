@@ -16,18 +16,18 @@
       /> -->
       <JobFiltersSidebarCheckboxGroup
         header="Organizations"
-        :unique-values="UNIQUE_ORGANIZATIONS"
-        :action="userStore.ADD_SELECTED_ORGANIZATIONS"
+        :unique-values="uniqueOrganizations"
+        :action="userStore.addSelectedOrganization"
       />
       <JobFiltersSidebarCheckboxGroup
         header="JobTypes"
-        :unique-values="UNIQUE_JOB_TYPES"
-        :action="userStore.ADD_SELECTED_JOB_TYPES"
+        :unique-values="uniqueJobTypes"
+        :action="userStore.addSelectedJobType"
       />
       <JobFiltersSidebarCheckboxGroup
         header="Degrees"
-        :unique-values="UNIQUE_DEGREES"
-        :action="userStore.ADD_SELECTED_DEGREES"
+        :unique-values="uniqueDegrees"
+        :action="userStore.addSelectedDegree"
       />
       <!--  <CollapsibleAccordion />
       <CollapsibleAccordion header="Coco pop"> Test content from </CollapsibleAccordion> -->
@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import ActionButton from '@/components/Shared/ActionButton.vue'
 /* import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue'
-import JobFiltersSidebarJobTypes from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue' */
+import JobFiltersSidaebarJobTypes from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue' */
 // import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue'
 
@@ -46,9 +46,9 @@ import { computed } from 'vue'
 import { useJobsStore } from '@/stores/jobs'
 
 const jobsStore = useJobsStore()
-const UNIQUE_ORGANIZATIONS = computed(() => jobsStore.UNIQUE_ORGANIZATIONS)
-const UNIQUE_JOB_TYPES = computed(() => jobsStore.UNIQUE_JOB_TYPES)
-const UNIQUE_DEGREES = computed((): string[] => jobsStore.UNIQUE_DEGREES)
+const uniqueOrganizations = computed(() => jobsStore.uniqueOrganizations)
+const uniqueJobTypes = computed(() => jobsStore.uniqueJobTypes)
+const uniqueDegrees = computed((): string[] => jobsStore.uniqueDegrees)
 
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()

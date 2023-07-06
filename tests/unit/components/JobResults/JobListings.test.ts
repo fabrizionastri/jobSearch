@@ -5,8 +5,6 @@ import { useRoute } from 'vue-router'
 
 vi.mock('vue-router')
 import type { Mock } from 'vitest'
-import createJob from 'tests/utils/createJobs'
-import type { Job } from '@/api/types'
 const useRouteMock = useRoute as Mock
 
 import JobListings from '@/components/JobResults/JobListings.vue'
@@ -17,7 +15,7 @@ describe('JobListings', () => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
     // @ts-expect-error
-    jobsStore.FILTERED_JOBS = Array(15).fill({})
+    jobsStore.filteredJobs = Array(15).fill({})
     render(JobListings, {
       global: {
         plugins: [pinia],
@@ -30,14 +28,14 @@ describe('JobListings', () => {
   it('fetches jobs', () => {
     useRouteMock.mockReturnValue({ query: {} })
     const { jobsStore } = renderJobListings()
-    expect(jobsStore.FETCH_JOBS).toHaveBeenCalled()
+    expect(jobsStore.fetchJobs).toHaveBeenCalled()
   })
 
   it('displays maximum of 10 jobs', async () => {
     useRouteMock.mockReturnValue({ query: { page: '1' } })
     const { jobsStore } = renderJobListings()
     // @ts-expect-error
-    jobsStore.FILTERED_JOBS = Array(15).fill({})
+    jobsStore.filteredJobs = Array(15).fill({})
     const jobListings = await screen.findAllByRole('listitem')
     expect(jobListings).toHaveLength(10)
   })
@@ -70,7 +68,7 @@ describe('JobListings', () => {
 
       const { jobsStore } = renderJobListings()
       // @ts-expect-error
-      jobsStore.FILTERED_JOBS = Array(15).fill({})
+      jobsStore.filteredJobs = Array(15).fill({})
 
       await screen.findAllByRole('listitem')
       const previousLink = screen.queryByRole('link', { name: /previous/i })
@@ -82,7 +80,7 @@ describe('JobListings', () => {
 
       const { jobsStore } = renderJobListings()
       // @ts-expect-error
-      jobsStore.FILTERED_JOBS = Array(15).fill({})
+      jobsStore.filteredJobs = Array(15).fill({})
 
       await screen.findAllByRole('listitem')
       const nextLink = screen.getAllByRole('link', { name: /Next/i })
@@ -96,7 +94,7 @@ describe('JobListings', () => {
 
       const { jobsStore } = renderJobListings()
       // @ts-expect-error
-      jobsStore.FILTERED_JOBS = Array(15).fill({})
+      jobsStore.filteredJobs = Array(15).fill({})
 
       await screen.findAllByRole('listitem')
       const nextLink = screen.queryByRole('link', { name: /Next/i })
@@ -108,7 +106,7 @@ describe('JobListings', () => {
 
       const { jobsStore } = renderJobListings()
       // @ts-expect-error
-      jobsStore.FILTERED_JOBS = Array(15).fill({})
+      jobsStore.filteredJobs = Array(15).fill({})
 
       await screen.findAllByRole('listitem')
       const previousLink = screen.getAllByRole('link', { name: /Previous/i })

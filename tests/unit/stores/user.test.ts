@@ -36,10 +36,10 @@ describe('User Store', () => {
       expect(userStore.isLoggedIn).toBe(false)
     })
 
-    describe('ADD_SELECTED_ORGANIZATION', () => {
+    describe('addSelectedOrganization', () => {
       it('adds organization when user clicks on a empty checkbox', () => {
         const userStore = useUserStore()
-        userStore.ADD_SELECTED_ORGANIZATIONS(['Org1', 'Org2'])
+        userStore.addSelectedOrganization(['Org1', 'Org2'])
         expect(userStore.selectedOrganizations).toEqual(['Org1', 'Org2'])
       })
     })
