@@ -24,6 +24,11 @@
         :unique-values="UNIQUE_JOB_TYPES"
         :action="userStore.ADD_SELECTED_JOB_TYPES"
       />
+      <JobFiltersSidebarCheckboxGroup
+        header="Degrees"
+        :unique-values="UNIQUE_DEGREES"
+        :action="userStore.ADD_SELECTED_DEGREES"
+      />
       <!--  <CollapsibleAccordion />
       <CollapsibleAccordion header="Coco pop"> Test content from </CollapsibleAccordion> -->
     </section>
@@ -43,6 +48,7 @@ import { useJobsStore } from '@/stores/jobs'
 const jobsStore = useJobsStore()
 const UNIQUE_ORGANIZATIONS = computed(() => jobsStore.UNIQUE_ORGANIZATIONS)
 const UNIQUE_JOB_TYPES = computed(() => jobsStore.UNIQUE_JOB_TYPES)
+const UNIQUE_DEGREES = computed(() => jobsStore.UNIQUE_DEGREES)
 
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()

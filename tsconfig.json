@@ -1,6 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "tests/**/*"],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "tests/**/*",
+    "_playgrounds/jobs-simplified.js"
+  ],
   "exclude": [],
   "compilerOptions": {
     "composite": true,
