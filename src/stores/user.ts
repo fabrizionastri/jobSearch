@@ -26,6 +26,12 @@ export const useUserStore = defineStore('user', () => {
     selectedDegrees.value = degrees
   }
 
+  const clearFilters = () => {
+    selectedOrganizations.value = []
+    selectedJobTypes.value = []
+    selectedDegrees.value = []
+  }
+
   // Return
   return {
     isLoggedIn,
@@ -36,6 +42,7 @@ export const useUserStore = defineStore('user', () => {
     logoutUser,
     addSelectedDegree,
     addSelectedJobType,
-    addSelectedOrganization
+    addSelectedOrganization,
+    clearFilters
   }
 })

@@ -43,5 +43,18 @@ describe('User Store', () => {
         expect(userStore.selectedOrganizations).toEqual(['Org1', 'Org2'])
       })
     })
+
+    describe('clearFilters', () => {
+      it('clears all filters', () => {
+        const userStore = useUserStore()
+        userStore.selectedOrganizations = ['plop']
+        userStore.selectedJobTypes = ['plop']
+        userStore.selectedDegrees = ['plop']
+        userStore.clearFilters()
+        expect(userStore.selectedOrganizations).toEqual([])
+        expect(userStore.selectedJobTypes).toEqual([])
+        expect(userStore.selectedDegrees).toEqual([])
+      })
+    })
   })
 })
