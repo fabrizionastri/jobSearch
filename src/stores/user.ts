@@ -33,7 +33,7 @@ export const useUserStore = defineStore('user', {
       this.selectedJobTypes = jobTypes
     },
     [ADD_SELECTED_DEGREES](degrees: string[]) {
-      this.selectedJobTypes = degrees
+      this.selectedDegrees = degrees
     }
   }
 })

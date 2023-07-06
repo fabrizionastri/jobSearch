@@ -3,7 +3,6 @@ import { defineStore } from 'pinia'
 
 import getDegrees from '@/api/getDegrees'
 import type { Degree } from '@/api/types'
-import { createDegree } from 'tests/utils/createDegree'
 
 export const useDegreesStore = defineStore('degrees', () => {
   const degrees = ref<Degree[]>([])
@@ -13,7 +12,7 @@ export const useDegreesStore = defineStore('degrees', () => {
     degrees.value = receivedDegrees
   }
 
-  const UNIQUE_DEGREES = computed(() => degrees.value.map((degree) => degree.degree))
+  const UNIQUE_DEGREES: string[] = computed(() => degrees.value.map((degree) => degree.degree))
 
   return { degrees, FETCH_DEGREES, UNIQUE_DEGREES }
 })

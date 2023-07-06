@@ -8,17 +8,22 @@ describe('User Store', () => {
   beforeEach(() => {
     setActivePinia(createPinia()) // create a new Pinia store before each test, so that the tests are independent of each other, and the state of the store is reset. This is required because the createPinia() of the main.js file is not executed in the test environment
   })
+  describe('state', () => {
+    it('should initially have isLoggedIn set to false', () => {
+      const userStore = useUserStore()
+      expect(userStore.isLoggedIn).toBe(false)
+    })
 
-  it('should initially have isLoggedIn set to false', () => {
-    const userStore = useUserStore()
-    expect(userStore.isLoggedIn).toBe(false)
+    it('stores organizations that the user wants to filter jobs by', () => {
+      const userStore = useUserStore()
+      expect(userStore.selectedOrganizations).toEqual([])
+    })
+
+    it('stores degrees that the user wants to filter jobs by', () => {
+      const userStore = useUserStore()
+      expect(userStore.selectedDegrees).toEqual([])
+    })
   })
-
-  it('stores organizations that the user wants to filter jobs by', () => {
-    const userStore = useUserStore()
-    expect(userStore.selectedOrganizations).toEqual([])
-  })
-
   describe('actions', () => {
     it('should set isLoggedIn to true when loginUser is called', () => {
       const userStore = useUserStore()

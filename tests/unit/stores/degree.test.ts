@@ -42,9 +42,12 @@ describe('Degree Store', () => {
     describe('UNIQUE_DEGREES', () => {
       it('should return the list of degrees', async () => {
         const degreesStore = useDegreesStore()
-        degreesStore.degrees = [createDegree({ degree: 'testDegree' })]
+        degreesStore.degrees = [
+          createDegree({ degree: 'testDegree1' }),
+          createDegree({ degree: 'testDegree2' })
+        ]
         const result = await degreesStore.UNIQUE_DEGREES
-        expect(result).toEqual(['testDegree'])
+        expect(result).toEqual(['testDegree1', 'testDegree2'])
       })
     })
   })

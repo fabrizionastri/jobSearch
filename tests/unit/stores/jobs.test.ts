@@ -4,7 +4,7 @@ import { useUserStore } from '../../../src/stores/user'
 import axios from 'axios'
 
 import { createPinia, setActivePinia } from 'pinia'
-import createJob from 'tests/utils/createJobs'
+import { createJob } from 'tests/utils/createJob'
 vi.mock('axios')
 
 const axiosGetMock = axios.get as Mock

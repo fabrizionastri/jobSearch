@@ -41,18 +41,18 @@ export const useJobsStore = defineStore('jobs', {
       return [...uniqueOrganizations].sort()
     },
     [UNIQUE_JOB_TYPES](state) {
-      const uniqueJobTypes = new Set()
+      const uniqueJobTypes = new Set<string>()
       state.jobs.forEach((job) => {
         uniqueJobTypes.add(job.jobType)
       })
       return [...uniqueJobTypes].sort()
     },
     [UNIQUE_DEGREES](state) {
-      const uniqueJobTypes = new Set()
+      const uniqueDegrees = new Set<string>()
       state.jobs.forEach((job) => {
-        uniqueJobTypes.add(job.degree)
+        uniqueDegrees.add(job.degree)
       })
-      return [...uniqueJobTypes].sort()
+      return [...uniqueDegrees].sort()
     },
     [FILTERED_JOBS_BY_ORGANIZATION](state) {
       // return a list of jobs filtered by the users.selectedOrganizations list, or return all jobs if the list is empty
@@ -69,7 +69,7 @@ export const useJobsStore = defineStore('jobs', {
       return state.jobs.filter((job) => selectedJobTypes.includes(job.jobType))
     },
     [FILTERED_JOBS_BY_DEGREE](state) {
-      // return a list of jobs filtered by the users.selectedJobTypes list, or return all jobs if the list is empty
+      // return a list of jobs filtered by the users.selectedDegrees list, or return all jobs if the list is empty
       const userStore = useUserStore()
       const selectedDegrees = userStore.selectedDegrees
       if (selectedDegrees.length === 0) return state.jobs
@@ -81,20 +81,12 @@ export const useJobsStore = defineStore('jobs', {
       const selectedOrganizations = userStore.selectedOrganizations
       const selectedJobTypes = userStore.selectedJobTypes
       const selectedDegrees = userStore.selectedDegrees
-      if (
-        selectedOrganizations.length === 0 &&
-        selectedJobTypes.length === 0 &&
-        selectedDegrees.length === 0
-      )
-        return state.jobs
-      if (selectedOrganizations.length === 0) return this[FILTERED_JOBS_BY_JOB_TYPE]
-      if (selectedJobTypes.length === 0) return this[FILTERED_JOBS_BY_ORGANIZATION]
-      if (selectedDegrees.length === 0) return this[FILTERED_JOBS_BY_DEGREE]
+
       return state.jobs.filter(
         (job) =>
-          selectedOrganizations.includes(job.organization) &&
-          selectedJobTypes.includes(job.jobType) &&
-          selectedDegrees.includes(job.degree)
+          (!selectedOrganizations.length || selectedOrganizations.includes(job.organization)) &&
+          (!selectedJobTypes.length || selectedJobTypes.includes(job.jobType)) &&
+          (!selectedDegrees.length || selectedDegrees.includes(job.degree))
       )
     }
   }

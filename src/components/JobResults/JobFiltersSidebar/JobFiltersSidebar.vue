@@ -48,7 +48,7 @@ import { useJobsStore } from '@/stores/jobs'
 const jobsStore = useJobsStore()
 const UNIQUE_ORGANIZATIONS = computed(() => jobsStore.UNIQUE_ORGANIZATIONS)
 const UNIQUE_JOB_TYPES = computed(() => jobsStore.UNIQUE_JOB_TYPES)
-const UNIQUE_DEGREES = computed(() => jobsStore.UNIQUE_DEGREES)
+const UNIQUE_DEGREES = computed((): string[] => jobsStore.UNIQUE_DEGREES)
 
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
