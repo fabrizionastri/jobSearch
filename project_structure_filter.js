@@ -25,7 +25,6 @@ input.on('data', (chunk) => {
   const lines = chunk.toString().split('\n')
   // remove the last line if it's empty
 
-
   const filteredLines = lines.filter((line) => {
     if (line.startsWith('--- File: ')) {
       const filePath = line.slice('--- File: '.length).trim()

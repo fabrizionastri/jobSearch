@@ -23,7 +23,13 @@ describe('User Store', () => {
       const userStore = useUserStore()
       expect(userStore.selectedDegrees).toEqual([])
     })
+
+    it('stores the skills that the user wants to filter jobs by', () => {
+      const userStore = useUserStore()
+      expect(userStore.skillsSearchTerm).toEqual('')
+    })
   })
+
   describe('actions', () => {
     it('should set isLoggedIn to true when loginUser is called', () => {
       const userStore = useUserStore()
@@ -41,6 +47,14 @@ describe('User Store', () => {
         const userStore = useUserStore()
         userStore.addSelectedOrganization(['Org1', 'Org2'])
         expect(userStore.selectedOrganizations).toEqual(['Org1', 'Org2'])
+      })
+
+      describe('addSkillsSearchTerm', () => {
+        it('adds skill when user clicks on a empty checkbox', () => {
+          const userStore = useUserStore()
+          userStore.addSkillsSearchTerm('Skill1')
+          expect(userStore.skillsSearchTerm).toEqual('Skill1')
+        })
       })
     })
 

@@ -8,6 +8,7 @@ export const useUserStore = defineStore('user', () => {
   const selectedOrganizations = ref<string[]>([])
   const selectedJobTypes = ref<string[]>([])
   const selectedDegrees = ref<string[]>([])
+  const skillsSearchTerm = ref<string>('')
 
   // Actions
   const loginUser = () => {
@@ -25,11 +26,15 @@ export const useUserStore = defineStore('user', () => {
   const addSelectedDegree = (degrees: string[]) => {
     selectedDegrees.value = degrees
   }
+  const addSkillsSearchTerm = (skill: string) => {
+    skillsSearchTerm.value = skill
+  }
 
   const clearFilters = () => {
     selectedOrganizations.value = []
     selectedJobTypes.value = []
     selectedDegrees.value = []
+    skillsSearchTerm.value = ''
   }
 
   // Return
@@ -38,11 +43,13 @@ export const useUserStore = defineStore('user', () => {
     selectedOrganizations,
     selectedJobTypes,
     selectedDegrees,
+    skillsSearchTerm,
     loginUser,
     logoutUser,
     addSelectedDegree,
     addSelectedJobType,
     addSelectedOrganization,
-    clearFilters
+    clearFilters,
+    addSkillsSearchTerm
   }
 })
