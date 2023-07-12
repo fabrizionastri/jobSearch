@@ -8,7 +8,8 @@
           <ActionButton text="Clear filters" type="secondary" @click="userStore.clearFilters" />
         </div>
       </div>
-      <SkillsInput />
+      <TitleInput />
+      <QualificationInput />
       <collapsible-accordion header="Organizations">
         <OrganizationsCheckBoxes />
       </collapsible-accordion>
@@ -28,7 +29,8 @@ import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 import OrganizationsCheckBoxes from '@/components/JobResults/JobFiltersSidebar/OrganizationsCheckBoxes.vue'
 import JobTypesCheckBoxes from '@/components/JobResults/JobFiltersSidebar/JobTypesCheckBoxes.vue'
 import DegreesCheckBoxes from '@/components/JobResults/JobFiltersSidebar/DegreesCheckBoxes.vue'
-import SkillsInput from '@/components/JobResults/JobFiltersSidebar/SkillsInput.vue'
+import TitleInput from '@/components/JobResults/JobFiltersSidebar/TitleInput.vue'
+import QualificationInput from '@/components/JobResults/JobFiltersSidebar/QualificationInput.vue'
 
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()

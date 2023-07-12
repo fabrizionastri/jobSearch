@@ -24,9 +24,9 @@ describe('User Store', () => {
       expect(userStore.selectedDegrees).toEqual([])
     })
 
-    it('stores the skills that the user wants to filter jobs by', () => {
+    it('stores the qualifications that the user wants to filter jobs by', () => {
       const userStore = useUserStore()
-      expect(userStore.skillsSearchTerm).toEqual('')
+      expect(userStore.searchQualification).toEqual('')
     })
   })
 
@@ -49,11 +49,11 @@ describe('User Store', () => {
         expect(userStore.selectedOrganizations).toEqual(['Org1', 'Org2'])
       })
 
-      describe('addSkillsSearchTerm', () => {
-        it('adds skill when user clicks on a empty checkbox', () => {
+      describe('setSearchQualification', () => {
+        it('adds qualification when user clicks on a empty checkbox', () => {
           const userStore = useUserStore()
-          userStore.addSkillsSearchTerm('Skill1')
-          expect(userStore.skillsSearchTerm).toEqual('Skill1')
+          userStore.setSearchQualification('Qualification1')
+          expect(userStore.searchQualification).toEqual('Qualification1')
         })
       })
     })

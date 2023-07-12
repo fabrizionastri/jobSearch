@@ -6,14 +6,16 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue'
 
-import { computed } from 'vue'
-
 import { useDegreesStore } from '@/stores/degrees'
+import { useUserStore } from '@/stores/user'
+
 const degreesStore = useDegreesStore()
+
 const uniqueDegrees = computed((): string[] => degreesStore.uniqueDegrees)
 
-import { useUserStore } from '@/stores/user'
+console.log('uniqueDegrees:', uniqueDegrees.value)
 const userStore = useUserStore()
 </script>

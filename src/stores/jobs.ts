@@ -45,11 +45,20 @@ export const useJobsStore = defineStore('jobs', () => {
     const selectedOrganizations = userStore.selectedOrganizations
     const selectedJobTypes = userStore.selectedJobTypes
     const selectedDegrees = userStore.selectedDegrees
+    const searchTitle = userStore.searchTitle
+    const searchQualification = userStore.searchQualification
     return jobs.value.filter(
       (job) =>
         (!selectedOrganizations.length || selectedOrganizations.includes(job.organization)) &&
         (!selectedJobTypes.length || selectedJobTypes.includes(job.jobType)) &&
-        (!selectedDegrees.length || selectedDegrees.includes(job.degree))
+        (!selectedDegrees.length || selectedDegrees.includes(job.degree)) &&
+        job.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
+        (job.minimumQualifications.some((qualification) =>
+          qualification.toLowerCase().includes(searchQualification.toLowerCase())
+        ) ||
+          job.preferredQualifications.some((qualification) =>
+            qualification.toLowerCase().includes(searchQualification.toLowerCase())
+          ))
     )
   })
 

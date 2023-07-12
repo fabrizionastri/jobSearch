@@ -68,7 +68,6 @@ describe('Jobs Store', () => {
         })
       })
     })
-
     describe('uniqueJobTypes', () => {
       it('finds unique job types from list of jobs', () => {
         const jobsStore = setupJobsStore()
@@ -101,6 +100,46 @@ describe('Jobs Store', () => {
           const filteredJobs = jobsStore.filteredJobs
           expect(filteredJobs).toEqual(jobsStore.jobs)
         })
+      })
+    })
+    describe('searchQualification', () => {
+      let jobsStore: any
+      let userStore: any
+      beforeEach(() => {
+        jobsStore = useJobsStore()
+        userStore = useUserStore()
+        jobsStore.jobs = [
+          createJob({
+            id: 1,
+            minimumQualifications: ['You need to have qual1', 'plop'],
+            preferredQualifications: ['You need to have qual2', 'plop']
+          }),
+          createJob({
+            id: 2,
+            minimumQualifications: ['You need to have qual3', 'Zut'],
+            preferredQualifications: ['You need to have qual1', 'Zut']
+          }),
+          createJob({
+            id: 4,
+            minimumQualifications: ['plop', 'You need to have qual2'],
+            preferredQualifications: ['You need to have qual3', 'Zut']
+          })
+        ]
+      })
+
+      it('filters job by exact match, even with different casing', () => {
+        userStore.setSearchQualification('zuT')
+        expect(jobsStore.filteredJobs).toEqual([jobsStore.jobs[1], jobsStore.jobs[2]])
+      })
+
+      it('filters job by term included in string', () => {
+        userStore.setSearchQualification('qual1')
+        expect(jobsStore.filteredJobs).toEqual([jobsStore.jobs[0], jobsStore.jobs[1]])
+      })
+
+      it('returns all jobs is filter is empty', () => {
+        userStore.setSearchQualification('')
+        expect(jobsStore.filteredJobs).toEqual(jobsStore.jobs)
       })
     })
   })
