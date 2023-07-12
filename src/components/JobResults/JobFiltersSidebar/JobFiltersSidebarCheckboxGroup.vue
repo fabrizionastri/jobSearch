@@ -24,11 +24,6 @@ import { useUserStore } from '@/stores/user'
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
-  header: {
-    type: String,
-    required: true,
-    default: 'Default Header'
-  },
   uniqueValues: {
     type: Array<string>,
     required: true
