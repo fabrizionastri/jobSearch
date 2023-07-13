@@ -1,6 +1,6 @@
 export interface Job {
   id: number
-  title: string
+  jobTitle: string
   organization: string
   degree: string
   jobType: string

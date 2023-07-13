@@ -21,7 +21,7 @@ describe('JobListing.vue', () => {
   }
 
   it('renders job title', () => {
-    renderJobListing({ title: 'Vue Programmer' })
+    renderJobListing({ jobTitle: 'Vue Programmer' })
     expect(screen.getByText('Vue Programmer')).toBeInTheDocument()
   })
   it('renders organization', () => {

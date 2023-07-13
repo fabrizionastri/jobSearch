@@ -2,7 +2,7 @@ import type { Job } from '@/api/types'
 
 export const createJob = (job: Partial<Job> = {}): Job => ({
   id: 1,
-  title: 'Angular Developer',
+  jobTitle: 'Angular Developer',
   organization: 'Vue and Me',
   degree: "Master's",
   jobType: 'Intern',

@@ -45,21 +45,29 @@ export const useJobsStore = defineStore('jobs', () => {
     const selectedOrganizations = userStore.selectedOrganizations
     const selectedJobTypes = userStore.selectedJobTypes
     const selectedDegrees = userStore.selectedDegrees
-    const searchTitle = userStore.searchTitle
+    const searchJobTitle = userStore.searchJobTitle
+    console.log('searchJobTitle check:', searchJobTitle)
     const searchQualification = userStore.searchQualification
-    return jobs.value.filter(
-      (job) =>
+    console.log('searchQualification check:', searchQualification)
+
+    return jobs.value.filter((job) => {
+      const check =
         (!selectedOrganizations.length || selectedOrganizations.includes(job.organization)) &&
         (!selectedJobTypes.length || selectedJobTypes.includes(job.jobType)) &&
         (!selectedDegrees.length || selectedDegrees.includes(job.degree)) &&
-        job.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
+        (!searchJobTitle ||
+          searchJobTitle === '' ||
+          job.jobTitle.toLowerCase().includes(searchJobTitle.toLowerCase())) &&
         (job.minimumQualifications.some((qualification) =>
           qualification.toLowerCase().includes(searchQualification.toLowerCase())
         ) ||
           job.preferredQualifications.some((qualification) =>
             qualification.toLowerCase().includes(searchQualification.toLowerCase())
           ))
-    )
+      console.log('Thruthy check:', check)
+
+      return check
+    })
   })
 
   // Return

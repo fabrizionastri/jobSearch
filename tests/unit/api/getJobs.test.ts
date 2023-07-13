@@ -10,8 +10,8 @@ describe('getJobs', () => {
   beforeEach(() => {
     axiosGetMock.mockResolvedValue({
       data: [
-        { id: 1, title: 'Job 1' },
-        { id: 2, title: 'Job 2' }
+        { id: 1, jobTitle: 'Job 1' },
+        { id: 2, jobTitle: 'Job 2' }
       ]
     })
   })
@@ -24,8 +24,8 @@ describe('getJobs', () => {
   it('extracts jobs from response', async () => {
     const response = await getJobs()
     expect(response).toEqual([
-      { id: 1, title: 'Job 1' },
-      { id: 2, title: 'Job 2' }
+      { id: 1, jobTitle: 'Job 1' },
+      { id: 2, jobTitle: 'Job 2' }
     ])
   })
 })

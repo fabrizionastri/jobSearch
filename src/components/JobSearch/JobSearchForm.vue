@@ -15,8 +15,8 @@
 
     <div class="flex flex-1 h-full text-base font-light flex-nowrap">
       <div class="relative flex items-center flex-1 h-full pr-3">
-        <label for="role" class="absolute left-0 -top-8">Role</label>
-        <text-input id="role" v-model="role" placeholder="Software engineer" />
+        <label for="jobTitle" class="absolute left-0 -top-8">Job title</label>
+        <text-input id="jobTitle" v-model="jobTitle" placeholder="Software engineer" />
       </div>
       <span
         class="flex items-center h-full p-3 border-l border-r border-solid border-brand-gray-3 bg-brand-gray-2"
@@ -38,7 +38,7 @@ import { useRouter } from 'vue-router'
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import TextInput from '@/components/Shared/TextInput.vue'
 
-const role = ref('')
+const jobTitle = ref('')
 const location = ref('')
 
 const router = useRouter()
@@ -46,7 +46,7 @@ const router = useRouter()
 const searchForJobs = () => {
   router.push({
     name: 'JobResults',
-    query: { role: role.value, location: location.value }
+    query: { jobTitle: jobTitle.value, location: location.value }
   })
 }
 </script>

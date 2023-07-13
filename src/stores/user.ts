@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', () => {
   const selectedOrganizations = ref<string[]>([])
   const selectedJobTypes = ref<string[]>([])
   const selectedDegrees = ref<string[]>([])
-  const searchTitle = ref<string>('')
+  const searchJobTitle = ref<string>('')
   const searchQualification = ref<string>('')
 
   // Actions
@@ -27,8 +27,8 @@ export const useUserStore = defineStore('user', () => {
   const addSelectedDegree = (degrees: string[]) => {
     selectedDegrees.value = degrees
   }
-  const setSearchTitle = (title: string) => {
-    searchTitle.value = title
+  const setSearchJobTitle = (jobTitle: string) => {
+    searchJobTitle.value = jobTitle
   }
   const setSearchQualification = (qualification: string) => {
     searchQualification.value = qualification
@@ -38,7 +38,7 @@ export const useUserStore = defineStore('user', () => {
     selectedOrganizations.value = []
     selectedJobTypes.value = []
     selectedDegrees.value = []
-    searchTitle.value = ''
+    searchJobTitle.value = ''
     searchQualification.value = ''
   }
 
@@ -50,12 +50,12 @@ export const useUserStore = defineStore('user', () => {
     selectedOrganizations,
     selectedJobTypes,
     selectedDegrees,
-    searchTitle,
+    searchJobTitle,
     searchQualification,
     addSelectedDegree,
     addSelectedJobType,
     addSelectedOrganization,
-    setSearchTitle,
+    setSearchJobTitle,
     setSearchQualification,
     clearFilters
   }

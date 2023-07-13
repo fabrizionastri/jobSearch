@@ -8,7 +8,7 @@
           <ActionButton text="Clear filters" type="secondary" @click="userStore.clearFilters" />
         </div>
       </div>
-      <TitleInput />
+      <JobTitleInput />
       <QualificationInput />
       <collapsible-accordion header="Organizations">
         <OrganizationsCheckBoxes />
@@ -24,14 +24,20 @@
 </template>
 
 <script setup lang="ts">
+// import { onMounted } from 'vue'
+// import { useRoute } from 'vue-router'
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 import OrganizationsCheckBoxes from '@/components/JobResults/JobFiltersSidebar/OrganizationsCheckBoxes.vue'
 import JobTypesCheckBoxes from '@/components/JobResults/JobFiltersSidebar/JobTypesCheckBoxes.vue'
 import DegreesCheckBoxes from '@/components/JobResults/JobFiltersSidebar/DegreesCheckBoxes.vue'
-import TitleInput from '@/components/JobResults/JobFiltersSidebar/TitleInput.vue'
+import JobTitleInput from '@/components/JobResults/JobFiltersSidebar/JobTitleInput.vue'
 import QualificationInput from '@/components/JobResults/JobFiltersSidebar/QualificationInput.vue'
-
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
+
+// onMounted = () => {
+//   const route = useRoute()
+//   // update the userStore.searchJobTitle with the query param
+// }
 </script>

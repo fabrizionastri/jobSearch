@@ -3,13 +3,13 @@
     {
       "id": 1,
       "img": "https://images.unsplash.com/photo-1556075798-4825dfaaf498",
-      "title": "Cloud Engineering",
+      "jobTitle": "Cloud Engineering",
       "description": "Build fun stuff in the cloud. It's a lot of fun, we promise!"
     },
     {
       "id": 2,
       "img": "https://images.unsplash.com/photo-1511376777868-611b54f68947",
-      "title": "Executive Leadership",
+      "jobTitle": "Executive Leadership",
       "description": "Be a leader for everyone. Leadership builds character."
     }
   ],
@@ -38,7 +38,7 @@
   "jobs": [
     {
       "id": 1,
-      "title": "Angular Developer",
+      "jobTitle": "Angular Developer",
       "organization": "Vue and Me",
       "degree": "Master's",
       "jobType": "Intern",
@@ -66,7 +66,7 @@
     },
     {
       "id": 2,
-      "title": "Java Coder",
+      "jobTitle": "Java Coder",
       "organization": "VueTube",
       "degree": "Bachelor's",
       "jobType": "Part-time",
@@ -94,7 +94,7 @@
     },
     {
       "id": 3,
-      "title": "Svelte Ninja",
+      "jobTitle": "Svelte Ninja",
       "organization": "Vue Can Do It",
       "degree": "Ph.D.",
       "jobType": "Full-time",
@@ -124,7 +124,7 @@
     },
     {
       "id": 4,
-      "title": "Software Designer",
+      "jobTitle": "Software Designer",
       "organization": "VueTube",
       "degree": "Master's",
       "jobType": "Part-time",
@@ -153,7 +153,7 @@
     },
     {
       "id": 5,
-      "title": "C++ VP",
+      "jobTitle": "C++ VP",
       "organization": "Point of Vue",
       "degree": "Associate",
       "jobType": "Temporary",
@@ -180,7 +180,7 @@
     },
     {
       "id": 6,
-      "title": "Knockout Designer",
+      "jobTitle": "Knockout Designer",
       "organization": "Point of Vue",
       "degree": "Associate",
       "jobType": "Temporary",
@@ -208,7 +208,7 @@
     },
     {
       "id": 7,
-      "title": "Full Stack Coder",
+      "jobTitle": "Full Stack Coder",
       "organization": "Vue Can Do It",
       "degree": "Master's",
       "jobType": "Temporary",
@@ -236,7 +236,7 @@
     },
     {
       "id": 8,
-      "title": "Angular Developer",
+      "jobTitle": "Angular Developer",
       "organization": "Vue and a Half Men",
       "degree": "Pursuing Degree",
       "jobType": "Part-time",
@@ -264,7 +264,7 @@
     },
     {
       "id": 9,
-      "title": "Go Specialist",
+      "jobTitle": "Go Specialist",
       "organization": "VueTube",
       "degree": "Bachelor's",
       "jobType": "Full-time",
@@ -292,7 +292,7 @@
     },
     {
       "id": 10,
-      "title": "Software Supervisor",
+      "jobTitle": "Software Supervisor",
       "organization": "VueTube",
       "degree": "Master's",
       "jobType": "Temporary",
@@ -320,7 +320,7 @@
     },
     {
       "id": 11,
-      "title": "UI Coder",
+      "jobTitle": "UI Coder",
       "organization": "Vue and a Half Men",
       "degree": "Ph.D.",
       "jobType": "Part-time",
@@ -350,7 +350,7 @@
     },
     {
       "id": 12,
-      "title": "CSS VP",
+      "jobTitle": "CSS VP",
       "organization": "Vue Can Do It",
       "degree": "Ph.D.",
       "jobType": "Part-time",
@@ -379,7 +379,7 @@
     },
     {
       "id": 13,
-      "title": "Backbone Lead",
+      "jobTitle": "Backbone Lead",
       "organization": "VueTube",
       "degree": "Master's",
       "jobType": "Intern",
@@ -407,7 +407,7 @@
     },
     {
       "id": 14,
-      "title": "C++ Ninja",
+      "jobTitle": "C++ Ninja",
       "organization": "Et Vue Brute",
       "degree": "Pursuing Degree",
       "jobType": "Part-time",
@@ -437,7 +437,7 @@
     },
     {
       "id": 15,
-      "title": "UI Specialist",
+      "jobTitle": "UI Specialist",
       "organization": "VueTube",
       "degree": "Master's",
       "jobType": "Temporary",
@@ -468,7 +468,7 @@
     },
     {
       "id": 16,
-      "title": "Java Engineer",
+      "jobTitle": "Java Engineer",
       "organization": "VueTube",
       "degree": "Associate",
       "jobType": "Intern",
@@ -498,7 +498,7 @@
     },
     {
       "id": 17,
-      "title": "Backend Developer",
+      "jobTitle": "Backend Developer",
       "organization": "Vue Can Do It",
       "degree": "Bachelor's",
       "jobType": "Intern",
@@ -527,7 +527,7 @@
     },
     {
       "id": 18,
-      "title": "Meteor Developer",
+      "jobTitle": "Meteor Developer",
       "organization": "Vue and Me",
       "degree": "Associate",
       "jobType": "Part-time",
@@ -556,7 +556,7 @@
     },
     {
       "id": 19,
-      "title": "Ember Lead",
+      "jobTitle": "Ember Lead",
       "organization": "VueTube",
       "degree": "Pursuing Degree",
       "jobType": "Temporary",
@@ -587,7 +587,7 @@
     },
     {
       "id": 20,
-      "title": "TypeScript Wizard",
+      "jobTitle": "TypeScript Wizard",
       "organization": "Et Vue Brute",
       "degree": "Associate",
       "jobType": "Intern",
@@ -614,7 +614,7 @@
     },
     {
       "id": 21,
-      "title": "Ruby VP",
+      "jobTitle": "Ruby VP",
       "organization": "Et Vue Brute",
       "degree": "Ph.D.",
       "jobType": "Full-time",
@@ -640,7 +640,7 @@
     },
     {
       "id": 22,
-      "title": "CSS Director",
+      "jobTitle": "CSS Director",
       "organization": "VueTube",
       "degree": "Bachelor's",
       "jobType": "Intern",
@@ -667,7 +667,7 @@
     },
     {
       "id": 23,
-      "title": "Svelte Manager",
+      "jobTitle": "Svelte Manager",
       "organization": "Et Vue Brute",
       "degree": "Ph.D.",
       "jobType": "Full-time",
@@ -693,7 +693,7 @@
     },
     {
       "id": 24,
-      "title": "CSS Associate",
+      "jobTitle": "CSS Associate",
       "organization": "Point of Vue",
       "degree": "Master's",
       "jobType": "Full-time",
@@ -720,7 +720,7 @@
     },
     {
       "id": 25,
-      "title": "Frontend Ninja",
+      "jobTitle": "Frontend Ninja",
       "organization": "Vue and a Half Men",
       "degree": "Associate",
       "jobType": "Temporary",
@@ -746,7 +746,7 @@
     },
     {
       "id": 26,
-      "title": "Ember Lead",
+      "jobTitle": "Ember Lead",
       "organization": "VueTube",
       "degree": "Associate",
       "jobType": "Temporary",
@@ -775,7 +775,7 @@
     },
     {
       "id": 27,
-      "title": "UI Programmer",
+      "jobTitle": "UI Programmer",
       "organization": "Vue Can Do It",
       "degree": "Bachelor's",
       "jobType": "Temporary",
@@ -802,7 +802,7 @@
     },
     {
       "id": 28,
-      "title": "Mobile Programmer",
+      "jobTitle": "Mobile Programmer",
       "organization": "VueTube",
       "degree": "Associate",
       "jobType": "Intern",
@@ -828,7 +828,7 @@
     },
     {
       "id": 29,
-      "title": "Ember Supervisor",
+      "jobTitle": "Ember Supervisor",
       "organization": "VueTube",
       "degree": "Ph.D.",
       "jobType": "Full-time",
@@ -856,7 +856,7 @@
     },
     {
       "id": 30,
-      "title": "JavaScript Ninja",
+      "jobTitle": "JavaScript Ninja",
       "organization": "Vue and Me",
       "degree": "Pursuing Degree",
       "jobType": "Temporary",
@@ -885,7 +885,7 @@
     },
     {
       "id": 31,
-      "title": "Angular 2 Specialist",
+      "jobTitle": "Angular 2 Specialist",
       "organization": "Et Vue Brute",
       "degree": "Ph.D.",
       "jobType": "Temporary",
@@ -912,7 +912,7 @@
     },
     {
       "id": 32,
-      "title": "Ruby VP",
+      "jobTitle": "Ruby VP",
       "organization": "Vue Can Do It",
       "degree": "Bachelor's",
       "jobType": "Temporary",
@@ -940,7 +940,7 @@
     },
     {
       "id": 33,
-      "title": "jQuery Designer",
+      "jobTitle": "jQuery Designer",
       "organization": "Vue and a Half Men",
       "degree": "Pursuing Degree",
       "jobType": "Part-time",
@@ -969,7 +969,7 @@
     },
     {
       "id": 34,
-      "title": "C++ Manager",
+      "jobTitle": "C++ Manager",
       "organization": "Vue Can Do It",
       "degree": "Ph.D.",
       "jobType": "Part-time",
@@ -999,7 +999,7 @@
     },
     {
       "id": 35,
-      "title": "C++ Director",
+      "jobTitle": "C++ Director",
       "organization": "Vue Can Do It",
       "degree": "Associate",
       "jobType": "Part-time",
@@ -1028,7 +1028,7 @@
     },
     {
       "id": 36,
-      "title": "Full Stack VP",
+      "jobTitle": "Full Stack VP",
       "organization": "Vue and Me",
       "degree": "Pursuing Degree",
       "jobType": "Temporary",
@@ -1057,7 +1057,7 @@
     },
     {
       "id": 37,
-      "title": "UI Ninja",
+      "jobTitle": "UI Ninja",
       "organization": "Vue Can Do It",
       "degree": "Bachelor's",
       "jobType": "Intern",
@@ -1083,7 +1083,7 @@
     },
     {
       "id": 38,
-      "title": "Kotlin Specialist",
+      "jobTitle": "Kotlin Specialist",
       "organization": "VueTube",
       "degree": "Master's",
       "jobType": "Temporary",
@@ -1111,7 +1111,7 @@
     },
     {
       "id": 39,
-      "title": "JavaScript Manager",
+      "jobTitle": "JavaScript Manager",
       "organization": "Vue Can Do It",
       "degree": "Ph.D.",
       "jobType": "Part-time",
@@ -1141,7 +1141,7 @@
     },
     {
       "id": 40,
-      "title": "React Lead",
+      "jobTitle": "React Lead",
       "organization": "Vue Can Do It",
       "degree": "Associate",
       "jobType": "Part-time",
@@ -1171,7 +1171,7 @@
     },
     {
       "id": 41,
-      "title": "React Coder",
+      "jobTitle": "React Coder",
       "organization": "Vue and Me",
       "degree": "Bachelor's",
       "jobType": "Intern",
@@ -1198,7 +1198,7 @@
     },
     {
       "id": 42,
-      "title": "Ruby Lead",
+      "jobTitle": "Ruby Lead",
       "organization": "Vue and a Half Men",
       "degree": "Master's",
       "jobType": "Full-time",
@@ -1224,7 +1224,7 @@
     },
     {
       "id": 43,
-      "title": "React Native Ninja",
+      "jobTitle": "React Native Ninja",
       "organization": "VueTube",
       "degree": "Master's",
       "jobType": "Part-time",
@@ -1251,7 +1251,7 @@
     },
     {
       "id": 44,
-      "title": "Mobile Specialist",
+      "jobTitle": "Mobile Specialist",
       "organization": "Vue and Me",
       "degree": "Ph.D.",
       "jobType": "Part-time",
@@ -1281,7 +1281,7 @@
     },
     {
       "id": 45,
-      "title": "Angular 2 Lead",
+      "jobTitle": "Angular 2 Lead",
       "organization": "Et Vue Brute",
       "degree": "Bachelor's",
       "jobType": "Temporary",
@@ -1307,7 +1307,7 @@
     },
     {
       "id": 46,
-      "title": "Kotlin Coder",
+      "jobTitle": "Kotlin Coder",
       "organization": "Vue and a Half Men",
       "degree": "Pursuing Degree",
       "jobType": "Temporary",
@@ -1334,7 +1334,7 @@
     },
     {
       "id": 47,
-      "title": "Frontend Coder",
+      "jobTitle": "Frontend Coder",
       "organization": "Vue and a Half Men",
       "degree": "Ph.D.",
       "jobType": "Intern",
@@ -1360,7 +1360,7 @@
     },
     {
       "id": 48,
-      "title": "Swift Wizard",
+      "jobTitle": "Swift Wizard",
       "organization": "Vue and Me",
       "degree": "Ph.D.",
       "jobType": "Full-time",
@@ -1388,7 +1388,7 @@
     },
     {
       "id": 49,
-      "title": "HTML Programmer",
+      "jobTitle": "HTML Programmer",
       "organization": "VueTube",
       "degree": "Bachelor's",
       "jobType": "Part-time",
@@ -1416,7 +1416,7 @@
     },
     {
       "id": 50,
-      "title": "Go Supervisor",
+      "jobTitle": "Go Supervisor",
       "organization": "Vue and a Half Men",
       "degree": "Bachelor's",
       "jobType": "Intern",
@@ -1445,7 +1445,7 @@
     },
     {
       "id": 51,
-      "title": "Swift Director",
+      "jobTitle": "Swift Director",
       "organization": "Vue Can Do It",
       "degree": "Bachelor's",
       "jobType": "Full-time",
@@ -1471,7 +1471,7 @@
     },
     {
       "id": 52,
-      "title": "C Associate",
+      "jobTitle": "C Associate",
       "organization": "Et Vue Brute",
       "degree": "Master's",
       "jobType": "Full-time",
@@ -1499,7 +1499,7 @@
     },
     {
       "id": 53,
-      "title": "Software Engineer",
+      "jobTitle": "Software Engineer",
       "organization": "Point of Vue",
       "degree": "Associate",
       "jobType": "Full-time",
@@ -1528,7 +1528,7 @@
     },
     {
       "id": 54,
-      "title": "Java Ninja",
+      "jobTitle": "Java Ninja",
       "organization": "Point of Vue",
       "degree": "Pursuing Degree",
       "jobType": "Intern",
@@ -1556,7 +1556,7 @@
     },
     {
       "id": 55,
-      "title": "Go Associate",
+      "jobTitle": "Go Associate",
       "organization": "Et Vue Brute",
       "degree": "Ph.D.",
       "jobType": "Temporary",
@@ -1584,7 +1584,7 @@
     },
     {
       "id": 56,
-      "title": "Software Coder",
+      "jobTitle": "Software Coder",
       "organization": "Et Vue Brute",
       "degree": "Ph.D.",
       "jobType": "Full-time",
@@ -1611,7 +1611,7 @@
     },
     {
       "id": 57,
-      "title": "Full Stack Specialist",
+      "jobTitle": "Full Stack Specialist",
       "organization": "Vue and Me",
       "degree": "Ph.D.",
       "jobType": "Full-time",
@@ -1641,7 +1641,7 @@
     },
     {
       "id": 58,
-      "title": "CSS Supervisor",
+      "jobTitle": "CSS Supervisor",
       "organization": "Vue and a Half Men",
       "degree": "Associate",
       "jobType": "Temporary",
@@ -1671,7 +1671,7 @@
     },
     {
       "id": 59,
-      "title": "Swift Lead",
+      "jobTitle": "Swift Lead",
       "organization": "Vue and a Half Men",
       "degree": "Associate",
       "jobType": "Part-time",
@@ -1701,7 +1701,7 @@
     },
     {
       "id": 60,
-      "title": "Backbone Designer",
+      "jobTitle": "Backbone Designer",
       "organization": "Et Vue Brute",
       "degree": "Associate",
       "jobType": "Intern",
@@ -1728,7 +1728,7 @@
     },
     {
       "id": 61,
-      "title": "Swift Manager",
+      "jobTitle": "Swift Manager",
       "organization": "Vue and a Half Men",
       "degree": "Associate",
       "jobType": "Intern",
@@ -1757,7 +1757,7 @@
     },
     {
       "id": 62,
-      "title": "React Programmer",
+      "jobTitle": "React Programmer",
       "organization": "Et Vue Brute",
       "degree": "Master's",
       "jobType": "Part-time",
@@ -1785,7 +1785,7 @@
     },
     {
       "id": 63,
-      "title": "Angular Supervisor",
+      "jobTitle": "Angular Supervisor",
       "organization": "Vue Can Do It",
       "degree": "Ph.D.",
       "jobType": "Intern",
@@ -1813,7 +1813,7 @@
     },
     {
       "id": 64,
-      "title": "Go VP",
+      "jobTitle": "Go VP",
       "organization": "Vue Can Do It",
       "degree": "Ph.D.",
       "jobType": "Part-time",
@@ -1841,7 +1841,7 @@
     },
     {
       "id": 65,
-      "title": "Full Stack Wizard",
+      "jobTitle": "Full Stack Wizard",
       "organization": "Vue and a Half Men",
       "degree": "Bachelor's",
       "jobType": "Full-time",
@@ -1867,7 +1867,7 @@
     },
     {
       "id": 66,
-      "title": "Meteor Coder",
+      "jobTitle": "Meteor Coder",
       "organization": "Et Vue Brute",
       "degree": "Associate",
       "jobType": "Temporary",
@@ -1894,7 +1894,7 @@
     },
     {
       "id": 67,
-      "title": "jQuery Manager",
+      "jobTitle": "jQuery Manager",
       "organization": "Vue and Me",
       "degree": "Associate",
       "jobType": "Part-time",
@@ -1921,7 +1921,7 @@
     },
     {
       "id": 68,
-      "title": "Meteor Coder",
+      "jobTitle": "Meteor Coder",
       "organization": "Vue Can Do It",
       "degree": "Pursuing Degree",
       "jobType": "Full-time",
@@ -1948,7 +1948,7 @@
     },
     {
       "id": 69,
-      "title": "Java Associate",
+      "jobTitle": "Java Associate",
       "organization": "VueTube",
       "degree": "Ph.D.",
       "jobType": "Part-time",
@@ -1976,7 +1976,7 @@
     },
     {
       "id": 70,
-      "title": "React Native Manager",
+      "jobTitle": "React Native Manager",
       "organization": "Vue and Me",
       "degree": "Pursuing Degree",
       "jobType": "Temporary",
@@ -2006,7 +2006,7 @@
     },
     {
       "id": 71,
-      "title": "HTML Lead",
+      "jobTitle": "HTML Lead",
       "organization": "Vue Can Do It",
       "degree": "Associate",
       "jobType": "Intern",
@@ -2034,7 +2034,7 @@
     },
     {
       "id": 72,
-      "title": "Backend Developer",
+      "jobTitle": "Backend Developer",
       "organization": "Vue and Me",
       "degree": "Associate",
       "jobType": "Full-time",
@@ -2061,7 +2061,7 @@
     },
     {
       "id": 73,
-      "title": "Kotlin Manager",
+      "jobTitle": "Kotlin Manager",
       "organization": "Point of Vue",
       "degree": "Pursuing Degree",
       "jobType": "Temporary",
@@ -2089,7 +2089,7 @@
     },
     {
       "id": 74,
-      "title": "Meteor Ninja",
+      "jobTitle": "Meteor Ninja",
       "organization": "Point of Vue",
       "degree": "Bachelor's",
       "jobType": "Temporary",
@@ -2117,7 +2117,7 @@
     },
     {
       "id": 75,
-      "title": "Software Developer",
+      "jobTitle": "Software Developer",
       "organization": "Vue and a Half Men",
       "degree": "Master's",
       "jobType": "Part-time",
@@ -2146,7 +2146,7 @@
     },
     {
       "id": 76,
-      "title": "Meteor Developer",
+      "jobTitle": "Meteor Developer",
       "organization": "Point of Vue",
       "degree": "Master's",
       "jobType": "Full-time",
@@ -2174,7 +2174,7 @@
     },
     {
       "id": 77,
-      "title": "jQuery Manager",
+      "jobTitle": "jQuery Manager",
       "organization": "VueTube",
       "degree": "Ph.D.",
       "jobType": "Temporary",
@@ -2201,7 +2201,7 @@
     },
     {
       "id": 78,
-      "title": "React Supervisor",
+      "jobTitle": "React Supervisor",
       "organization": "Vue and Me",
       "degree": "Ph.D.",
       "jobType": "Full-time",
@@ -2228,7 +2228,7 @@
     },
     {
       "id": 79,
-      "title": "Java VP",
+      "jobTitle": "Java VP",
       "organization": "Vue and Me",
       "degree": "Associate",
       "jobType": "Part-time",
@@ -2258,7 +2258,7 @@
     },
     {
       "id": 80,
-      "title": "Backbone Director",
+      "jobTitle": "Backbone Director",
       "organization": "Vue and a Half Men",
       "degree": "Master's",
       "jobType": "Temporary",
@@ -2288,7 +2288,7 @@
     },
     {
       "id": 81,
-      "title": "jQuery Lead",
+      "jobTitle": "jQuery Lead",
       "organization": "Et Vue Brute",
       "degree": "Ph.D.",
       "jobType": "Intern",
@@ -2318,7 +2318,7 @@
     },
     {
       "id": 82,
-      "title": "PHP Supervisor",
+      "jobTitle": "PHP Supervisor",
       "organization": "Point of Vue",
       "degree": "Bachelor's",
       "jobType": "Full-time",
@@ -2349,7 +2349,7 @@
     },
     {
       "id": 83,
-      "title": "JavaScript Programmer",
+      "jobTitle": "JavaScript Programmer",
       "organization": "Vue and a Half Men",
       "degree": "Associate",
       "jobType": "Temporary",
@@ -2379,7 +2379,7 @@
     },
     {
       "id": 84,
-      "title": "Knockout Ninja",
+      "jobTitle": "Knockout Ninja",
       "organization": "Vue and a Half Men",
       "degree": "Ph.D.",
       "jobType": "Part-time",
@@ -2410,7 +2410,7 @@
     },
     {
       "id": 85,
-      "title": "Svelte Lead",
+      "jobTitle": "Svelte Lead",
       "organization": "Vue Can Do It",
       "degree": "Associate",
       "jobType": "Part-time",
@@ -2440,7 +2440,7 @@
     },
     {
       "id": 86,
-      "title": "Ember Programmer",
+      "jobTitle": "Ember Programmer",
       "organization": "Et Vue Brute",
       "degree": "Master's",
       "jobType": "Temporary",
@@ -2469,7 +2469,7 @@
     },
     {
       "id": 87,
-      "title": "Software Specialist",
+      "jobTitle": "Software Specialist",
       "organization": "Et Vue Brute",
       "degree": "Bachelor's",
       "jobType": "Temporary",
@@ -2497,7 +2497,7 @@
     },
     {
       "id": 88,
-      "title": "Vue Associate",
+      "jobTitle": "Vue Associate",
       "organization": "Vue and Me",
       "degree": "Associate",
       "jobType": "Part-time",
@@ -2523,7 +2523,7 @@
     },
     {
       "id": 89,
-      "title": "React Native Specialist",
+      "jobTitle": "React Native Specialist",
       "organization": "VueTube",
       "degree": "Master's",
       "jobType": "Temporary",
@@ -2550,7 +2550,7 @@
     },
     {
       "id": 90,
-      "title": "iOS Director",
+      "jobTitle": "iOS Director",
       "organization": "Vue Can Do It",
       "degree": "Associate",
       "jobType": "Full-time",
@@ -2577,7 +2577,7 @@
     },
     {
       "id": 91,
-      "title": "Meteor Lead",
+      "jobTitle": "Meteor Lead",
       "organization": "Vue Can Do It",
       "degree": "Master's",
       "jobType": "Full-time",
@@ -2606,7 +2606,7 @@
     },
     {
       "id": 92,
-      "title": "Backbone Developer",
+      "jobTitle": "Backbone Developer",
       "organization": "Vue and a Half Men",
       "degree": "Bachelor's",
       "jobType": "Temporary",
@@ -2633,7 +2633,7 @@
     },
     {
       "id": 93,
-      "title": "Backend Ninja",
+      "jobTitle": "Backend Ninja",
       "organization": "Point of Vue",
       "degree": "Bachelor's",
       "jobType": "Intern",
@@ -2663,7 +2663,7 @@
     },
     {
       "id": 94,
-      "title": "UI Designer",
+      "jobTitle": "UI Designer",
       "organization": "Point of Vue",
       "degree": "Bachelor's",
       "jobType": "Temporary",
@@ -2690,7 +2690,7 @@
     },
     {
       "id": 95,
-      "title": "Kotlin Engineer",
+      "jobTitle": "Kotlin Engineer",
       "organization": "Et Vue Brute",
       "degree": "Pursuing Degree",
       "jobType": "Intern",
@@ -2718,7 +2718,7 @@
     },
     {
       "id": 96,
-      "title": "React Associate",
+      "jobTitle": "React Associate",
       "organization": "VueTube",
       "degree": "Master's",
       "jobType": "Temporary",
@@ -2748,7 +2748,7 @@
     },
     {
       "id": 97,
-      "title": "Mobile Specialist",
+      "jobTitle": "Mobile Specialist",
       "organization": "Vue and a Half Men",
       "degree": "Ph.D.",
       "jobType": "Temporary",
@@ -2777,7 +2777,7 @@
     },
     {
       "id": 98,
-      "title": "React Native Specialist",
+      "jobTitle": "React Native Specialist",
       "organization": "Point of Vue",
       "degree": "Ph.D.",
       "jobType": "Intern",
@@ -2804,7 +2804,7 @@
     },
     {
       "id": 99,
-      "title": "iOS Lead",
+      "jobTitle": "iOS Lead",
       "organization": "Vue Can Do It",
       "degree": "Ph.D.",
       "jobType": "Full-time",
@@ -2830,7 +2830,7 @@
     },
     {
       "id": 100,
-      "title": "Software Associate",
+      "jobTitle": "Software Associate",
       "organization": "Point of Vue",
       "degree": "Pursuing Degree",
       "jobType": "Temporary",

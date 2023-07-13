@@ -4,14 +4,14 @@ import { createTestingPinia } from '@pinia/testing'
 
 import { useUserStore } from '@/stores/user'
 
-import TitleInput from '@/components/JobResults/JobFiltersSidebar/TitleInput.vue'
+import JobTitleInput from '@/components/JobResults/JobFiltersSidebar/JobTitleInput.vue'
 
 describe('JobFiltersSidebarSkills', () => {
   const renderJobFiltersSidebaSkills = () => {
     const pinia = createTestingPinia()
     const userStore = useUserStore()
 
-    render(TitleInput, {
+    render(JobTitleInput, {
       global: {
         plugins: [pinia]
       }
@@ -22,28 +22,28 @@ describe('JobFiltersSidebarSkills', () => {
 
   it('populates search input from store', async () => {
     const { userStore } = renderJobFiltersSidebaSkills()
-    userStore.searchTitle = 'Programmer'
+    userStore.searchJobTitle = 'Programmer'
     const input = await screen.findByRole<HTMLInputElement>('textbox')
     expect(input.value).toBe('Programmer')
   })
 
   it('writes user input to store', async () => {
     const { userStore } = renderJobFiltersSidebaSkills()
-    userStore.searchTitle = ''
+    userStore.searchJobTitle = ''
     const input = screen.getByRole<HTMLInputElement>('textbox')
     await userEvent.type(input, 'V')
     await userEvent.click(document.body)
 
-    expect(userStore.setSearchTitle).toHaveBeenCalledWith('V')
+    expect(userStore.setSearchJobTitle).toHaveBeenCalledWith('V')
   })
 
   it('removes whitespace from user input', async () => {
     const { userStore } = renderJobFiltersSidebaSkills()
-    userStore.searchTitle = ''
+    userStore.searchJobTitle = ''
     const input = screen.getByRole<HTMLInputElement>('textbox')
     await userEvent.type(input, '   Vue Developer   ')
     await userEvent.click(document.body)
 
-    expect(userStore.setSearchTitle).toHaveBeenCalledWith('Vue Developer')
+    expect(userStore.setSearchJobTitle).toHaveBeenCalledWith('Vue Developer')
   })
 })

@@ -23,7 +23,7 @@
         >
           <img class="object-contain" :src="spotlight.img" />
           <div class="h-48 px-6 py-4 mt-3">
-            <h3 class="text-lg font-medium">{{ spotlight.title }}</h3>
+            <h3 class="text-lg font-medium">{{ spotlight.jobTitle }}</h3>
             <p class="mt-3 text-sm">{{ spotlight.description }}</p>
           </div>
           <router-link to="/jobs/results" class="px-6 pb-4 text-sm text-center text-brand-blue-1"

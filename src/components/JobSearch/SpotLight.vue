@@ -15,7 +15,7 @@ import axios from 'axios'
 interface Spotlight {
   id: number
   img: string
-  title: string
+  jobTitle: string
   description: string
 }
 

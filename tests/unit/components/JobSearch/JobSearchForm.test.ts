@@ -17,15 +17,15 @@ describe('JobSearchForm', () => {
       render(JobSearchForm, {
         global: { stubs: { FontAwesomeIcon: true } }
       })
-      const roleInput = screen.getByRole('textbox', { name: /role/i }) // get the role input
-      await userEvent.type(roleInput, 'developer') // type in the role input
+      const jobTitleInput = screen.getByRole('textbox', { name: /job Title/i }) // get the jobTitle input
+      await userEvent.type(jobTitleInput, 'developer') // type in the jobTitle input
       const locationInput = screen.getByRole('textbox', { name: /where?/i }) // get the location input
       await userEvent.type(locationInput, 'london') // type in the location input
       const submitButton = screen.getByRole('button', { name: /search/i }) // get the submit button
       await userEvent.click(submitButton) // click the submit button
       expect(push).toHaveBeenCalledWith({
         name: 'JobResults',
-        query: { role: 'developer', location: 'london' }
+        query: { jobTitle: 'developer', location: 'london' }
       })
     })
   })
