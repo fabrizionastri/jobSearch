@@ -12,7 +12,7 @@ import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSi
 
 import { useJobsStore } from '@/stores/jobs'
 const jobsStore = useJobsStore()
-const uniqueOrganizations = computed(() => jobsStore.uniqueOrganizations)
+const uniqueOrganizations = computed((): string[] => jobsStore.uniqueOrganizations)
 
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()

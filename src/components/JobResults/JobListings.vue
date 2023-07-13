@@ -25,10 +25,8 @@ import JobListing from './JobListing.vue'
 import PaginationBar from './PaginationBar.vue'
 import { useJobsStore } from '@/stores/jobs'
 import usePreviousAndNextPages from '@/composables/usePreviousAndNextPages'
-import { useDegreesStore } from '@/stores/degrees'
 const route = useRoute()
 const jobsStore = useJobsStore()
-const degreesStore = useDegreesStore()
 
 const currentPage = computed(() => Number.parseInt((route.query.page as string) || '1'))
 const lastPage = computed(() => Math.ceil(filteredJobs.value.length / 10))
@@ -43,5 +41,4 @@ const displayedJobs = computed(() => {
 })
 
 onMounted(jobsStore.fetchJobs)
-onMounted(degreesStore.fetchDegrees)
 </script>

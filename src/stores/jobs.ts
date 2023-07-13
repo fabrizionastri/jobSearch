@@ -22,8 +22,8 @@ export const useJobsStore = defineStore('jobs', () => {
     const jobsArray =
       userStore.lastUpdatedFilter !== 'organizations' ? filteredJobs.value : jobs.value
     // Access userStore.selectedOrganizations.value to ensure Vue tracks it as a dependency
-    const forceDependencyTracking = userStore.selectedOrganizations.length
-    console.log('forceDependencyTracking selectedOrganizations', forceDependencyTracking)
+    // const forceDependencyTracking = userStore.selectedOrganizations.length
+    // console.log('forceDependencyTracking selectedOrganizations', forceDependencyTracking)
     jobsArray.forEach((job) => {
       uniqueOrganizations.add(job.organization)
     })
@@ -34,8 +34,8 @@ export const useJobsStore = defineStore('jobs', () => {
     console.log('Computing uniqueJobTypes')
     const uniqueJobTypes = new Set<string>()
     const jobsArray = userStore.lastUpdatedFilter !== 'jobTypes' ? filteredJobs.value : jobs.value
-    const forceDependencyTracking = userStore.selectedJobTypes.length
-    console.log('forceDependencyTracking selectedJobTypes: ', forceDependencyTracking)
+    // const forceDependencyTracking = userStore.selectedJobTypes.length
+    // console.log('forceDependencyTracking selectedJobTypes: ', forceDependencyTracking)
     jobsArray.forEach((job) => {
       uniqueJobTypes.add(job.jobType)
     })
@@ -46,8 +46,8 @@ export const useJobsStore = defineStore('jobs', () => {
     console.log('Computing uniqueDegrees')
     const uniqueDegrees = new Set<string>()
     const jobsArray = userStore.lastUpdatedFilter !== 'degrees' ? filteredJobs.value : jobs.value
-    const forceDependencyTracking = userStore.selectedDegrees.length
-    console.log('forceDependencyTracking selectedDegrees: ', forceDependencyTracking)
+    // const forceDependencyTracking = userStore.selectedDegrees.length
+    // console.log('forceDependencyTracking selectedDegrees: ', forceDependencyTracking)
     jobsArray.forEach((job) => {
       uniqueDegrees.add(job.degree)
     })
@@ -58,8 +58,8 @@ export const useJobsStore = defineStore('jobs', () => {
     console.log('Computing uniqueLocations')
     const uniqueLocations = new Set<string>()
     const jobsArray = userStore.lastUpdatedFilter !== 'locations' ? filteredJobs.value : jobs.value
-    const forceDependencyTracking = userStore.selectedLocations.length
-    console.log('forceDependencyTracking selectedLocations: ', forceDependencyTracking)
+    // const forceDependencyTracking = userStore.selectedLocations.length
+    // console.log('forceDependencyTracking selectedLocations: ', forceDependencyTracking)
     jobsArray.forEach((job) => {
       job.locations.forEach((location) => {
         uniqueLocations.add(location)
