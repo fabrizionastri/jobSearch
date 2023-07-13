@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-5">
+  <div>
     <fieldset>
       <ul class="flex flex-row flex-wrap">
         <li v-for="value in uniqueValues" :key="value">

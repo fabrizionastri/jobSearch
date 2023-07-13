@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row justify-between">
+  <div class="flex flex-row justify-between mb-4">
     <h3 class="my-4 text-base font-semibold">What do you want to do ?</h3>
     <div class="flex items-center text-sm">
       <ActionButton text="Clear filters" type="secondary" @click="userStore.clearFilters" />

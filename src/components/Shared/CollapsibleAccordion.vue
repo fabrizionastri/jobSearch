@@ -1,5 +1,5 @@
 <template>
-  <div class="py-5 border-b border-solid border-brand-gray-2">
+  <div class="py-4 border-t border-solid border-brand-gray-1">
     <div
       role="button"
       class="flex flex-wrap items-center justify-between cursor-pointer"
@@ -9,7 +9,7 @@
       <font-awesome-icon :icon="caretIcon" />
     </div>
   </div>
-  <div v-if="isOpen" class="w-full mt-5">
+  <div v-if="isOpen" class="w-full py-4 border-t border-solid border-brand-gray-2">
     <slot>Default content</slot>
   </div>
 </template>

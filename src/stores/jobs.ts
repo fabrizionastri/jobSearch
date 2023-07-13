@@ -40,36 +40,66 @@ export const useJobsStore = defineStore('jobs', () => {
     return [...uniqueDegrees].sort()
   })
 
+  // const uniqueLocations = computed(() => {
+  //   const uniqueLocations = new Set<string>()
+  //   jobs.value.forEach((job) => {
+  //     job.locations.forEach((location) => {
+  //       uniqueLocations.add(location)
+  //     })
+  //   })
+  //   return [...uniqueLocations].sort()
+  // })
+
+  const uniqueLocations = computed(() => {
+    const uniqueLocations = new Set<string>()
+    filteredJobs.value.forEach((job) => {
+      job.locations.forEach((location) => {
+        uniqueLocations.add(location)
+      })
+    })
+    return [...uniqueLocations].sort()
+  })
+
   const filteredJobs = computed(() => {
     const userStore = useUserStore()
     const selectedOrganizations = userStore.selectedOrganizations
     const selectedJobTypes = userStore.selectedJobTypes
+    const selectedLocations = userStore.selectedLocations.map(normalizeString) // normalize all selected locations
     const selectedDegrees = userStore.selectedDegrees
     const searchJobTitle = userStore.searchJobTitle
-    console.log('searchJobTitle check:', searchJobTitle)
     const searchQualification = userStore.searchQualification
-    console.log('searchQualification check:', searchQualification)
 
-    return jobs.value.filter((job) => {
-      const check =
+    function normalizeString(str: string) {
+      return str.toLowerCase().replace(/[\s-']/g, '')
+    }
+
+    return jobs.value.filter(
+      (job) =>
         (!selectedOrganizations.length || selectedOrganizations.includes(job.organization)) &&
         (!selectedJobTypes.length || selectedJobTypes.includes(job.jobType)) &&
         (!selectedDegrees.length || selectedDegrees.includes(job.degree)) &&
         (!searchJobTitle ||
           searchJobTitle === '' ||
           job.jobTitle.toLowerCase().includes(searchJobTitle.toLowerCase())) &&
+        (!selectedLocations.length ||
+          job.locations.map(normalizeString).some((loc) => selectedLocations.includes(loc))) && // normalize each location before comparing
         (job.minimumQualifications.some((qualification) =>
           qualification.toLowerCase().includes(searchQualification.toLowerCase())
         ) ||
           job.preferredQualifications.some((qualification) =>
             qualification.toLowerCase().includes(searchQualification.toLowerCase())
           ))
-      console.log('Thruthy check:', check)
-
-      return check
-    })
+    )
   })
 
   // Return
-  return { jobs, fetchJobs, uniqueOrganizations, uniqueJobTypes, uniqueDegrees, filteredJobs }
+  return {
+    jobs,
+    fetchJobs,
+    uniqueOrganizations,
+    uniqueLocations,
+    uniqueJobTypes,
+    uniqueDegrees,
+    filteredJobs
+  }
 })
