@@ -2,15 +2,15 @@
   <JobFiltersSidebarCheckboxGroup
     :unique-values="uniqueJobTypes"
     :action="userStore.addSelectedJobType"
+    filter-name="jobTypes"
   />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
+import { computed } from 'vue'
 import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue'
 
-import { computed } from 'vue'
 import { useJobsStore } from '@/stores/jobs'
-
 const jobsStore = useJobsStore()
 const uniqueJobTypes = computed(() => jobsStore.uniqueJobTypes)
 

@@ -2,6 +2,7 @@
   <JobFiltersSidebarCheckboxGroup
     :unique-values="uniqueDegrees"
     :action="userStore.addSelectedDegree"
+    filter-name="degrees"
   />
 </template>
 

@@ -10,8 +10,8 @@ export const useUserStore = defineStore('user', () => {
   const selectedJobTypes = ref<string[]>([])
   const selectedDegrees = ref<string[]>([])
   const searchJobTitle = ref<string>('')
-  // const searchLocation = ref<string[]>([])
   const searchQualification = ref<string>('')
+  const lastUpdatedFilter = ref<string>('')
 
   // Actions
   const loginUser = () => {
@@ -66,6 +66,7 @@ export const useUserStore = defineStore('user', () => {
     addSelectedLocation,
     setSearchJobTitle,
     setSearchQualification,
+    lastUpdatedFilter,
     clearFilters
   }
 })

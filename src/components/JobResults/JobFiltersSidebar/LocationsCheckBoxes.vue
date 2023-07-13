@@ -2,6 +2,7 @@
   <JobFiltersSidebarCheckboxGroup
     :unique-values="uniqueLocations"
     :action="userStore.addSelectedLocation"
+    filter-name="locations"
   />
 </template>
 

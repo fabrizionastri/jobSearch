@@ -8,14 +8,40 @@
         <h2 class="mb-2 text-2xl">{{ job.jobTitle }}</h2>
         <div class="flex flex-row align-middle">
           <div class="mr-5">
-            <span>{{ job.organization }}</span
-            >,
+            <font-awesome-icon
+              title="Building"
+              :icon="['fas', 'building']"
+              class="mr-3 text-brand-gray-1"
+            />
+            <span>{{ job.organization }}</span>
+          </div>
+          <div class="mr-5">
+            <font-awesome-icon
+              title="Degree"
+              :icon="['fas', 'graduation-cap']"
+              class="mr-3 text-brand-gray-1"
+            />
+            <span>{{ job.degree }}</span>
+          </div>
+          <div class="mr-5">
+            <font-awesome-icon
+              title="Job type"
+              :icon="['fas', 'briefcase']"
+              class="mr-3 text-brand-gray-1"
+            />
             <span>{{ job.jobType }}</span>
           </div>
           <div>
             <ol>
-              <li v-for="location in job.locations" :key="location" class="inline-block mr-5">
+              <font-awesome-icon
+                title="Location"
+                :icon="['fas', 'location-dot']"
+                class="mr-3 text-brand-gray-1"
+              />
+              <li v-for="location in job.locations" :key="location" class="inline-block mr-2">
                 {{ location }}
+                <!-- add a comma after each location except the last one -->
+                <span v-if="job.locations.indexOf(location) !== job.locations.length - 1">,</span>
               </li>
             </ol>
           </div>

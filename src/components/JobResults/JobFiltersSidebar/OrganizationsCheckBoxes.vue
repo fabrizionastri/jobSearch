@@ -2,6 +2,7 @@
   <JobFiltersSidebarCheckboxGroup
     :unique-values="uniqueOrganizations"
     :action="userStore.addSelectedOrganization"
+    filter-name="organizations"
   />
 </template>
 

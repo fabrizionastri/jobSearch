@@ -31,6 +31,10 @@ const props = defineProps({
   action: {
     type: Function,
     required: true
+  },
+  filterName: {
+    type: String,
+    required: true
   }
 })
 
@@ -38,16 +42,17 @@ const selectedValues = ref<string[]>([])
 const router = useRouter()
 
 const selectValue = () => {
+  console.log('selectValue activated in ', props.filterName)
   props.action(selectedValues.value)
   router.push({ name: 'JobResults' })
+  userStore.lastUpdatedFilter = props.filterName
 }
 
 const userStore = useUserStore()
 userStore.$onAction(({ after, name }) => {
   after(() => {
-    console.log('hello')
+    console.log('userStore.$onAction activated in ', props.filterName)
     if (name === 'clearFilters') {
-      console.log('yessaaah')
       selectedValues.value = []
     }
   })

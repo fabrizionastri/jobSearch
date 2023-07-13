@@ -11,19 +11,19 @@
         <QualificationInput />
       </collapsible-accordion>
 
-      <collapsible-accordion header="Organizations">
+      <collapsible-accordion header="Organizations" :counter="jobsStore.uniqueOrganizations.length">
         <OrganizationsCheckBoxes />
       </collapsible-accordion>
 
-      <collapsible-accordion header="JobTypes">
+      <collapsible-accordion header="JobTypes" :counter="jobsStore.uniqueJobTypes.length">
         <JobTypesCheckBoxes />
       </collapsible-accordion>
 
-      <collapsible-accordion header="Degrees">
+      <collapsible-accordion header="Degrees" :counter="jobsStore.uniqueDegrees.length">
         <DegreesCheckBoxes />
       </collapsible-accordion>
 
-      <collapsible-accordion header="Locations">
+      <collapsible-accordion header="Locations" :counter="jobsStore.uniqueLocations.length">
         <LocationsCheckBoxes />
       </collapsible-accordion>
     </section>
@@ -43,6 +43,9 @@ import QualificationInput from '@/components/JobResults/JobFiltersSidebar/Qualif
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+
+import { useJobsStore } from '@/stores/jobs'
+const jobsStore = useJobsStore()
 
 const parseSkillsSearchTerm = () => {
   // parse Skills Search Terms from URL
