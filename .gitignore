@@ -1,7 +1,28 @@
+# Auto generated files
+logs
+node_modules
+package-lock.json
+pnpm-lock.yaml
+bash
+coverage
+
+# Build files
+build
+dist
+
+
+# project structure
+project_structure_filtered.txt
+project_structure.txt
+
+# Local env files
+.circleci
+.git
 !.vscode/extensions.json
 .DS_Store
+.env
 .idea
-.vscode/*
+.vscode
 *.local
 *.log
 *.njsproj
@@ -9,15 +30,19 @@
 *.sln
 *.suo
 *.sw?
+
+# Logs
 /cypress/screenshots/
 /cypress/videos/
 coverage
 dist
 dist-ssr
 lerna-debug.log*
-logs
-node_modules
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Other files
+_playgrounds
+_archives
