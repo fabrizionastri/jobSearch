@@ -10,7 +10,7 @@
     "test": "vitest --environment jsdom --reporter verbose",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "backend": "json-server --watch db.json --port 3000"
+    "db": "json-server --watch db.json --port 3000"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
